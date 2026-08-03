@@ -135,6 +135,24 @@
     };
   }
 
+  async function deleteExpert(id) {
+    if (!isEnabled()) return null;
+    await req(baseUrl(cfg.expertsTable) + "?id=eq." + encodeURIComponent(id), {
+      method: "DELETE",
+      headers: headers({ Prefer: "return=minimal" })
+    });
+    return true;
+  }
+
+  async function deleteAllExperts() {
+    if (!isEnabled()) return null;
+    await req(baseUrl(cfg.expertsTable) + "?id=neq.__none__", {
+      method: "DELETE",
+      headers: headers({ Prefer: "return=minimal" })
+    });
+    return true;
+  }
+
   window.WorkshopDB = {
     isEnabled,
     listExperts,
@@ -142,6 +160,8 @@
     claimExpertId,
     saveExpertProgress,
     submitExpert,
+    deleteExpert,
+    deleteAllExperts,
     getConfig,
     updateConfig,
     startPolling
