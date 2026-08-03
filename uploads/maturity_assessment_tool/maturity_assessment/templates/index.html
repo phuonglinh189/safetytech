@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Technology Adoption Maturity Assessment</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <div class="logos">
+                <div class="logo-container">
+                    <img src="{{ url_for('static', filename='images/TAB_allwhite.png') }}" 
+                        alt="The University of Manchester" 
+                        class="logo-image manchester-logo-img"
+                        style="width: 90px; height: auto;">
+                </div>
+                <div class="logo-container">
+                    <img src="{{ url_for('static', filename='images/icon-logo-footer.svg') }}" 
+                     alt="National Taiwan University" 
+                     class="logo-image ntu-logo-img"
+                     style="width: 120px; height: auto;">
+                </div>
+            </div>
+            <div class="header-title">
+                <h1 data-i18n="title">Digital Technology Adoption Maturity Assessment</h1>
+                <p class="subtitle" data-i18n="subtitle">Construction Safety Monitoring and Inspection Technologies</p>
+            </div>
+            <div class="header-actions">
+                <select id="languageSelect" class="lang-select" aria-label="Language selector">
+                    <option value="en">English</option>
+                    <option value="zh_TW">中文 (繁體)</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Instructions Section -->
+        <div class="section instructions-container">
+            <h2 data-i18n="instructions_heading">📋 Assessment Instructions</h2>
+            
+            <div class="instruction-box">
+                <h3 data-i18n="what_title">What is this assessment?</h3>
+                <p data-i18n="what_text">This is a <strong>Digital Technology Adoption Maturity Assessment</strong> that evaluates your organization's readiness to implement and use digital safety technologies in construction monitoring and inspection. It covers 22 key indicators across 4 categories: Strategy, Operations, People, and Technology.</p>
+            </div>
+            
+            <div class="instruction-box">
+                <h3 data-i18n="rank_title">How to rank each indicator?</h3>
+                <p data-i18n="rank_text">For each of the 22 indicators, select the level (1-5) that best describes your organization's current state:</p>
+                <ul class="ranking-list">
+                    <li data-i18n="level_desc_1"><strong>Level 1:</strong> Initial (Ad-hoc, unpredictable)</li>
+                    <li data-i18n="level_desc_2"><strong>Level 2:</strong> Managed (Basic processes with controls)</li>
+                    <li data-i18n="level_desc_3"><strong>Level 3:</strong> Defined (Standardized, documented)</li>
+                    <li data-i18n="level_desc_4"><strong>Level 4:</strong> Quantitatively Managed (Measured and controlled)</li>
+                    <li data-i18n="level_desc_5"><strong>Level 5:</strong> Optimizing (Continuous improvement)</li>
+                </ul>
+            </div>
+            
+            <div class="instruction-box">
+                <h3 data-i18n="get_title">What will you get?</h3>
+                <p data-i18n="get_text">After completing all 22 indicators and clicking "Calculate", you'll receive:</p>
+                <ul class="result-list">
+                    <li data-i18n="result_overall">✓ Overall maturity score (1-5 scale)</li>
+                    <li data-i18n="result_category">✓ Category breakdown scores (Strategy, Operations, People, Technology)</li>
+                    <li data-i18n="result_charts">✓ Visual charts and performance distribution</li>
+                    <li data-i18n="result_pdf">✓ Detailed assessment report (exportable as PDF)</li>
+                </ul>
+            </div>
+            
+            <div class="instruction-box">
+                <h3 data-i18n="results_meaning_title">What do the results mean?</h3>
+                <p data-i18n="results_meaning_text">Your results show where your organization stands in adopting digital safety technologies. A higher score (closer to 5) indicates more mature processes, better documentation, measurement, and continuous improvement. Use these results to identify improvement areas and guide your digital transformation strategy.</p>
+            </div>
+            
+            <p class="instruction-footer" data-i18n="expected_time">⏱️ <strong>Expected time:</strong> 15-20 minutes | <strong>All 22 questions required</strong> to calculate results</p>
+        </div>
+
+        <!-- Organization Information -->
+        <div class="section">
+            <h2 data-i18n="org_info_heading">Organization Information</h2>
+            <div class="form-group">
+                <label for="orgName" data-i18n="org_label_orgName">Organization Name:</label>
+                <input type="text" id="orgName" placeholder="Enter your organization name" class="form-control" data-i18n-placeholder="org_placeholder_orgName">
+            </div>
+            <div class="form-group">
+                <label for="assessorName" data-i18n="org_label_assessor">Your Name:</label>
+                <input type="text" id="assessorName" placeholder="Enter your name" class="form-control" data-i18n-placeholder="org_placeholder_assessor">
+            </div>
+        </div>
+
+        <!-- Weight Configuration Section - HIDDEN (Using global weights from backend) -->
+        <div class="section weights-section" style="display: none;">
+            <h2>⚠️ Indicator Weight Configuration</h2>
+            <div class="weight-info">
+                <p><strong>Please fill in the indicator weights before proceeding with the assessment.</strong></p>
+                <p>Default weight is 1.0 for all indicators. Adjust weights based on importance to your organization (0.5 to 2.0 recommended).</p>
+                <button class="btn btn-secondary" onclick="toggleWeights()">Show/Hide Weight Configuration</button>
+            </div>
+            
+            <div id="weightsPanel" class="weights-panel" style="display: none;">
+                {% for cat_key, category in categories.items() %}
+                <div class="weight-category">
+                    <h3 style="color: {{ category.color }}">{{ category.name }}</h3>
+                    <div class="weight-grid">
+                        {% for indicator in category.indicators %}
+                        <div class="weight-item">
+                            <label>{{ indicator.code }} - {{ indicator.name }}:</label>
+                            <input type="number" 
+                                   id="weight_{{ indicator.code }}" 
+                                   class="weight-input"
+                                   min="0.1" 
+                                   max="3.0" 
+                                   step="0.1" 
+                                   value="1.0">
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endfor %}
+                
+                <div class="weight-category">
+                    <h3>Category Weights (for overall score calculation)</h3>
+                    <div class="weight-grid">
+                        {% for cat_key, category in categories.items() %}
+                        <div class="weight-item">
+                            <label>{{ category.name }}:</label>
+                            <input type="number" 
+                                   id="weight_{{ cat_key }}_category" 
+                                   class="weight-input"
+                                   min="0.1" 
+                                   max="3.0" 
+                                   step="0.1" 
+                                   value="1.0">
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                
+                <button class="btn btn-primary" onclick="saveWeights()">Save Weights</button>
+                <button class="btn btn-secondary" onclick="resetWeights()">Reset to Default</button>
+            </div>
+        </div>
+
+        <!-- Progress Indicator (moved above the questionnaire for visibility) -->
+        <div class="progress-section">
+            <div class="progress-bar-container" id="progressBarContainer">
+                <!-- 22 segments will be generated by JavaScript -->
+            </div>
+            <p class="progress-text" id="progressText" data-i18n="progress_text">0 of 22 indicators completed</p>
+        </div>
+
+        <!-- Assessment Form -->
+        <div class="section">
+            <h2 data-i18n="questionnaire_heading">Assessment Questionnaire</h2>
+            <p class="instruction" data-i18n="questionnaire_instruction">For each indicator, select the level that best describes your organization's current state.</p>
+            
+            {% for cat_key, category in categories.items() %}
+            <div class="category-section" style="border-left: 4px solid {{ category.color }}">
+                <h3 class="category-title" style="color: {{ category.color }}" data-i18n="category_NAME_{{ cat_key }}">{{ category.name }}</h3>
+                
+                {% for indicator in category.indicators %}
+                <div class="indicator-card" data-category-color="{{ category.color }}">
+                    <div class="indicator-header">
+                        <span class="indicator-code" style="background-color: {{ category.color }}">{{ indicator.code }}</span>
+                        <div>
+                            <span class="indicator-name" data-i18n="indicator_NAME_{{ indicator.code }}">{{ indicator.name }}</span>
+                            <span class="indicator-description" data-i18n="indicator_DESC_{{ indicator.code }}">{{ indicator.description }}</span>
+                        </div>
+                    </div>
+                    
+                    <div class="levels-container">
+                        {% for i in range(5) %}
+                        <div class="level-option">
+                            <input type="radio" 
+                                   id="{{ indicator.code }}_{{ i+1 }}" 
+                                   name="{{ indicator.code }}" 
+                                   value="{{ i+1 }}"
+                                   onchange="updateProgress()">
+                            <label for="{{ indicator.code }}_{{ i+1 }}" class="level-label">
+                                <div class="level-number" data-i18n="level_{{ i+1 }}">Level {{ i+1 }}</div>
+                                <div class="level-description" data-i18n="indicator_LEVEL_{{ indicator.code }}_{{ i+1 }}">{{ indicator.levels[i] }}</div>
+                            </label>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Calculate Button -->
+        <div class="action-section">
+            <button class="btn btn-primary btn-large" onclick="calculateMaturity()" id="calculateBtn" disabled data-i18n="calculate_button">
+                Calculate Maturity Level
+            </button>
+        </div>
+
+        <!-- Results Section -->
+        <div class="section results-section" id="resultsSection" style="display: none;">
+            <h2 data-i18n="results_heading">Assessment Results</h2>
+            
+            <div class="overall-score">
+                <div class="score-card">
+                    <h3 data-i18n="overall_maturity_title">Overall Maturity Level</h3>
+                    <div class="score-value" id="overallScore">-</div>
+                    <div class="score-level" id="maturityLevel">-</div>
+                    <div class="score-description" id="levelDescription">-</div>
+                </div>
+            </div>
+
+            <div class="charts-container">
+                <div class="chart-box">
+                    <h3 data-i18n="chart_category_scores">Category Scores</h3>
+                    <canvas id="categoryChart"></canvas>
+                </div>
+                <div class="chart-box">
+                    <h3 data-i18n="chart_maturity_distribution">Maturity Distribution</h3>
+                    <canvas id="radarChart"></canvas>
+                </div>
+            </div>
+
+            <div class="category-details" id="categoryDetails">
+                <!-- Will be populated by JavaScript -->
+            </div>
+
+            <div class="export-section">
+                <button class="btn btn-success btn-large" onclick="exportPDF()" data-i18n="export_button">
+                    Export Report as PDF
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

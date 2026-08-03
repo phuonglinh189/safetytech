@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Maturity Assessment</title>
+<link rel="stylesheet" href="../shared/styles.css" />
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="../shared/database-config.js"></script>
+<script src="../shared/database.js"></script>
+<script src="../shared/i18n.js"></script>
+</head>
+<body>
+<div class="top-bar">
+  <h1 id="pageTitle">Digital Safety Technology Maturity Assessment</h1>
+  <div style="display:flex; align-items:center; gap:12px;">
+    <span class="id-chip" id="idChip">—</span>
+    <a class="lang-link" id="langLink" href="#">中文</a>
+  </div>
+</div>
+
+<div class="wrap">
+  <p class="subtitle" id="pageSubtitle"></p>
+
+  <div class="panel" id="idPanel">
+    <p id="idStatusText">Assigning your expert ID…</p>
+    <p class="note" id="idNote"></p>
+  </div>
+
+  <div id="mainContent" style="display:none;">
+    <div class="panel">
+      <h3 id="instructionsHeading"></h3>
+      <p id="instructionsText" style="color:var(--muted); font-size:14px;"></p>
+      <div class="progress-bar-track"><div class="progress-bar-fill" id="progressFill" style="width:0%"></div></div>
+      <p class="progress-text" id="progressText"></p>
+      <p class="note warn" id="lockedNote" style="display:none;"></p>
+      <p class="note" id="submittedNote" style="display:none;"></p>
+    </div>
+
+    <div id="domainsContainer"></div>
+
+    <div class="panel" style="text-align:center;">
+      <button class="primary" id="submitBtn" disabled>Submit</button>
+      <p class="note" id="incompleteNote" style="margin-top:12px; display:none;"></p>
+    </div>
+
+    <div class="panel" id="resultsPanel" style="display:none;">
+      <h2 id="resultsHeading"></h2>
+      <div class="stat-row">
+        <div class="stat-card">
+          <div class="stat-label" id="overallCurrentLabel"></div>
+          <div class="stat-value" id="overallCurrentValue">—</div>
+          <div class="subtitle" id="overallCurrentLevelName"></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label" id="overallTargetLabel"></div>
+          <div class="stat-value" id="overallTargetValue">—</div>
+          <div class="subtitle" id="overallTargetLevelName"></div>
+        </div>
+      </div>
+      <h3 id="domainScoresHeading"></h3>
+      <table class="scores-table" id="domainScoresTable"></table>
+      <h3 style="margin-top:24px;" id="summaryRadarHeading"></h3>
+      <div class="charts-grid" id="domainChartsGrid"></div>
+      <div class="chart-card" style="max-width:480px; margin:20px auto 0;">
+        <canvas id="summaryRadarCanvas"></canvas>
+      </div>
+      <div style="text-align:center; margin-top:24px;">
+        <button class="secondary" id="downloadPdfBtn"></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

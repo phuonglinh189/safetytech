@@ -1,0 +1,909 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header Styles */
+.header {
+    background: linear-gradient(135deg, #7030A0 0%, #501878 100%);
+    color: white;
+    /* Reduced padding for a smaller header */
+    padding: 0.6rem 0;
+    /* Make header stick to the top when scrolling */
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    min-height: 72px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.25s ease, padding 0.25s ease;
+}
+
+.header.hide-header {
+    transform: translateY(-100%);
+}
+
+.header.shrink {
+    padding: 0.4rem 0;
+    min-height: 56px;
+}
+
+.header.shrink h1 {
+    font-size: 1rem;
+}
+
+.header.shrink .subtitle {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 0.2s ease, max-height 0.2s ease;
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.header-actions {
+    margin-left: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.lang-select {
+    padding: 0.4rem 0.7rem;
+    border-radius: 6px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    font-weight: 600;
+    font-size: 0.85rem;
+    background: rgba(255, 255, 255, 0.95);
+    color: #333;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.lang-select:hover {
+    background: white;
+    border-color: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.lang-select:focus {
+    outline: none;
+    background: white;
+    border-color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.lang-select option {
+    background: white;
+    color: #333;
+    padding: 0.5rem;
+}
+
+.logos {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+    margin-right: 1rem;
+}
+
+.logo-image {
+    filter: brightness(0) invert(1);
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.logo-container {
+    min-width: 0;
+}
+
+.logo-container {
+    flex: 0 0 auto;
+}
+
+.logo {
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.manchester-logo {
+    text-align: center;
+    color: #7030A0;
+}
+
+.manchester-text {
+    font-size: 1.8rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.manchester-year {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #D4A017;
+    margin: 0.2rem 0;
+}
+
+.manchester-subtitle {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 0.3rem;
+}
+
+.ntu-logo {
+    text-align: center;
+    color: #C00000;
+}
+
+.ntu-chinese {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 0.3rem;
+}
+
+.ntu-english {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.header-title {
+    flex: 1 1 auto;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.25rem;
+    margin: 0;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.15);
+}
+
+.subtitle {
+    font-size: 0.85rem;
+    opacity: 0.95;
+    margin-top: 0.15rem;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+}
+
+/* Section Styles */
+.section {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+.section h2 {
+    color: #7030A0;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 3px solid #D4A017;
+    font-size: 1.8rem;
+}
+
+/* Form Controls */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #555;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #7030A0;
+}
+
+/* Weights Section */
+.weights-section {
+    background: linear-gradient(135deg, #fff9e6 0%, #ffe6e6 100%);
+    border: 2px solid #D4A017;
+}
+
+.weights-section h2 {
+    color: #C00000;
+}
+
+.weight-info {
+    background: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    border-left: 4px solid #D4A017;
+}
+
+.weight-info p {
+    margin-bottom: 0.5rem;
+}
+
+.weights-panel {
+    margin-top: 1rem;
+}
+
+.weight-category {
+    background: white;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.weight-category h3 {
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.weight-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+}
+
+.weight-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.weight-item label {
+    flex: 1;
+    font-size: 0.9rem;
+}
+
+.weight-input {
+    width: 80px;
+    padding: 0.5rem;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.weight-input:focus {
+    outline: none;
+    border-color: #7030A0;
+}
+
+/* Category Section */
+.category-section {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+}
+
+.category-title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+}
+
+/* Indicator Card */
+.indicator-card {
+    background: white;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.indicator-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.indicator-header {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.indicator-code {
+    color: white;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 0.95rem;
+    flex-shrink: 0;
+    height: fit-content;
+    margin-top: 0.3rem;
+}
+
+.indicator-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.indicator-description {
+    display: block;
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 0.3rem;
+    line-height: 1.5;
+}
+
+.indicator-header > div {
+    flex: 1;
+}
+
+/* Level Options */
+.levels-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.indicator-card {
+    --category-color: #7030A0;
+}
+
+.level-option {
+    position: relative;
+}
+
+.level-option input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+}
+
+.level-label {
+    display: block;
+    padding: 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    background: white;
+}
+
+.level-label:hover {
+    border-color: var(--category-color);
+    background: rgba(var(--category-color-rgb, 112, 48, 160), 0.05);
+}
+
+.level-option input[type="radio"]:checked + .level-label {
+    border-color: var(--category-color);
+    background: linear-gradient(135deg, var(--category-color) 0%, rgba(var(--category-color-rgb, 112, 48, 160), 0.1) 100%);
+    box-shadow: 0 2px 8px rgba(var(--category-color-rgb, 112, 48, 160), 0.3);
+    color: white;
+}
+
+.level-option input[type="radio"]:checked + .level-label .level-number {
+    color: white;
+}
+
+.level-number {
+    font-weight: bold;
+    color: var(--category-color);
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.level-description {
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.level-option input[type="radio"]:checked + .level-label .level-description {
+    color: rgba(0, 0, 0, 0.8);
+}
+
+/* Progress Section */
+.progress-section {
+    position: sticky;
+    /* position below the sticky header */
+    top: 72px;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    z-index: 150;
+    transition: top 0.25s ease;
+}
+
+.header.hide-header + .container .progress-section {
+    top: 0;
+}
+
+.progress-bar-container {
+    display: flex;
+    gap: 3px;
+    width: 100%;
+    height: 30px;
+    background: #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+    padding: 2px;
+}
+
+.progress-segment {
+    flex: 1;
+    height: 100%;
+    background: #d0d0d0;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: bold;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.progress-segment.filled {
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.progress-segment:hover {
+    opacity: 0.85;
+    transform: scale(1.05);
+}
+
+.progress-text {
+    text-align: center;
+    font-weight: 600;
+    color: #555;
+}
+
+/* Action Section */
+.action-section {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+/* Buttons */
+.btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #7030A0 0%, #501878 100%);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #501878 0%, #7030A0 100%);
+}
+
+.btn-secondary {
+    background: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #5a6268;
+}
+
+.btn-success {
+    background: linear-gradient(135deg, #28a745 0%, #20903b 100%);
+    color: white;
+}
+
+.btn-success:hover {
+    background: linear-gradient(135deg, #20903b 0%, #28a745 100%);
+}
+
+.btn-large {
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+}
+
+.btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Results Section */
+.results-section {
+    background: linear-gradient(135deg, #f0f4ff 0%, #fff5f0 100%);
+}
+
+.overall-score {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.score-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    display: inline-block;
+    min-width: 400px;
+}
+
+.score-card h3 {
+    color: #7030A0;
+    margin-bottom: 1rem;
+}
+
+.score-value {
+    font-size: 4rem;
+    font-weight: bold;
+    color: #D4A017;
+    margin: 1rem 0;
+}
+
+.score-level {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #7030A0;
+    margin-bottom: 0.5rem;
+}
+
+.score-description {
+    font-size: 1.1rem;
+    color: #666;
+}
+
+/* Charts */
+.charts-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.chart-box {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.chart-box h3 {
+    color: #7030A0;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.chart-box canvas {
+    max-height: 300px;
+}
+
+/* Category Details */
+.category-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.category-detail-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.category-detail-card h4 {
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.category-score {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0.5rem 0;
+}
+
+.category-level {
+    color: #666;
+    font-size: 1rem;
+}
+
+/* Export Section */
+.export-section {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 2px solid #ddd;
+}
+
+/* Instruction Styles */
+.instructions-container {
+    background: linear-gradient(135deg, #f0f4ff 0%, #fff9e6 100%);
+    border: 2px solid #7030A0;
+    border-radius: 12px;
+}
+
+.instructions-container h2 {
+    color: #7030A0;
+    border-color: #D4A017;
+}
+
+.instruction-box {
+    background: white;
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+    border-left: 4px solid #D4A017;
+    border-radius: 6px;
+}
+
+.instruction-box h3 {
+    color: #501878;
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+}
+
+.instruction-box p {
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+.ranking-list,
+.result-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 0.75rem 0 0;
+}
+
+.ranking-list li,
+.result-list li {
+    padding: 0.4rem 0 0.4rem 1.75rem;
+    position: relative;
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.ranking-list li:before {
+    content: "→";
+    position: absolute;
+    left: 0.5rem;
+    color: #7030A0;
+    font-weight: bold;
+}
+
+.result-list li:before {
+    content: "";
+    position: absolute;
+    left: 0;
+}
+
+.instruction-footer {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
+    font-weight: 600;
+    padding: 1rem;
+    background: #f9f9f9;
+    border-radius: 6px;
+    margin-top: 1rem;
+    margin-bottom: 0;
+}
+
+/* Instruction Styles */
+.section .instruction {
+    background: #e7f3ff;
+    padding: 1rem;
+    border-radius: 6px;
+    border-left: 4px solid #4472C4;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 0.75rem;
+        margin: 0.75rem auto;
+    }
+
+    .header h1 {
+        font-size: 1.7rem;
+    }
+    
+    .header-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 0 0.75rem;
+        gap: 0.9rem;
+    }
+
+    .logos {
+        flex-direction: column;
+        gap: 0.75rem;
+        margin-right: 0;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .header-actions {
+        width: 100%;
+        justify-content: center;
+        margin-left: 0;
+    }
+
+    .lang-select {
+        width: 100%;
+        max-width: 220px;
+    }
+
+    .section {
+        padding: 1rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .indicator-card {
+        padding: 1rem;
+    }
+
+    .indicator-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+        padding-bottom: 0.75rem;
+    }
+
+    .indicator-name {
+        font-size: 1rem;
+    }
+
+    .indicator-description {
+        font-size: 0.88rem;
+        line-height: 1.4;
+    }
+
+    .level-label {
+        padding: 0.85rem;
+    }
+
+    .level-number {
+        font-size: 0.95rem;
+    }
+
+    .level-description {
+        font-size: 0.88rem;
+    }
+
+    .levels-container {
+        gap: 0.45rem;
+    }
+
+    .progress-section {
+        position: sticky;
+        top: 72px;
+        z-index: 160;
+        margin-top: 1rem;
+        padding: 1rem;
+    }
+
+    .progress-bar-container {
+        display: grid;
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+        gap: 3px;
+        height: auto;
+    }
+
+    .progress-segment {
+        font-size: 0.62rem;
+        line-height: 1.1;
+        min-height: 30px;
+        padding: 0.35rem 0.2rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .progress-text {
+        font-size: 0.88rem;
+    }
+
+    .instructions-container h2,
+    .instruction-box h3 {
+        font-size: 1rem;
+    }
+
+    .instruction-box p,
+    .ranking-list li,
+    .result-list li,
+    .instruction-footer {
+        font-size: 0.85rem;
+    }
+
+    .instruction-box {
+        padding: 1rem;
+    }
+
+    .instructions-container {
+        padding: 0.75rem;
+    }
+
+    .action-section {
+        margin: 1.25rem 0;
+    }
+
+    .btn {
+        width: 100%;
+        padding: 0.95rem 1rem;
+    }
+
+    .btn-large {
+        font-size: 1rem;
+    }
+
+    .weight-grid,
+    .category-details,
+    .charts-container {
+        grid-template-columns: 1fr;
+    }
+
+    .score-card {
+        min-width: auto;
+        width: 100%;
+    }
+
+    .instruction-box {
+        margin-bottom: 0.8rem;
+    }
+
+    .instruction-footer,
+    .progress-text {
+        font-size: 0.92rem;
+    }
+}

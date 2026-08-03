@@ -1,0 +1,168 @@
+{
+  "assessments": [
+    {
+      "id": 1,
+      "organization_name": "Ginny",
+      "assessor_name": "Ginny",
+      "selections": {
+        "S1": "2",
+        "S2": "2",
+        "S3": "3",
+        "S4": "2",
+        "S5": "3",
+        "O1": "1",
+        "O2": "2",
+        "O3": "1",
+        "O4": "2",
+        "O5": "1",
+        "O6": "1",
+        "O7": "1",
+        "P1": "2",
+        "P2": "2",
+        "P3": "1",
+        "P4": "1",
+        "T1": "3",
+        "T2": "2",
+        "T3": "2",
+        "T4": "2",
+        "T5": "3",
+        "T6": "2"
+      },
+      "overall_score": 1.93,
+      "maturity_level": "Level 1: Initial",
+      "category_scores": {
+        "operational": {
+          "color": "#C00000",
+          "name": "Operational Readiness",
+          "score": 1.5
+        },
+        "people": {
+          "color": "#D4A017",
+          "name": "People",
+          "score": 1.47
+        },
+        "strategy": {
+          "color": "#7030A0",
+          "name": "Strategy and Commitment",
+          "score": 2.31
+        },
+        "technology": {
+          "color": "#4472C4",
+          "name": "Technology Integration Preparedness",
+          "score": 2.44
+        }
+      },
+      "created_at": "2025-12-11T15:07:53.522194"
+    },
+    {
+      "id": 2,
+      "organization_name": "NTU",
+      "assessor_name": "Boya WANG",
+      "language": "zh_TW",
+      "selections": {
+        "S1": "5",
+        "S2": "5",
+        "S3": "3",
+        "S4": "3",
+        "S5": "2",
+        "O1": "4",
+        "O2": "2",
+        "O3": "3",
+        "O4": "5",
+        "O5": "2",
+        "O6": "4",
+        "O7": "2",
+        "P1": "2",
+        "P2": "2",
+        "P3": "3",
+        "P4": "2",
+        "T1": "4",
+        "T2": "3",
+        "T3": "2",
+        "T4": "2",
+        "T5": "4",
+        "T6": "3"
+      },
+      "overall_score": 3.21,
+      "maturity_level": "Level 3: Defined",
+      "category_scores": {
+        "operational": {
+          "color": "#C00000",
+          "name": "Operational Readiness",
+          "score": 3.23
+        },
+        "people": {
+          "color": "#D4A017",
+          "name": "People",
+          "score": 2.19
+        },
+        "strategy": {
+          "color": "#7030A0",
+          "name": "Strategy and Commitment",
+          "score": 4.21
+        },
+        "technology": {
+          "color": "#4472C4",
+          "name": "Technology Integration Preparedness",
+          "score": 3.21
+        }
+      },
+      "created_at": "2025-12-11T17:08:37.112135"
+    },
+    {
+      "id": 3,
+      "organization_name": "x",
+      "assessor_name": "d",
+      "language": "zh_TW",
+      "selections": {
+        "S1": "2",
+        "S2": "3",
+        "S3": "4",
+        "S4": "3",
+        "S5": "1",
+        "O1": "2",
+        "O2": "1",
+        "O3": "2",
+        "O4": "2",
+        "O5": "3",
+        "O6": "3",
+        "O7": "2",
+        "P1": "3",
+        "P2": "3",
+        "P3": "1",
+        "P4": "2",
+        "T1": "3",
+        "T2": "1",
+        "T3": "1",
+        "T4": "3",
+        "T5": "2",
+        "T6": "2"
+      },
+      "overall_score": 2.22,
+      "maturity_level": "Level 2: Managed",
+      "category_scores": {
+        "operational": {
+          "color": "#C00000",
+          "name": "Operational Readiness",
+          "score": 1.85
+        },
+        "people": {
+          "color": "#D4A017",
+          "name": "People",
+          "score": 2.28
+        },
+        "strategy": {
+          "color": "#7030A0",
+          "name": "Strategy and Commitment",
+          "score": 2.58
+        },
+        "technology": {
+          "color": "#4472C4",
+          "name": "Technology Integration Preparedness",
+          "score": 2.18
+        }
+      },
+      "created_at": "2026-03-03T17:17:40.304563"
+    }
+  ]
+}

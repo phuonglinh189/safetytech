@@ -1,0 +1,70 @@
+{
+  "site_title": {"en": "Digital Safety Technology Maturity Assessment", "zh": "智慧安全技術導入成熟度評估"},
+  "assessment_subtitle": {"en": "Construction Safety Monitoring & Inspection Technologies", "zh": "施工安全監測與檢查技術"},
+  "lang_switch_label": {"en": "中文", "zh": "English"},
+
+  "instructions_heading": {"en": "Instructions", "zh": "評估說明"},
+  "instructions_text": {"en": "For each of the 22 indicators below, select the level (1–5) that best describes your organization's CURRENT state, and the level you believe the organization should TARGET. All 22 indicators need a current and a target level before you can submit.", "zh": "請為以下 22 項指標，分別選擇最能描述貴組織「目前」現況的等級（1–5），以及您認為組織應「目標」達到的等級。送出前需完成全部 22 項指標的現況與目標等級。"},
+
+  "your_id_label": {"en": "Your Expert ID", "zh": "您的專家編號"},
+  "id_assigned_note": {"en": "This ID has been assigned to you for this session. You can close and reopen this page on this device to continue.", "zh": "此編號已指派給您。您可以在此裝置上關閉並重新開啟此頁面以繼續作業。"},
+  "assigning_id": {"en": "Assigning your expert ID…", "zh": "正在指派您的專家編號…"},
+  "no_id_available": {"en": "All expert slots are currently full. Please check with the workshop host.", "zh": "目前所有專家名額已滿，請與工作坊主持人確認。"},
+
+  "current_label": {"en": "Current Level", "zh": "現況等級"},
+  "target_label": {"en": "Target Level", "zh": "目標等級"},
+
+  "progress_text": {"en": "{completed} of {total} selections completed", "zh": "已完成 {completed} / {total} 項選擇"},
+
+  "submit_button": {"en": "Submit My Assessment", "zh": "送出我的評估"},
+  "resubmit_button": {"en": "Update My Assessment", "zh": "更新我的評估"},
+  "please_complete_all": {"en": "Please select a current and target level for all 22 indicators before submitting.", "zh": "送出前請完成全部 22 項指標的現況與目標等級選擇。"},
+  "submitted_note": {"en": "Submitted. You can keep editing your answers until the host locks the survey.", "zh": "已送出。您可以持續編輯答案，直到主持人鎖定問卷為止。"},
+  "survey_locked_message": {"en": "The host has locked this survey. No further edits are possible.", "zh": "主持人已鎖定此問卷，無法再進行編輯。"},
+
+  "results_heading": {"en": "Your Results", "zh": "您的評估結果"},
+  "overall_current_label": {"en": "Overall Current Maturity", "zh": "整體現況成熟度"},
+  "overall_target_label": {"en": "Overall Target Maturity", "zh": "整體目標成熟度"},
+  "domain_scores_heading": {"en": "Domain Scores", "zh": "各領域分數"},
+  "summary_radar_heading": {"en": "Summary — All Domains", "zh": "總覽 — 四大領域"},
+  "download_pdf_button": {"en": "Download My Results (PDF)", "zh": "下載我的評估結果（PDF）"},
+
+  "control_title": {"en": "Workshop Control Panel", "zh": "工作坊控制台"},
+  "submissions_label": {"en": "Submitted", "zh": "已送出"},
+  "of_label": {"en": "of", "zh": "／"},
+  "experts_label": {"en": "experts", "zh": "位專家"},
+  "max_experts_label": {"en": "Number of experts in this workshop", "zh": "本次工作坊專家人數"},
+  "save_button": {"en": "Save", "zh": "儲存"},
+  "lock_survey_label": {"en": "Lock survey (stop further edits)", "zh": "鎖定問卷（停止進一步編輯）"},
+  "reveal_button": {"en": "Show Results on Presentation", "zh": "在展示頁顯示結果"},
+  "hide_button": {"en": "Hide Results", "zh": "隱藏結果"},
+  "revealed_status": {"en": "Results are currently visible on the presentation page.", "zh": "展示頁目前正顯示結果。"},
+  "not_revealed_status": {"en": "Presentation page is showing the submission counter only.", "zh": "展示頁目前僅顯示送出人數。"},
+  "live_table_heading": {"en": "Expert Status", "zh": "專家狀態"},
+  "live_averages_heading": {"en": "Live Domain Averages (current submissions)", "zh": "即時各領域平均值（目前已送出）"},
+  "status_unassigned": {"en": "Unassigned", "zh": "未指派"},
+  "status_in_progress": {"en": "In progress", "zh": "進行中"},
+  "status_submitted": {"en": "Submitted", "zh": "已送出"},
+
+  "presentation_title": {"en": "Digital Safety Technology Maturity Workshop", "zh": "智慧安全技術成熟度工作坊"},
+  "waiting_heading": {"en": "Experts are completing their assessments…", "zh": "專家正在完成評估…"},
+  "waiting_subtext": {"en": "Results will appear here once the host reveals them.", "zh": "主持人顯示結果後，將於此頁呈現。"},
+  "counter_label": {"en": "experts submitted", "zh": "位專家已送出"},
+  "final_results_heading": {"en": "Workshop Results", "zh": "工作坊結果"},
+  "domain_breakdown_heading": {"en": "Domain Breakdown", "zh": "領域細項分數"},
+  "meaning_heading": {"en": "What do these results mean?", "zh": "這些結果代表什麼？"},
+
+  "level_meaning_1": {"en": "Ad-hoc, unpredictable processes.", "zh": "臨時且不可預測的流程。"},
+  "level_meaning_2": {"en": "Repeatable processes with basic controls.", "zh": "具備基本控制的可重複流程。"},
+  "level_meaning_3": {"en": "Standardized, documented processes.", "zh": "標準化且文件化的流程。"},
+  "level_meaning_4": {"en": "Measured and controlled processes.", "zh": "可量測且受控的流程。"},
+  "level_meaning_5": {"en": "Continuous improvement and innovation.", "zh": "持續改進與創新。"},
+
+  "pdf_report_title": {"en": "Digital Safety Technology Maturity Assessment Report", "zh": "智慧安全技術成熟度評估報告"},
+  "pdf_expert_id": {"en": "Expert ID", "zh": "專家編號"},
+  "pdf_date": {"en": "Date", "zh": "日期"},
+  "pdf_domain": {"en": "Domain", "zh": "領域"},
+  "pdf_indicator": {"en": "Indicator", "zh": "指標"},
+  "pdf_current": {"en": "Current", "zh": "現況"},
+  "pdf_target": {"en": "Target", "zh": "目標"}
+}

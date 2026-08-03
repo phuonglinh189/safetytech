@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Workshop Presentation</title>
+<link rel="stylesheet" href="../shared/styles.css" />
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+<script src="../shared/database-config.js"></script>
+<script src="../shared/database.js"></script>
+<script src="../shared/i18n.js"></script>
+</head>
+<body>
+<div class="top-bar">
+  <h1 id="pageTitle">Digital Safety Technology Maturity Workshop</h1>
+  <a class="lang-link" id="langLink" href="#">中文</a>
+</div>
+
+<div class="wrap">
+  <div id="waitingView" class="center-hero">
+    <div class="big-counter"><span id="countValue">0</span> / <span id="maxValue">0</span></div>
+    <div class="big-counter-label" id="counterLabel"></div>
+    <h2 style="margin-top:40px;" id="waitingHeading"></h2>
+    <p class="subtitle" id="waitingSubtext"></p>
+  </div>
+
+  <div id="resultsView" style="display:none;">
+    <h2 id="finalResultsHeading"></h2>
+    <div class="stat-row">
+      <div class="stat-card">
+        <div class="stat-label" id="overallCurrentLabel"></div>
+        <div class="stat-value" id="overallCurrentValue">—</div>
+        <div class="subtitle" id="overallCurrentLevelName"></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label" id="overallTargetLabel"></div>
+        <div class="stat-value" id="overallTargetValue">—</div>
+        <div class="subtitle" id="overallTargetLevelName"></div>
+      </div>
+    </div>
+
+    <div class="chart-card" style="max-width:520px; margin:0 auto 24px;">
+      <canvas id="summaryRadarCanvas"></canvas>
+    </div>
+
+    <h3 id="domainBreakdownHeading"></h3>
+    <div class="charts-grid" id="domainChartsGrid"></div>
+
+    <div class="panel" style="margin-top:24px;">
+      <h3 id="meaningHeading"></h3>
+      <p id="meaningText" style="font-size:15px;"></p>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

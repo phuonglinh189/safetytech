@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Workshop Control</title>
+<link rel="stylesheet" href="../shared/styles.css" />
+<script src="../shared/database-config.js"></script>
+<script src="../shared/database.js"></script>
+<script src="../shared/i18n.js"></script>
+</head>
+<body>
+<div class="top-bar">
+  <h1 id="pageTitle">Workshop Control Panel</h1>
+  <a class="lang-link" id="langLink" href="#">中文</a>
+</div>
+
+<div class="wrap">
+  <div class="stat-row">
+    <div class="stat-card">
+      <div class="stat-label" id="submittedLabel">Submitted</div>
+      <div class="stat-value"><span id="submittedCount">0</span> / <span id="maxCount">0</span></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label" id="revealStatusLabel"></div>
+      <div style="margin-top:10px;">
+        <button class="primary" id="revealBtn"></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="control-row">
+      <label id="maxExpertsLabel"></label>
+      <input type="number" id="maxExpertsInput" min="1" max="30" />
+      <button class="secondary" id="saveMaxBtn"></button>
+    </div>
+    <div class="control-row">
+      <label class="toggle"><input type="checkbox" id="lockToggle" /> <span id="lockLabel"></span></label>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h3 id="liveTableHeading"></h3>
+    <table class="scores-table" id="expertsTable"></table>
+  </div>
+
+  <div class="panel">
+    <h3 id="liveAveragesHeading"></h3>
+    <table class="scores-table" id="averagesTable"></table>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
