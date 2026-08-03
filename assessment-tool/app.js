@@ -145,10 +145,32 @@ function selectLevelUI(code, kind, level) {
   });
 }
 
+let toastTimer = null;
+function showToast(msg) {
+  const el = document.getElementById("toast");
+  el.textContent = msg;
+  el.style.display = "block";
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => (el.style.display = "none"), 3200);
+}
+
 function onLevelClick(code, kind, level) {
   if (CONFIG && CONFIG.survey_locked) return;
-  if (kind === "current") currentLevels[code] = level;
-  else targetLevels[code] = level;
+  if (kind === "current") {
+    const tgt = targetLevels[code];
+    if (tgt !== undefined && level > tgt) {
+      showToast(t("current_above_target"));
+      return;
+    }
+    currentLevels[code] = level;
+  } else {
+    const cur = currentLevels[code];
+    if (cur !== undefined && level < cur) {
+      showToast(t("target_below_current"));
+      return;
+    }
+    targetLevels[code] = level;
+  }
   selectLevelUI(code, kind, level);
   updateProgress();
   scheduleSave();
