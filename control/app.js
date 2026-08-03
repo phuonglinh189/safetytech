@@ -38,8 +38,12 @@ async function init() {
   });
   document.getElementById("resetAllBtn").addEventListener("click", async () => {
     if (!confirm(t("reset_all_confirm"))) return;
-    await WorkshopDB.deleteAllExperts();
-    await WorkshopDB.updateConfig({ results_revealed: false, survey_locked: false });
+    try {
+      await WorkshopDB.deleteAllExperts();
+      await WorkshopDB.updateConfig({ results_revealed: false, survey_locked: false });
+    } catch (e) {
+      alert("Delete failed: " + e.message + "\nMake sure the 'experts delete' RLS policy exists in Supabase (see README.md).");
+    }
     render(await WorkshopDB.listExperts(), await WorkshopDB.getConfig());
   });
 
@@ -63,7 +67,11 @@ function render(experts, config) {
   document.querySelectorAll("[data-remove]").forEach((btn) => {
     btn.addEventListener("click", async () => {
       if (!confirm(t("delete_expert_confirm"))) return;
-      await WorkshopDB.deleteExpert(btn.dataset.remove);
+      try {
+        await WorkshopDB.deleteExpert(btn.dataset.remove);
+      } catch (e) {
+        alert("Delete failed: " + e.message + "\nMake sure the 'experts delete' RLS policy exists in Supabase (see README.md).");
+      }
       render(await WorkshopDB.listExperts(), await WorkshopDB.getConfig());
     });
   });
