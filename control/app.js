@@ -15,6 +15,7 @@ async function init() {
   document.getElementById("maxExpertsLabel").textContent = t("max_experts_label");
   document.getElementById("saveMaxBtn").textContent = t("save_button");
   document.getElementById("lockLabel").textContent = t("lock_survey_label");
+  document.getElementById("resetAllBtn").textContent = t("reset_all_button");
   document.getElementById("liveTableHeading").textContent = t("live_table_heading");
   document.getElementById("liveAveragesHeading").textContent = t("live_averages_heading");
 
@@ -35,6 +36,12 @@ async function init() {
     await WorkshopDB.updateConfig({ results_revealed: !cfg.results_revealed });
     render(await WorkshopDB.listExperts(), await WorkshopDB.getConfig());
   });
+  document.getElementById("resetAllBtn").addEventListener("click", async () => {
+    if (!confirm(t("reset_all_confirm"))) return;
+    await WorkshopDB.deleteAllExperts();
+    await WorkshopDB.updateConfig({ results_revealed: false, survey_locked: false });
+    render(await WorkshopDB.listExperts(), await WorkshopDB.getConfig());
+  });
 
   WorkshopDB.startPolling(({ experts, config }) => render(experts, config));
 }
@@ -48,11 +55,18 @@ function render(experts, config) {
   document.getElementById("revealBtn").textContent = config.results_revealed ? t("hide_button") : t("reveal_button");
 
   const statusKey = { unassigned: "status_unassigned", in_progress: "status_in_progress", submitted: "status_submitted" };
-  let rows = "<tr><th>ID</th><th></th><th></th></tr>";
+  let rows = "<tr><th>ID</th><th></th><th></th><th></th></tr>";
   experts.forEach((e) => {
-    rows += "<tr><td>" + e.id + "</td><td><span class='pill status-" + e.status + "'>" + t(statusKey[e.status] || "status_in_progress") + "</span></td><td>" + (e.updated_at ? new Date(e.updated_at).toLocaleTimeString() : "") + "</td></tr>";
+    rows += "<tr><td>" + e.id + "</td><td><span class='pill status-" + e.status + "'>" + t(statusKey[e.status] || "status_in_progress") + "</span></td><td>" + (e.updated_at ? new Date(e.updated_at).toLocaleTimeString() : "") + "</td><td><button class='secondary' data-remove='" + e.id + "' style='padding:4px 10px; font-size:12px;'>" + t("delete_expert_button") + "</button></td></tr>";
   });
   document.getElementById("expertsTable").innerHTML = rows;
+  document.querySelectorAll("[data-remove]").forEach((btn) => {
+    btn.addEventListener("click", async () => {
+      if (!confirm(t("delete_expert_confirm"))) return;
+      await WorkshopDB.deleteExpert(btn.dataset.remove);
+      render(await WorkshopDB.listExperts(), await WorkshopDB.getConfig());
+    });
+  });
 
   renderAverages(experts.filter((e) => e.status === "submitted"));
 }
