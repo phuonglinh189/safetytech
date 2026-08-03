@@ -19,6 +19,8 @@
   "submit_button": {"en": "Submit My Assessment", "zh": "送出我的評估"},
   "resubmit_button": {"en": "Update My Assessment", "zh": "更新我的評估"},
   "please_complete_all": {"en": "Please select a current and target level for all 22 indicators before submitting.", "zh": "送出前請完成全部 22 項指標的現況與目標等級選擇。"},
+  "target_below_current": {"en": "Target level can't be lower than the current level. Choose a level ≥ your current selection.", "zh": "目標等級不能低於現況等級，請選擇大於或等於現況等級的選項。"},
+  "current_above_target": {"en": "Current level can't be higher than the target level. Choose a level ≤ your target selection.", "zh": "現況等級不能高於目標等級，請選擇小於或等於目標等級的選項。"},
   "submitted_note": {"en": "Submitted. You can keep editing your answers until the host locks the survey.", "zh": "已送出。您可以持續編輯答案，直到主持人鎖定問卷為止。"},
   "survey_locked_message": {"en": "The host has locked this survey. No further edits are possible.", "zh": "主持人已鎖定此問卷，無法再進行編輯。"},
 
