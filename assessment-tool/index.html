@@ -3,39 +3,94 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Maturity Assessment</title>
-<link rel="stylesheet" href="../shared/styles.css" />
+<title>Digital Technology Adoption Maturity Assessment</title>
+<link rel="stylesheet" href="../shared/styles.css?v=20260809-3" />
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="../shared/database-config.js"></script>
 <script src="../shared/database.js"></script>
-<script src="../shared/i18n.js"></script>
+<script src="../shared/i18n.js?v=20260809-3"></script>
 </head>
-<body>
-<div class="top-bar">
-  <h1 id="pageTitle">Digital Safety Technology Maturity Assessment</h1>
-  <div style="display:flex; align-items:center; gap:12px;">
+<body class="assessment-page">
+<header class="top-bar assessment-header">
+  <div class="assessment-logos" aria-label="Partner universities">
+    <img src="../logo%20Manchester.jpg" alt="The University of Manchester" />
+    <img src="../logo%20ntu.jpg" alt="National Taiwan University" />
+  </div>
+  <div class="assessment-header-title">
+    <h1 id="pageTitle">Digital Technology Adoption Maturity Assessment</h1>
+    <p id="pageSubtitle">Construction Safety Monitoring and Inspection Technologies</p>
+  </div>
+  <div class="assessment-header-actions">
     <span class="id-chip" id="idChip">—</span>
     <a class="lang-link" id="langLink" href="#">中文</a>
   </div>
-</div>
+</header>
 
 <div class="wrap">
-  <p class="subtitle" id="pageSubtitle"></p>
-
   <div class="panel" id="idPanel">
     <p id="idStatusText">Assigning your expert ID…</p>
     <p class="note" id="idNote"></p>
   </div>
 
   <div id="mainContent" style="display:none;">
-    <div class="panel">
-      <h3 id="instructionsHeading"></h3>
-      <p id="instructionsText" style="color:var(--muted); font-size:14px;"></p>
-      <div class="progress-bar-track"><div class="progress-bar-fill" id="progressFill" style="width:0%"></div></div>
-      <p class="progress-text" id="progressText"></p>
+    <section class="panel assessment-instructions">
+      <div class="assessment-instructions-title">
+        <span aria-hidden="true">📋</span>
+        <h2 id="instructionsHeading"></h2>
+      </div>
+
+      <article class="instruction-card">
+        <h3 id="instructionWhatTitle"></h3>
+        <p id="instructionWhatText"></p>
+      </article>
+
+      <article class="instruction-card">
+        <h3 id="instructionRankTitle"></h3>
+        <p id="instructionRankText"></p>
+        <ul class="instruction-level-list">
+          <li id="instructionLevel1"></li>
+          <li id="instructionLevel2"></li>
+          <li id="instructionLevel3"></li>
+          <li id="instructionLevel4"></li>
+          <li id="instructionLevel5"></li>
+        </ul>
+      </article>
+
+      <article class="instruction-card">
+        <h3 id="instructionGetTitle"></h3>
+        <p id="instructionGetText"></p>
+        <ul class="instruction-result-list">
+          <li id="instructionResultOverall"></li>
+          <li id="instructionResultCategory"></li>
+          <li id="instructionResultCharts"></li>
+          <li id="instructionResultPdf"></li>
+        </ul>
+      </article>
+
+      <article class="instruction-card">
+        <h3 id="instructionMeaningTitle"></h3>
+        <p id="instructionMeaningText"></p>
+      </article>
+
+      <p class="instruction-time" id="instructionExpectedTime"></p>
       <p class="note warn" id="lockedNote" style="display:none;"></p>
       <p class="note" id="submittedNote" style="display:none;"></p>
+    </section>
+
+    <div class="assessment-progress-panel">
+      <div
+        class="progress-bar-track"
+        id="progressBar"
+        role="progressbar"
+        aria-labelledby="progressText"
+        aria-valuemin="0"
+        aria-valuemax="22"
+        aria-valuenow="0"
+      >
+        <div class="progress-bar-fill" id="progressFill" style="width:0%"></div>
+      </div>
+      <p class="progress-text" id="progressText" aria-live="polite"></p>
     </div>
 
     <div id="domainsContainer"></div>
@@ -75,6 +130,6 @@
 
 <div id="toast" style="display:none; position:fixed; bottom:24px; left:50%; transform:translateX(-50%); background:var(--operational); color:white; padding:12px 20px; border-radius:8px; font-size:14px; max-width:420px; text-align:center; box-shadow:0 6px 20px rgba(0,0,0,0.2); z-index:100;"></div>
 
-<script src="app.js"></script>
+<script src="app.js?v=20260809-3"></script>
 </body>
 </html>

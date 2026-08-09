@@ -13,7 +13,7 @@
   }
 
   async function loadJson(path) {
-    const res = await fetch(path);
+    const res = await fetch(path, { cache: "no-store" });
     if (!res.ok) throw new Error("Failed to load " + path);
     return res.json();
   }
@@ -41,7 +41,7 @@
   }
 
   async function parseCsv(path) {
-    const res = await fetch(path);
+    const res = await fetch(path, { cache: "no-store" });
     const text = await res.text();
     const lines = text.trim().split("\n");
     const headers = lines[0].split(",");

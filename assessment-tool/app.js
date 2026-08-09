@@ -14,11 +14,33 @@ async function init() {
   WEIGHTS = await WorkshopI18n.parseCsv("../data/indicator_weights.csv");
   DOMAIN_WEIGHTS = await WorkshopI18n.parseCsv("../data/domain_weights.csv");
   document.documentElement.lang = LANG === "zh" ? "zh-Hant" : "en";
+  document.title = t("site_title");
   document.getElementById("langLink").textContent = t("lang_switch_label");
   document.getElementById("pageTitle").textContent = t("site_title");
   document.getElementById("pageSubtitle").textContent = t("assessment_subtitle");
   document.getElementById("instructionsHeading").textContent = t("instructions_heading");
-  document.getElementById("instructionsText").textContent = t("instructions_text");
+  [
+    ["instructionWhatTitle", "instruction_what_title"],
+    ["instructionWhatText", "instruction_what_text"],
+    ["instructionRankTitle", "instruction_rank_title"],
+    ["instructionRankText", "instruction_rank_text"],
+    ["instructionLevel1", "instruction_level_1"],
+    ["instructionLevel2", "instruction_level_2"],
+    ["instructionLevel3", "instruction_level_3"],
+    ["instructionLevel4", "instruction_level_4"],
+    ["instructionLevel5", "instruction_level_5"],
+    ["instructionGetTitle", "instruction_get_title"],
+    ["instructionGetText", "instruction_get_text"],
+    ["instructionResultOverall", "instruction_result_overall"],
+    ["instructionResultCategory", "instruction_result_category"],
+    ["instructionResultCharts", "instruction_result_charts"],
+    ["instructionResultPdf", "instruction_result_pdf"],
+    ["instructionMeaningTitle", "instruction_meaning_title"],
+    ["instructionMeaningText", "instruction_meaning_text"],
+    ["instructionExpectedTime", "instruction_expected_time"]
+  ].forEach(([id, key]) => {
+    document.getElementById(id).textContent = t(key);
+  });
   document.getElementById("resultsHeading").textContent = t("results_heading");
   document.getElementById("overallCurrentLabel").textContent = t("overall_current_label");
   document.getElementById("overallTargetLabel").textContent = t("overall_target_label");
@@ -103,6 +125,7 @@ function renderDomains() {
       const ind = DATA.indicators[code];
       const card = document.createElement("div");
       card.className = "indicator-card";
+      card.style.setProperty("--domain-color", domain.color);
       card.innerHTML =
         '<span class="indicator-code">' + code + '</span>' +
         "<h4>" + (ind.name[LANG] || ind.name.en) + "</h4>" +
@@ -125,7 +148,13 @@ function renderDomains() {
           btn.dataset.kind = kind;
           btn.dataset.level = lvl;
           const desc = (ind.levels[LANG] && ind.levels[LANG][lvl - 1]) || ind.levels.en[lvl - 1] || "";
-          btn.innerHTML = "<b>" + "L" + lvl + "</b>" + desc.slice(0, 90) + (desc.length > 90 ? "…" : "");
+          const levelName = document.createElement("b");
+          levelName.textContent = "L" + lvl;
+          const levelDescription = document.createElement("span");
+          levelDescription.className = "level-description";
+          levelDescription.textContent = desc;
+          btn.appendChild(levelName);
+          btn.appendChild(levelDescription);
           btn.title = desc;
           btn.addEventListener("click", () => onLevelClick(code, kind, lvl));
           opts.appendChild(btn);
@@ -188,10 +217,18 @@ function scheduleSave() {
 }
 
 function updateProgress() {
-  const total = Object.keys(DATA.indicators).length * 2;
-  const completed = Object.keys(currentLevels).length + Object.keys(targetLevels).length;
-  document.getElementById("progressFill").style.width = Math.round((completed / total) * 100) + "%";
+  const indicatorCodes = Object.keys(DATA.indicators);
+  const total = indicatorCodes.length;
+  const completed = indicatorCodes.filter((code) => (
+    currentLevels[code] !== undefined && targetLevels[code] !== undefined
+  )).length;
+  const percent = Math.round((completed / total) * 100);
+  document.getElementById("progressFill").style.width = percent + "%";
   document.getElementById("progressText").textContent = t("progress_text", { completed, total });
+  const progressBar = document.getElementById("progressBar");
+  progressBar.setAttribute("aria-valuemax", total);
+  progressBar.setAttribute("aria-valuenow", completed);
+  progressBar.setAttribute("aria-valuetext", t("progress_text", { completed, total }));
   const complete = completed === total;
   document.getElementById("submitBtn").disabled = complete ? (CONFIG && CONFIG.survey_locked) : true;
   document.getElementById("incompleteNote").style.display = complete ? "none" : "block";

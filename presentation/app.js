@@ -10,8 +10,11 @@ async function init() {
   WEIGHTS = await WorkshopI18n.parseCsv("../data/indicator_weights.csv");
   DOMAIN_WEIGHTS = await WorkshopI18n.parseCsv("../data/domain_weights.csv");
 
+  document.documentElement.lang = LANG === "zh" ? "zh-Hant" : "en";
+  document.title = t("site_title");
   document.getElementById("langLink").textContent = t("lang_switch_label");
-  document.getElementById("pageTitle").textContent = t("presentation_title");
+  document.getElementById("pageTitle").textContent = t("site_title");
+  document.getElementById("pageSubtitle").textContent = t("assessment_subtitle");
   document.getElementById("counterLabel").textContent = t("counter_label");
   document.getElementById("waitingHeading").textContent = t("waiting_heading");
   document.getElementById("waitingSubtext").textContent = t("waiting_subtext");
