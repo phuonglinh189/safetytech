@@ -2,6 +2,9 @@ let LANG = "en", DATA = null, UI = null, WEIGHTS = null, DOMAIN_WEIGHTS = null;
 let EXPERT_ID = null, CONFIG = null;
 let currentLevels = {}, targetLevels = {};
 let saveTimer = null;
+let saveQueue = Promise.resolve();
+let hasSubmitted = false;
+let saveErrorShown = false;
 let domainCharts = {}, summaryChart = null;
 
 const t = (key, vars) => WorkshopI18n.tFormat(UI, key, LANG, vars || {});
@@ -55,43 +58,53 @@ async function init() {
   }
 
   CONFIG = await WorkshopDB.getConfig();
-  await ensureExpertId();
+  const expert = await ensureExpertId();
+  if (!expert) return;
   renderDomains();
   document.getElementById("submitBtn").addEventListener("click", onSubmit);
   document.getElementById("downloadPdfBtn").addEventListener("click", exportPdf);
-  await loadExistingProgress();
+  await loadExistingProgress(expert);
   applyLockState();
   updateProgress();
 }
 
 async function ensureExpertId() {
   const stored = localStorage.getItem("workshop_expert_id");
+  let row = null;
+  let reassigned = false;
   if (stored) {
-    EXPERT_ID = stored;
-  } else {
+    row = await WorkshopDB.getExpert(stored);
+    if (!row) {
+      localStorage.removeItem("workshop_expert_id");
+      reassigned = true;
+    }
+  }
+  if (!row) {
     document.getElementById("idStatusText").textContent = t("assigning_id");
-    const row = await WorkshopDB.claimExpertId(CONFIG.max_experts || 15);
+    row = await WorkshopDB.claimExpertId(CONFIG.max_experts || 15);
     if (!row) {
       document.getElementById("idStatusText").textContent = t("no_id_available");
-      return;
+      return null;
     }
-    EXPERT_ID = row.id;
-    localStorage.setItem("workshop_expert_id", EXPERT_ID);
   }
+  EXPERT_ID = row.id;
+  localStorage.setItem("workshop_expert_id", EXPERT_ID);
   document.getElementById("idChip").textContent = EXPERT_ID;
   document.getElementById("idStatusText").textContent = t("your_id_label") + ": " + EXPERT_ID;
-  document.getElementById("idNote").textContent = t("id_assigned_note");
+  document.getElementById("idNote").textContent = t(reassigned ? "id_reassigned_note" : "id_assigned_note");
   document.getElementById("mainContent").style.display = "block";
+  return row;
 }
 
-async function loadExistingProgress() {
-  const expert = await WorkshopDB.getExpert(EXPERT_ID);
+async function loadExistingProgress(existingExpert) {
+  const expert = existingExpert || await WorkshopDB.getExpert(EXPERT_ID);
   if (!expert) return;
   currentLevels = expert.current_levels || {};
   targetLevels = expert.target_levels || {};
   Object.keys(currentLevels).forEach((code) => selectLevelUI(code, "current", currentLevels[code]));
   Object.keys(targetLevels).forEach((code) => selectLevelUI(code, "target", targetLevels[code]));
   if (expert.status === "submitted") {
+    hasSubmitted = true;
     document.getElementById("submittedNote").style.display = "block";
     document.getElementById("submittedNote").textContent = t("submitted_note");
     document.getElementById("submitBtn").textContent = t("resubmit_button");
@@ -208,12 +221,31 @@ function onLevelClick(code, kind, level) {
 function scheduleSave() {
   clearTimeout(saveTimer);
   saveTimer = setTimeout(() => {
-    WorkshopDB.saveExpertProgress(EXPERT_ID, {
-      status: "in_progress",
-      current_levels: currentLevels,
-      target_levels: targetLevels
-    }).catch(() => {});
+    saveTimer = null;
+    const snapshot = {
+      status: hasSubmitted ? "submitted" : "in_progress",
+      current_levels: Object.assign({}, currentLevels),
+      target_levels: Object.assign({}, targetLevels)
+    };
+    saveQueue = saveQueue.catch(() => {}).then(() => WorkshopDB.saveExpertProgress(EXPERT_ID, snapshot));
+    saveQueue.then(() => {
+      if (saveErrorShown) {
+        saveErrorShown = false;
+        const idNote = document.getElementById("idNote");
+        idNote.classList.remove("warn");
+        idNote.textContent = t("id_assigned_note");
+      }
+    }).catch((error) => showSaveError("autosave_failed", error));
   }, 500);
+}
+
+function showSaveError(key, error) {
+  console.error(error);
+  saveErrorShown = true;
+  const idNote = document.getElementById("idNote");
+  idNote.classList.add("warn");
+  idNote.textContent = t(key);
+  showToast(t(key));
 }
 
 function updateProgress() {
@@ -236,11 +268,40 @@ function updateProgress() {
 }
 
 async function onSubmit() {
-  await WorkshopDB.submitExpert(EXPERT_ID, currentLevels, targetLevels);
-  document.getElementById("submittedNote").style.display = "block";
-  document.getElementById("submittedNote").textContent = t("submitted_note");
-  document.getElementById("submitBtn").textContent = t("resubmit_button");
-  showResults();
+  clearTimeout(saveTimer);
+  saveTimer = null;
+  const submitBtn = document.getElementById("submitBtn");
+  submitBtn.disabled = true;
+  submitBtn.textContent = t("submitting_button");
+  try {
+    await saveQueue.catch(() => {});
+    await WorkshopDB.submitExpert(
+      EXPERT_ID,
+      Object.assign({}, currentLevels),
+      Object.assign({}, targetLevels)
+    );
+    hasSubmitted = true;
+    saveErrorShown = false;
+    const idNote = document.getElementById("idNote");
+    idNote.classList.remove("warn");
+    idNote.textContent = t("id_assigned_note");
+    const submittedNote = document.getElementById("submittedNote");
+    submittedNote.classList.remove("warn");
+    submittedNote.style.display = "block";
+    submittedNote.textContent = t("submitted_note");
+    submitBtn.textContent = t("resubmit_button");
+    showResults();
+  } catch (error) {
+    console.error(error);
+    const submittedNote = document.getElementById("submittedNote");
+    submittedNote.classList.add("warn");
+    submittedNote.style.display = "block";
+    submittedNote.textContent = t("submit_failed");
+    showToast(t("submit_failed"));
+    submitBtn.textContent = hasSubmitted ? t("resubmit_button") : t("submit_button");
+  } finally {
+    updateProgress();
+  }
 }
 
 function computeScores() {

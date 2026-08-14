@@ -26,6 +26,7 @@
 
   "your_id_label": {"en": "Your Expert ID", "zh": "您的專家編號"},
   "id_assigned_note": {"en": "This ID has been assigned to you for this session. You can close and reopen this page on this device to continue.", "zh": "此編號已指派給您。您可以在此裝置上關閉並重新開啟此頁面以繼續作業。"},
+  "id_reassigned_note": {"en": "Your previous expert ID was no longer available, so a new ID has been assigned automatically.", "zh": "您先前的專家編號已不存在，因此系統已自動指派新的編號。"},
   "assigning_id": {"en": "Assigning your expert ID…", "zh": "正在指派您的專家編號…"},
   "no_id_available": {"en": "All expert slots are currently full. Please check with the workshop host.", "zh": "目前所有專家名額已滿，請與工作坊主持人確認。"},
 
@@ -36,6 +37,9 @@
 
   "submit_button": {"en": "Submit My Assessment", "zh": "送出我的評估"},
   "resubmit_button": {"en": "Update My Assessment", "zh": "更新我的評估"},
+  "submitting_button": {"en": "Saving…", "zh": "正在儲存…"},
+  "autosave_failed": {"en": "Your answers could not be saved. They are still on this page; check the connection and try Submit again.", "zh": "無法儲存您的答案。答案仍保留在此頁面，請檢查網路連線後再次送出。"},
+  "submit_failed": {"en": "Submission failed and was not saved to the database. Please try again or contact the workshop host.", "zh": "送出失敗，資料尚未儲存至資料庫。請重試或聯絡工作坊主持人。"},
   "please_complete_all": {"en": "Please select a current and target level for all 22 indicators before submitting.", "zh": "送出前請完成全部 22 項指標的現況與目標等級選擇。"},
   "target_below_current": {"en": "Target level can't be lower than the current level. Choose a level ≥ your current selection.", "zh": "目標等級不能低於現況等級，請選擇大於或等於現況等級的選項。"},
   "current_above_target": {"en": "Current level can't be higher than the target level. Choose a level ≤ your target selection.", "zh": "現況等級不能高於目標等級，請選擇小於或等於目標等級的選項。"},

@@ -82,12 +82,18 @@
   async function saveExpertProgress(id, patch) {
     if (!isEnabled()) return null;
     const body = Object.assign({}, patch, { updated_at: new Date().toISOString() });
-    await req(baseUrl(cfg.expertsTable) + "?id=eq." + encodeURIComponent(id), {
+    const res = await req(baseUrl(cfg.expertsTable) + "?id=eq." + encodeURIComponent(id) + "&select=id", {
       method: "PATCH",
-      headers: headers({ Prefer: "return=minimal" }),
+      headers: headers({ Prefer: "return=representation" }),
       body: JSON.stringify(body)
     });
-    return true;
+    const rows = await res.json();
+    if (!Array.isArray(rows) || rows.length !== 1) {
+      const err = new Error("No expert row was updated for " + id + ". The ID may be stale or the Supabase UPDATE policy may be missing.");
+      err.code = "EXPERT_UPDATE_NOT_APPLIED";
+      throw err;
+    }
+    return rows[0];
   }
 
   async function submitExpert(id, currentLevels, targetLevels) {
