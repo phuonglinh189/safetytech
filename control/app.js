@@ -12,6 +12,7 @@ async function init() {
   document.getElementById("langLink").textContent = t("lang_switch_label");
   document.getElementById("pageTitle").textContent = t("control_title");
   document.getElementById("submittedLabel").textContent = t("submissions_label");
+  document.getElementById("validationCompletedLabel").textContent = t("validation_completed_label");
   document.getElementById("maxExpertsLabel").textContent = t("max_experts_label");
   document.getElementById("saveMaxBtn").textContent = t("save_button");
   document.getElementById("lockLabel").textContent = t("lock_survey_label");
@@ -52,16 +53,27 @@ async function init() {
 
 function render(experts, config) {
   document.getElementById("submittedCount").textContent = experts.filter((e) => e.status === "submitted").length;
+  document.getElementById("validationCompletedCount").textContent = experts.filter((e) => e.validation_status === "submitted").length;
   document.getElementById("maxCount").textContent = config.max_experts || 15;
+  document.getElementById("validationMaxCount").textContent = config.max_experts || 15;
   document.getElementById("maxExpertsInput").value = config.max_experts || 15;
   document.getElementById("lockToggle").checked = !!config.survey_locked;
   document.getElementById("revealStatusLabel").textContent = config.results_revealed ? t("revealed_status") : t("not_revealed_status");
   document.getElementById("revealBtn").textContent = config.results_revealed ? t("hide_button") : t("reveal_button");
 
   const statusKey = { unassigned: "status_unassigned", in_progress: "status_in_progress", submitted: "status_submitted" };
-  let rows = "<tr><th>ID</th><th></th><th></th><th></th></tr>";
+  const validationStatusKey = { not_started: "validation_status_not_started", in_progress: "validation_status_in_progress", submitted: "validation_status_submitted" };
+  const locale = LANG === "zh" ? "zh-TW" : "en-GB";
+  let rows = "<tr><th>ID</th><th>" + t("expert_status_heading") + "</th><th>" + t("validation_status_heading") + "</th><th>" + t("validation_time_heading") + "</th><th>" + t("consent_status_heading") + "</th><th>" + t("consent_time_heading") + "</th><th>" + t("updated_time_heading") + "</th><th>" + t("actions_heading") + "</th></tr>";
   experts.forEach((e) => {
-    rows += "<tr><td>" + e.id + "</td><td><span class='pill status-" + e.status + "'>" + t(statusKey[e.status] || "status_in_progress") + "</span></td><td>" + (e.updated_at ? new Date(e.updated_at).toLocaleTimeString() : "") + "</td><td><button class='secondary' data-remove='" + e.id + "' style='padding:4px 10px; font-size:12px;'>" + t("delete_expert_button") + "</button></td></tr>";
+    const consented = e.consent_given === true;
+    const consentClass = consented ? "status-consented" : "status-not-consented";
+    const consentLabel = consented ? t("consent_yes") : t("consent_no");
+    const consentTime = e.consented_at ? new Date(e.consented_at).toLocaleString(locale) : "—";
+    const validationStatus = e.validation_status || "not_started";
+    const validationTime = e.validation_submitted_at ? new Date(e.validation_submitted_at).toLocaleString(locale) : "—";
+    const updatedTime = e.updated_at ? new Date(e.updated_at).toLocaleString(locale) : "—";
+    rows += "<tr><td>" + e.id + "</td><td><span class='pill status-" + e.status + "'>" + t(statusKey[e.status] || "status_in_progress") + "</span></td><td><span class='pill validation-status-" + validationStatus + "'>" + t(validationStatusKey[validationStatus] || "validation_status_not_started") + "</span></td><td>" + validationTime + "</td><td><span class='pill " + consentClass + "'>" + consentLabel + "</span></td><td>" + consentTime + "</td><td>" + updatedTime + "</td><td><button class='secondary' data-remove='" + e.id + "' style='padding:4px 10px; font-size:12px;'>" + t("delete_expert_button") + "</button></td></tr>";
   });
   document.getElementById("expertsTable").innerHTML = rows;
   document.querySelectorAll("[data-remove]").forEach((btn) => {

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Online Maturity Model Validation Form</title>
+<link rel="stylesheet" href="../shared/styles.css?v=20260816-3" />
+<script src="../shared/database-config.js"></script>
+<script src="../shared/database.js?v=20260816-2"></script>
+<script src="../shared/i18n.js?v=20260809-3"></script>
+<script src="../shared/consent.js?v=20260816-1"></script>
+</head>
+<body class="validation-page">
+<header class="top-bar assessment-header">
+  <div class="assessment-logos" aria-label="Partner universities">
+    <img src="../shared/assets/logo-manchester.png" alt="The University of Manchester" />
+    <img src="../shared/assets/logo-ntu.png" alt="National Taiwan University" />
+  </div>
+  <div class="assessment-header-title">
+    <h1 id="pageTitle">Online Maturity Model Validation Form</h1>
+    <p id="pageSubtitle">Construction Safety Monitoring and Inspection Technologies</p>
+  </div>
+  <div class="assessment-header-actions">
+    <span class="id-chip" id="idChip">—</span>
+    <a class="lang-link" id="langLink" href="#">中文</a>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="panel" id="idPanel">
+    <p id="idStatusText"></p>
+    <p class="note" id="idNote"></p>
+  </section>
+
+  <div id="mainContent" hidden>
+    <section class="panel validation-intro">
+      <div class="assessment-instructions-title">
+        <span aria-hidden="true">📋</span>
+        <h2 id="formTitle"></h2>
+      </div>
+      <p id="formIntro"></p>
+      <div class="validation-scale-guide" aria-labelledby="scaleGuideHeading">
+        <h3 id="scaleGuideHeading"></h3>
+        <div id="scaleGuide"></div>
+      </div>
+    </section>
+
+    <div class="assessment-progress-panel" id="validationProgressPanel">
+      <div
+        class="progress-bar-track"
+        id="progressBar"
+        role="progressbar"
+        aria-labelledby="progressText"
+        aria-valuemin="0"
+        aria-valuemax="18"
+        aria-valuenow="0"
+      >
+        <div class="progress-bar-fill" id="progressFill" style="width:0%"></div>
+      </div>
+      <p class="progress-text" id="progressText" aria-live="polite"></p>
+    </div>
+
+    <form id="validationForm" novalidate>
+      <section class="validation-section" aria-labelledby="profileHeading">
+        <div class="domain-header validation-section-header" id="profileHeader">
+          <h2 id="profileHeading"></h2>
+        </div>
+        <div id="profileQuestions"></div>
+      </section>
+
+      <section class="validation-section" aria-labelledby="validationHeading">
+        <div class="domain-header validation-section-header" id="validationHeader">
+          <h2 id="validationHeading"></h2>
+        </div>
+        <div id="validationGroups"></div>
+      </section>
+
+      <section class="panel validation-comments" aria-labelledby="commentsHeading">
+        <h2 id="commentsHeading"></h2>
+        <label for="commentsInput" id="commentsQuestion"></label>
+        <textarea id="commentsInput" rows="6"></textarea>
+      </section>
+
+      <section class="panel validation-submit-panel">
+        <button class="primary" id="submitValidationBtn" type="submit" disabled></button>
+        <p class="note" id="validationIncompleteNote"></p>
+        <p class="note warn" id="validationError" role="alert" hidden></p>
+        <p class="validation-saving" id="validationSaving" aria-live="polite"></p>
+      </section>
+    </form>
+  </div>
+
+  <section class="panel validation-thank-you" id="thankYouPanel" hidden>
+    <div class="validation-thank-you-icon" aria-hidden="true">✓</div>
+    <h2 id="thankYouHeading" tabindex="-1"></h2>
+    <p id="thankYouMessage"></p>
+    <a class="secondary-link" id="backToResultsLink" href="../assessment-tool/"></a>
+  </section>
+</main>
+
+<script src="app.js?v=20260816-3"></script>
+</body>
+</html>

@@ -1,9 +1,11 @@
 let LANG = "en", DATA = null, UI = null, WEIGHTS = null, DOMAIN_WEIGHTS = null;
 let EXPERT_ID = null, CONFIG = null;
+let CONSENT_VERSION = null, ACCEPTANCE = null;
 let currentLevels = {}, targetLevels = {};
 let saveTimer = null;
 let saveQueue = Promise.resolve();
 let hasSubmitted = false;
+let validationSubmitted = false;
 let saveErrorShown = false;
 let domainCharts = {}, summaryChart = null;
 
@@ -11,6 +13,13 @@ const t = (key, vars) => WorkshopI18n.tFormat(UI, key, LANG, vars || {});
 
 async function init() {
   LANG = WorkshopI18n.getLang();
+  const consentText = await WorkshopI18n.loadJson("../data/consent_text.json");
+  CONSENT_VERSION = consentText.version;
+  ACCEPTANCE = WorkshopConsent.getAccepted(CONSENT_VERSION);
+  if (!ACCEPTANCE) {
+    redirectToConsent();
+    return;
+  }
   document.getElementById("langLink").href = WorkshopI18n.langUrl(LANG === "en" ? "zh" : "en");
   const { indicators, uiText } = await WorkshopI18n.loadWorkshopData();
   DATA = indicators; UI = uiText;
@@ -50,6 +59,7 @@ async function init() {
   document.getElementById("domainScoresHeading").textContent = t("domain_scores_heading");
   document.getElementById("summaryRadarHeading").textContent = t("summary_radar_heading");
   document.getElementById("downloadPdfBtn").textContent = t("download_pdf_button");
+  document.getElementById("validationNextNote").textContent = t("validation_next_note");
   document.getElementById("lockedNote").textContent = t("survey_locked_message");
 
   if (!WorkshopDB.isEnabled()) {
@@ -63,37 +73,35 @@ async function init() {
   renderDomains();
   document.getElementById("submitBtn").addEventListener("click", onSubmit);
   document.getElementById("downloadPdfBtn").addEventListener("click", exportPdf);
+  document.getElementById("continueValidationBtn").addEventListener("click", continueToValidation);
   await loadExistingProgress(expert);
   applyLockState();
   updateProgress();
 }
 
 async function ensureExpertId() {
-  const stored = localStorage.getItem("workshop_expert_id");
-  let row = null;
-  let reassigned = false;
-  if (stored) {
-    row = await WorkshopDB.getExpert(stored);
-    if (!row) {
-      localStorage.removeItem("workshop_expert_id");
-      reassigned = true;
-    }
+  const stored = ACCEPTANCE && ACCEPTANCE.expertId;
+  if (!stored) {
+    redirectToConsent();
+    return null;
   }
-  if (!row) {
-    document.getElementById("idStatusText").textContent = t("assigning_id");
-    row = await WorkshopDB.claimExpertId(CONFIG.max_experts || 15);
-    if (!row) {
-      document.getElementById("idStatusText").textContent = t("no_id_available");
-      return null;
-    }
+  const row = await WorkshopDB.getExpert(stored);
+  if (!row || row.consent_given !== true || row.consent_version !== CONSENT_VERSION) {
+    if (!row) WorkshopConsent.clearExpertId();
+    redirectToConsent();
+    return null;
   }
   EXPERT_ID = row.id;
   localStorage.setItem("workshop_expert_id", EXPERT_ID);
   document.getElementById("idChip").textContent = EXPERT_ID;
   document.getElementById("idStatusText").textContent = t("your_id_label") + ": " + EXPERT_ID;
-  document.getElementById("idNote").textContent = t(reassigned ? "id_reassigned_note" : "id_assigned_note");
+  document.getElementById("idNote").textContent = t("id_assigned_note");
   document.getElementById("mainContent").style.display = "block";
   return row;
+}
+
+function redirectToConsent() {
+  window.location.replace(WorkshopConsent.withLanguage("../consent/", LANG));
 }
 
 async function loadExistingProgress(existingExpert) {
@@ -105,6 +113,7 @@ async function loadExistingProgress(existingExpert) {
   Object.keys(targetLevels).forEach((code) => selectLevelUI(code, "target", targetLevels[code]));
   if (expert.status === "submitted") {
     hasSubmitted = true;
+    validationSubmitted = expert.validation_status === "submitted";
     document.getElementById("submittedNote").style.display = "block";
     document.getElementById("submittedNote").textContent = t("submitted_note");
     document.getElementById("submitBtn").textContent = t("resubmit_button");
@@ -340,6 +349,7 @@ function levelNameForScore(score) {
 function showResults() {
   const { domainScores, overallCurrent, overallTarget } = computeScores();
   document.getElementById("resultsPanel").style.display = "block";
+  document.getElementById("continueValidationBtn").textContent = t(validationSubmitted ? "view_validation_button" : "continue_validation_button");
   document.getElementById("overallCurrentValue").textContent = overallCurrent.toFixed(2);
   document.getElementById("overallTargetValue").textContent = overallTarget.toFixed(2);
   document.getElementById("overallCurrentLevelName").textContent = levelNameForScore(overallCurrent).name;
@@ -355,6 +365,10 @@ function showResults() {
 
   renderDomainCharts(domainScores);
   renderSummaryChart(domainScores);
+}
+
+function continueToValidation() {
+  window.location.assign(WorkshopConsent.withLanguage("../validation/", LANG));
 }
 
 function renderDomainCharts() {

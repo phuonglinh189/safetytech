@@ -1,0 +1,155 @@
+{
+  "version": "2026-08-16",
+  "title": {
+    "zh": "智慧安全工地導入之成熟度模型",
+    "en": "Digital Technology for Construction Safety Monitoring and Inspection – Organizational Readiness Maturity Model"
+  },
+  "header_subtitle": {
+    "zh": "參與調查資訊與同意書",
+    "en": "Participant Information and Consent"
+  },
+  "salutation": {
+    "zh": "專家您好:",
+    "en": "Dear Expert,"
+  },
+  "introduction": {
+    "zh": "首先，感謝您參與本次的工作坊。在成熟度模型操作開始之前，以下將先介紹研究內容。",
+    "en": "Thank you for taking part in this workshop. Before we begin the maturity model exercise, the following introduces the content of the research."
+  },
+  "sections": [
+    {
+      "id": "research-objective",
+      "heading": {"zh": "研究目的", "en": "Research Objective"},
+      "paragraphs": {
+        "zh": ["為促進臺灣智慧工地的推動，本研究欲開發一套決策輔助系統，加速工地安全檢查與監控的數位轉型。本系統包含三大核心模組：營造業智慧安全功能選擇指引、營造廠安全科技應用就緒程度之成熟度模型，以及提升就緒程度之策略及科技應用的建議系統。本研究希望能彙整相關資訊並經由各界專家反饋，制定出一套具有公信力與學理論證之指引，提升臺灣智慧工地之發展。"],
+        "en": ["To advance the adoption of smart construction sites in Taiwan, this research aims to develop a decision-support system that accelerates the digital transformation of construction site safety inspection and monitoring. The system comprises three core modules: a guideline for selecting smart safety functions in the construction industry, a maturity model for a contractor's readiness to adopt safety technology, and a recommendation system for the strategies and technology applications that improve that readiness. By consolidating relevant information and incorporating feedback from experts across the field, this research aims to establish a credible, academically grounded guideline that advances the development of smart construction sites in Taiwan."]
+      }
+    },
+    {
+      "id": "exercise-purpose",
+      "heading": {"zh": "操作與調查目的", "en": "Purpose of the Exercise and Survey"},
+      "paragraphs": {
+        "zh": ["本研究透過專家問卷調查，獲取關於「工地安全監控與檢查之數位技術導入成熟度評估工具」的建議，確保研究的完整性與科學性。本次工作坊亦欲驗證該成熟度評估工具的實用性。本成熟度模型的組成指標涵蓋執行策略、執行流程、人力與技術四大構面。在操作過程中，您將針對各項指標選擇貴組織目前的成熟度等級與目標成熟度等級。使用工具後，您可以1至5分為評估本評估工具的實用性。您的建議將有助於我們改善對成熟度模型的理解與運用。透過成熟度評估，組織將能辨識需優先強化的能力面向，進而提升安全技術導入的成效與順利程度。"],
+        "en": ["This research uses an expert questionnaire survey to gather recommendations on the digital technology adoption maturity assessment tool for construction safety monitoring and inspection, ensuring the completeness and scientific rigor of the study. The exercise also seeks to validate the practicability of maturity assessment tool. The components of the maturity model include indicators covered 4 domains execution strategy, execution process, workforce, and technology. In the exercise, you will select your organization current and target maturity level for each indicator. After using the tool, you are able to evaluate the usefulness of tool by selecting the score from 1-5. Your recommendations will help us improve the understanding and use of the maturity model. Through this maturity assessment, organizations will be able to identify the capability areas that most need strengthening, thereby improving the effectiveness and smoothness of safety technology adoption."]
+      }
+    },
+    {
+      "id": "survey-content",
+      "heading": {"zh": "操作與調查內容", "en": "Content of the Exercise and Survey"},
+      "paragraphs": {
+        "zh": ["本調查包含三個主要部分："],
+        "en": ["This survey consists of two main parts:"]
+      },
+      "items": {
+        "zh": [
+          "第一部分：智慧安全工地導入之成熟度模型操作",
+          "第二部分(18個問題)：成熟度工具實用性評估"
+        ],
+        "en": [
+          "Part One: Digital Technology Adoption Maturity Assessment Tool Exercise",
+          "Part Two (18 questions): Assessment Tool Practicability Assessment"
+        ]
+      }
+    },
+    {
+      "id": "privacy",
+      "heading": {"zh": "參與方式與隱私保護", "en": "Participation and Privacy Protection"},
+      "paragraphs": {
+        "zh": [
+          "您的參與完全是自願的，本調查不具任何強制性。若您選擇不參與或在過程中決定退出，不會對您產生任何影響或不利後果。",
+          "本研究希望收集來自工地安全管理、智慧安全技術領域、以及具有相關專業知識與經驗的專家意見。作為在工程安全管理具有豐富知識與經驗的專家，您的見解將對研究帶來寶貴的貢獻。",
+          "所有調查數據僅供研究使用，僅限研究團隊成員存取，其他人無法取得這些數據，以確保您的個人資訊安全。數據將以密碼保護的形式儲存於雲端系統，並採取嚴格的安全防護措施，確保資料的機密性與完整性。"
+        ],
+        "en": [
+          "Your participation is entirely voluntary; this survey is in no way mandatory. If you choose not to participate, or decide to withdraw partway through, this will have no effect or adverse consequences for you.",
+          "This research seeks to collect the views of experts in construction site safety management and smart safety technology, as well as others with relevant professional knowledge and experience. As an expert with extensive knowledge and experience in engineering safety management, your insights will be a valuable contribution to this research.",
+          "All survey data will be used for research purposes only and will be accessible solely to members of the research team; no one else will be able to obtain it, ensuring the security of your personal information. The data will be stored in password-protected form on a cloud system with strict security safeguards in place to ensure its confidentiality and integrity."
+        ]
+      }
+    },
+    {
+      "id": "participation-consent",
+      "heading": {"zh": "參與調查的同意書", "en": "Consent to Participate"},
+      "paragraphs": {
+        "zh": ["研究團隊將向您發送參與調查的同意書："],
+        "en": ["The research team will send you a consent form for participation in the survey:"]
+      },
+      "items": {
+        "zh": [
+          "若您同意參加調查，請選擇「我同意參加調查」",
+          "若您希望停止參與，請選擇「我不同意參加調查」"
+        ],
+        "en": [
+          "If you agree to take part, please select “I agree to participate in the survey.”",
+          "If you wish to stop participating, please select “I do not agree to participate in the survey.”"
+        ]
+      }
+    },
+    {
+      "id": "contact",
+      "heading": {"zh": "研究團隊聯繫方式", "en": "Research Team Contact Information"},
+      "paragraphs": {
+        "zh": [
+          "如果您在調查過程中或之後有任何問題或疑慮，或想尋求有關研究進一步的資訊，請聯繫：",
+          "臺大土木系 黎芳玲 博士生，[d12521021@ntu.edu.tw]",
+          "臺大土木系 林之謙 副教授，[jacoblin@ntu.edu.tw]",
+          "非常感謝！"
+        ],
+        "en": [
+          "If you have any questions or concerns during or after the survey, or would like further information about the research, please contact:",
+          "Fang-Ling Le, PhD candidate, Department of Civil Engineering, National Taiwan University — [d12521021@ntu.edu.tw]",
+          "Chih-Chien Lin, Associate Professor, Department of Civil Engineering, National Taiwan University — [jacoblin@ntu.edu.tw]",
+          "Thank you very much!"
+        ]
+      }
+    }
+  ],
+  "decision_question": {
+    "zh": "請問您同不同意參與調查?",
+    "en": "Do you agree to participate in the survey?"
+  },
+  "agree_label": {
+    "zh": "「我同意參加調查」",
+    "en": "“I agree to participate in the survey”"
+  },
+  "decline_label": {
+    "zh": "「我不同意參加調查」",
+    "en": "“I do not agree to participate in the survey”"
+  },
+  "continue_label": {
+    "zh": "繼續前往評估工具",
+    "en": "Continue to the assessment"
+  },
+  "saving_label": {
+    "zh": "正在儲存您的同意…",
+    "en": "Saving your consent…"
+  },
+  "already_consented": {
+    "zh": "此裝置已記錄您對本版本同意書的同意。您可以繼續前往評估工具。",
+    "en": "Your consent to this version has already been recorded on this device. You may continue to the assessment."
+  },
+  "declined_heading": {
+    "zh": "您已選擇不參與",
+    "en": "You have chosen not to participate"
+  },
+  "declined_message": {
+    "zh": "感謝您閱讀研究資訊。系統未指派新的專家編號，也未將您的拒絕決定傳送至資料庫。",
+    "en": "Thank you for reviewing the research information. No new expert ID was assigned, and your decision to decline was not sent to the database."
+  },
+  "review_label": {
+    "zh": "重新查看同意書",
+    "en": "Review the consent form again"
+  },
+  "save_error": {
+    "zh": "無法將您的同意儲存至資料庫。請檢查網路連線後再試一次。",
+    "en": "Your consent could not be saved to the database. Check your connection and try again."
+  },
+  "no_slot_error": {
+    "zh": "目前所有專家名額已滿，請與工作坊主持人確認。",
+    "en": "All expert slots are currently full. Please check with the workshop host."
+  },
+  "configuration_error": {
+    "zh": "Supabase 尚未完成設定，請聯絡工作坊主持人。",
+    "en": "Supabase is not configured. Please contact the workshop host."
+  }
+}

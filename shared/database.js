@@ -48,8 +48,14 @@
 
   // Claim the next free expert id (E01..E{maxExperts}) by attempting a plain insert;
   // a 409 conflict means another browser just took it, so we try the next slot.
-  async function claimExpertId(maxExperts) {
+  async function claimExpertId(maxExperts, consentMetadata) {
     if (!isEnabled()) return null;
+    const consentFields = consentMetadata ? {
+      consent_given: consentMetadata.consent_given === true,
+      consented_at: consentMetadata.consented_at || null,
+      consent_version: consentMetadata.consent_version || null,
+      consent_language: consentMetadata.consent_language || null
+    } : {};
     const existing = await listExperts();
     const taken = new Set(existing.map((e) => e.id));
     for (let i = 1; i <= maxExperts; i++) {
@@ -59,21 +65,26 @@
         const res = await fetch(baseUrl(cfg.expertsTable), {
           method: "POST",
           headers: headers({ Prefer: "return=representation" }),
-          body: JSON.stringify({
+          body: JSON.stringify(Object.assign({
             id: candidate,
             status: "in_progress",
             current_levels: {},
             target_levels: {},
             claimed_at: new Date().toISOString(),
             updated_at: new Date().toISOString()
-          })
+          }, consentFields))
         });
-        if (res.status === 409 || res.status === 400) continue;
-        if (!res.ok) continue;
+        if (res.status === 409) continue;
+        if (!res.ok) {
+          const msg = await res.text().catch(() => "");
+          const err = new Error("DB request failed: " + res.status + " " + msg);
+          err.status = res.status;
+          throw err;
+        }
         const rows = await res.json();
         return rows[0] || { id: candidate };
       } catch (e) {
-        continue;
+        throw e;
       }
     }
     return null;
@@ -102,6 +113,24 @@
       current_levels: currentLevels,
       target_levels: targetLevels,
       submitted_at: new Date().toISOString()
+    });
+  }
+
+  async function saveValidationProgress(id, validationAnswers, validationVersion) {
+    return saveExpertProgress(id, {
+      validation_answers: validationAnswers,
+      validation_status: "in_progress",
+      validation_version: validationVersion,
+      validation_submitted_at: null
+    });
+  }
+
+  async function submitValidation(id, validationAnswers, validationVersion) {
+    return saveExpertProgress(id, {
+      validation_answers: validationAnswers,
+      validation_status: "submitted",
+      validation_version: validationVersion,
+      validation_submitted_at: new Date().toISOString()
     });
   }
 
@@ -166,6 +195,8 @@
     claimExpertId,
     saveExpertProgress,
     submitExpert,
+    saveValidationProgress,
+    submitValidation,
     deleteExpert,
     deleteAllExperts,
     getConfig,

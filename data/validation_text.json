@@ -1,0 +1,226 @@
+{
+  "version": "2026-08-16",
+  "title": {
+    "en": "Online Maturity Model Validation Form",
+    "zh": "成熟度模型驗證表單"
+  },
+  "header_subtitle": {
+    "en": "Construction Safety Monitoring and Inspection Technologies",
+    "zh": "施工安全監測與檢查技術"
+  },
+  "intro": {
+    "en": "Please complete your expert background and evaluate the maturity assessment tool. All background questions and rating questions are required; further comments are optional.",
+    "zh": "請完成專家背景資料並評估成熟度模型工具。所有背景問題及評分題皆為必填，其他建議為選填。"
+  },
+  "expert_background_heading": {
+    "en": "Expert Background Record",
+    "zh": "專家背景紀錄"
+  },
+  "validation_heading": {
+    "en": "Maturity Assessment Tool Validation",
+    "zh": "成熟度模型驗證"
+  },
+  "required_label": {
+    "en": "Required",
+    "zh": "必填"
+  },
+  "other_detail_label": {
+    "en": "Please specify",
+    "zh": "請説明"
+  },
+  "other_detail_placeholder": {
+    "en": "Enter your answer",
+    "zh": "請輸入您的答案"
+  },
+  "years_placeholder": {
+    "en": "Years",
+    "zh": "年"
+  },
+  "profile_questions": [
+    {
+      "id": "role",
+      "type": "choice",
+      "label": {
+        "en": "Q1. What is your current role in the construction industry?",
+        "zh": "請問您目前在營建產業中是擔任什麼角色？"
+      },
+      "options": [
+        {"value": "owner", "label": {"en": "Owner", "zh": "業主"}},
+        {"value": "educational_institution", "label": {"en": "Educational institution", "zh": "教育機關"}},
+        {"value": "construction_contractor", "label": {"en": "Construction contractor", "zh": "營造厰"}},
+        {"value": "government_agency", "label": {"en": "Government agency", "zh": "政府單位"}},
+        {"value": "consultant", "label": {"en": "Consultant", "zh": "顧問公司"}},
+        {"value": "technology_supplier", "label": {"en": "Technology supplier", "zh": "設備廠商"}},
+        {"value": "other", "requires_detail": true, "label": {"en": "Others (please specify)", "zh": "其他（請説明）"}}
+      ]
+    },
+    {
+      "id": "education",
+      "type": "choice",
+      "label": {
+        "en": "Q2. What is your highest degree of education?",
+        "zh": "請問您最高的學位？"
+      },
+      "options": [
+        {"value": "doctor", "label": {"en": "Doctor", "zh": "博士"}},
+        {"value": "master", "label": {"en": "Master", "zh": "碩士"}},
+        {"value": "bachelor", "label": {"en": "Bachelor", "zh": "大學"}},
+        {"value": "other", "requires_detail": true, "label": {"en": "Others (please specify)", "zh": "其他（請説明）"}}
+      ]
+    },
+    {
+      "id": "construction_years",
+      "type": "years",
+      "label": {
+        "en": "Q3. How many years of experience do you have in the construction industry?",
+        "zh": "請問您目前在營建產業擁有多少年的工作/教學經驗？"
+      }
+    },
+    {
+      "id": "safety_years",
+      "type": "years",
+      "label": {
+        "en": "Q4. How many years of experience do you have in construction safety management?",
+        "zh": "請問您目前在安全管理擁有多少年的工作/教學經驗？"
+      }
+    },
+    {
+      "id": "smart_technology_years",
+      "type": "years",
+      "label": {
+        "en": "Q5. How many years of experience do you have with smart technology in construction safety monitoring and inspection?",
+        "zh": "請問您在營建領域之智慧技術應用方面有多少年的經驗？"
+      }
+    }
+  ],
+  "scale": [
+    {"value": 1, "label": {"en": "Strongly Disagree", "zh": "非常不同意"}},
+    {"value": 2, "label": {"en": "Disagree", "zh": "不同意"}},
+    {"value": 3, "label": {"en": "Neutral", "zh": "中立"}},
+    {"value": 4, "label": {"en": "Agree", "zh": "同意"}},
+    {"value": 5, "label": {"en": "Strongly Agree", "zh": "非常同意"}}
+  ],
+  "groups": [
+    {
+      "id": "indicators",
+      "color": "#7030A0",
+      "heading": {"en": "Assessment Indicators and Sub-indicators", "zh": "評估指標與子指標"},
+      "questions": [
+        {
+          "id": "V01",
+          "aspect": {"en": "Relevant of indicators and sub-indicators", "zh": "指標相關性"},
+          "criteria": {"en": "Indicators and sub-indicators are relevant to safety monitoring and inspection technology adoption readiness assessment tool", "zh": "指標在智慧安全工地技術採用成熟度評估有相關"}
+        },
+        {
+          "id": "V02",
+          "aspect": {"en": "Adequacy of indicators and sub-indicators", "zh": "指標適當性"},
+          "criteria": {"en": "Indicators and sub-indicators cover all aspects of safety monitoring and inspection technology adoption readiness assessment tool", "zh": "指標涵蓋智慧安全工地評估的所有方面"}
+        },
+        {
+          "id": "V03",
+          "aspect": {"en": "Categorization of indicators and sub-indicators", "zh": "子指標分類"},
+          "criteria": {"en": "Indicators and sub-indicators are correctly assigned to their respective categories", "zh": "各子指標已正確地分配至各自的大指標"}
+        },
+        {
+          "id": "V04",
+          "aspect": {"en": "Sub-indicators’ boundary", "zh": "子指標的範圍"},
+          "criteria": {"en": "Sub-indicators are clearly distinct", "zh": "子指標之間有明確的區別"}
+        }
+      ]
+    },
+    {
+      "id": "maturity",
+      "color": "#4472C4",
+      "heading": {"en": "Maturity Level", "zh": "成熟等級"},
+      "questions": [
+        {
+          "id": "V05",
+          "aspect": {"en": "Progression of maturity levels", "zh": "成熟等級進展"},
+          "criteria": {"en": "The maturity levels sufficiently represent progression in the sub-indicators", "zh": "成熟度等級反映各子指標的進展情況"}
+        },
+        {
+          "id": "V06",
+          "aspect": {"en": "Maturity levels’ boundary", "zh": "成熟等級的範圍"},
+          "criteria": {"en": "There is no overlap detected between descriptions of maturity levels", "zh": "成熟度等級之間有明確的區別"}
+        },
+        {
+          "id": "V07",
+          "aspect": {"en": "Maturity levels’ ease of understanding", "zh": "成熟等級易解性"},
+          "criteria": {"en": "The maturity levels are understandable", "zh": "成熟度等級淺顯易懂"}
+        }
+      ]
+    },
+    {
+      "id": "understanding",
+      "color": "#ED7D31",
+      "heading": {"en": "Ease of Understanding", "zh": "易解性"},
+      "questions": [
+        {
+          "id": "V08",
+          "aspect": {"en": "Assessment instruction", "zh": "評估説明"},
+          "criteria": {"en": "The documentations (i.e., assessment instructions) are easy to understand", "zh": "評估說明內容淺顯易懂"}
+        },
+        {
+          "id": "V09",
+          "aspect": {"en": "Result presentation", "zh": "評估結果"},
+          "criteria": {"en": "The results are understandable", "zh": "評估結果淺顯易懂"}
+        }
+      ]
+    },
+    {
+      "id": "use",
+      "color": "#70AD47",
+      "heading": {"en": "Ease of Use", "zh": "易用性"},
+      "questions": [
+        {
+          "id": "V10",
+          "aspect": {"en": "Scoring scheme", "zh": "評分制度"},
+          "criteria": {"en": "Scoring scheme (maturity level from 1 to 5) is easy to use", "zh": "成熟度等級從 1 到 5操作簡便"}
+        },
+        {
+          "id": "V11",
+          "aspect": {"en": "Ease of use of the tool", "zh": "評估工具"},
+          "criteria": {"en": "The assessment tool is easy to use", "zh": "評估工具操作簡便"}
+        }
+      ]
+    },
+    {
+      "id": "usefulness",
+      "color": "#C00078",
+      "heading": {"en": "Usefulness and Practicality", "zh": "實用性"},
+      "questions": [
+        {
+          "id": "V12",
+          "aspect": {"en": "Usefulness of the tool", "zh": "工具的實用性"},
+          "criteria": {"en": "The tool is useful for assessing safety monitoring and inspection technology adoption readiness of your organization", "zh": "工具有助於評估組織在安全監測與檢查技術方面的採用就緒度"}
+        },
+        {
+          "id": "V13",
+          "aspect": {"en": "Practicality of the tool", "zh": "工具的實用性"},
+          "criteria": {"en": "The tool is practical for use in construction industry", "zh": "工具在營造業中具有實用價值"}
+        }
+      ]
+    }
+  ],
+  "comments_heading": {"en": "Further comments:", "zh": "其他建議："},
+  "comments_question": {"en": "Do you have any other recommendations?", "zh": "請問您是否有其他建議？"},
+  "comments_placeholder": {"en": "Optional comments", "zh": "選填意見"},
+  "ui": {
+    "progress_text": {"en": "{completed} of {total} required questions completed", "zh": "已完成 {completed} / {total} 題必填問題"},
+    "scale_guide_heading": {"en": "Rating scale", "zh": "評分量表"},
+    "not_answered": {"en": "Not answered", "zh": "尚未作答"},
+    "selected_value": {"en": "Selected: {value} — {label}", "zh": "已選擇：{value} — {label}"},
+    "submit_button": {"en": "Submit Validation", "zh": "送出驗證表單"},
+    "submitting_button": {"en": "Saving…", "zh": "正在儲存…"},
+    "incomplete_message": {"en": "Complete all 5 background questions and 13 rating questions before submitting.", "zh": "送出前請完成 5 題專家背景資料及 13 題評分問題。"},
+    "autosave_failed": {"en": "Your Validation answers could not be autosaved. They remain on this page; check your connection and try again.", "zh": "驗證表單答案無法自動儲存。答案仍保留在此頁面，請檢查網路連線後重試。"},
+    "submit_failed": {"en": "Validation submission failed and was not recorded. Please try again or contact the workshop host.", "zh": "驗證表單送出失敗且尚未記錄，請重試或聯絡工作坊主持人。"},
+    "database_not_configured": {"en": "Supabase is not configured. Please contact the workshop host.", "zh": "Supabase 尚未設定，請聯絡工作坊主持人。"},
+    "migration_required": {"en": "The Validation database fields are not available yet. The workshop host must run the Supabase Validation migration.", "zh": "資料庫尚未建立驗證表單欄位，請工作坊主持人先執行 Supabase Validation migration。"},
+    "thank_you_heading": {"en": "Thank you for completing the Validation form", "zh": "感謝您完成驗證表單"},
+    "thank_you_message": {"en": "Your responses have been saved successfully. The Validation form is now read-only.", "zh": "您的回答已成功儲存，驗證表單目前為唯讀狀態。"},
+    "back_to_results": {"en": "Back to My Assessment Results", "zh": "返回我的評估結果"},
+    "expert_id": {"en": "Your Expert ID", "zh": "您的專家編號"},
+    "resume_note": {"en": "Your Validation progress is saved to this Expert ID on Supabase.", "zh": "您的驗證進度會以此專家編號儲存至 Supabase。"}
+  }
+}
