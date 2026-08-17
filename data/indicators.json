@@ -83,11 +83,11 @@
           "Strong and sustained leadership commitment. Leaders consistently support, promote, and resource technology adoption across all projects and use review evidence to drive continuous improvement."
         ],
         "zh": [
-          "無領導支持。技術採用是臨時性的，依賴個人主動性。",
-          "領導偶爾提供口頭支持。為特定專案的技術試點分配基本預算。",
-          "領導積極推動技術採用。制定正式政策，配備專門資源與明確問責制度。",
-          "領導每季度監控採用指標。技術投資決策以數據驅動，並追蹤投資報酬率。",
-          "領導倡導創新文化。技術策略持續檢討並與新興產業最佳實務保持一致。"
+          "尚未建立管理階層支持智慧安全技術導入的機制；決策者未明確表達支持，亦未提供推動或投資資源。",
+          "管理階層僅在少數專案支持或資助個別技術方案，主要依個別主管或團隊臨時推動，尚未整理出可復現的流程。",
+          "管理階層已在部分專案支持技術導入並提供資源，形成可復現的流程，但各單位作法不一。",
+          "已建立全公司標準化框架，管理階層於所有相關專案一致支持、推動並配置技術導入所需資源。",
+          "管理階層持續依全公司標準化框架支持、推動並配置資源，且定期依成效資料、稽核與回饋檢討及改善技術導入。"
         ]
       }
     },
@@ -110,11 +110,11 @@
           "Strong and sustained client commitment. Clients consistently support technology adoption across all projects and review implementation to drive continuous improvement."
         ],
         "zh": [
-          "業主不參與技術決策。業主不了解數位安全技術的好處。",
-          "當提出技術提案時，業主表現出興趣。願意在專案會議中討論技術。",
-          "業主在合約規範中要求使用技術。積極參與技術規劃與審查會議。",
-          "業主根據技術採用成熟度評估承包商。績效指標包括技術使用率。",
-          "業主合作進行技術創新。共同投資研發並在專案間分享技術成果。"
+          "業主尚未承諾支持智慧安全技術導入，亦未建立參與或投資相關流程。",
+          "業主僅於少數專案支持或提供經費，作法依個別專案臨時決定，尚無可重複的要求。",
+          "業主已在部分專案支持技術導入，但相關期望與要求仍由各專案自行訂定，尚未一致納入專案需求。",
+          "業主已經支持全部專案導入智慧安全技術，並於所有相關專案提供推動所需資源。",
+          "業主持續於所有相關專案支持技術導入，並定期依執行資料、稽核與回饋檢討及改善導入要求與支持方式。"
         ]
       }
     },
@@ -122,11 +122,11 @@
       "domain": "strategy",
       "name": {
         "en": "Technology Investment Policy",
-        "zh": "技術投資規範與發展方針"
+        "zh": "技術投資規範與資源配置方針"
       },
       "description": {
         "en": "Technology investment policy refers to assessing whether the organization has formal, strategic policies and decision-making procedures for approving, funding, and managing investments in digital safety technologies. This includes risk assessment, regulatory compliance, and long-term planning frameworks that guide responsible and consistent investment behavior.",
-        "zh": "技術投資規範與發展方針指的是投資技術之審批流程、資金分配標準、安全法規的遵循、技術風險評估以及長期技術使用承諾。該指標評估組織是否制定正式政策來管理安全監測與檢查技術的投資，以及這些政策的明確性與完整性。"
+        "zh": "技術投資規範與資源配置方針指的是投資技術之審批流程、資金分配標準、安全法規的遵循、技術風險評估以及長期技術使用承諾。該指標評估組織是否制定正式政策來管理安全監測與檢查技術的投資，以及這些政策的明確性與完整性。"
       },
       "levels": {
         "en": [
@@ -137,11 +137,11 @@
           "A policy exists and investment decision-making is structured, documented, consistently applied, and routinely refined to improve investment quality."
         ],
         "zh": [
-          "無正式投資政策。技術採購是被動的，逐案核准且無標準。",
-          "存在基本核准流程。對超過定義門檻的技術投資需要簡單的成本效益分析。",
-          "制定完整的投資政策文件。標準化評估標準涵蓋投資報酬率、風險、合規性與長期規劃。",
-          "投資決策採用量化分析。歷史績效數據與預測模型指引技術選擇。",
-          "政策根據成果持續改進。投資架構整合新興技術並鼓勵經計算的創新。"
+          "尚未建立支持智慧安全技術投資的政策或審批流程，投資決策完全臨時應變。",
+          "僅在少數專案個案處理技術投資，決策缺乏結構，主要依個別人員判斷。",
+          "已在部分專案制定技術投資政策，但決策流程仍由各單位自行訂定，文件與執行方式不一致。",
+          "已建立全公司標準化的技術投資政策與決策流程，並於全部相關專案一致執行。",
+          "已依全公司標準化框架一致執行投資決策，並定期依投資成效、稽核與回饋修訂政策及流程，以提升投資品質。"
         ]
       }
     },
@@ -164,11 +164,11 @@
           "A structured education and training programme is provided consistently and routinely refined using feedback and performance evidence."
         ],
         "zh": [
-          "無正式培訓計畫。使用者透過試誤或非正式的同儕指導學習技術。",
-          "為新技術推出提供基本培訓。保留培訓記錄以符合法規要求。",
-          "建立完整的培訓課程。基於角色的培訓路徑，包含能力評估與認證。",
-          "透過績效指標衡量培訓效果。將學習成果與技術採用成功率相關聯。",
-          "嵌入持續學習文化。採用回饋循環、微學習與知識分享平台的適應性培訓計畫。"
+          "尚未建立支持智慧安全技術導入的教育或培訓計畫，所需訓練完全臨時安排。",
+          "僅在少數情況提供基礎教育與培訓，主要依個人或專案臨時需求安排，尚無結構化計畫。",
+          "已在部分專案普遍提供教育與培訓，形成可重複做法，但課程設計、文件與執行方式尚未統一。",
+          "已建立全公司標準化的教育與培訓計畫，並針對所有相關職務與專案一致實施。",
+          "已一致實施教育與培訓計畫，並定期依學習成效、績效資料與參與者回饋更新課程及執行方式。"
         ]
       }
     },
@@ -191,11 +191,11 @@
           "Technology goals are linked to safety objectives through structured planning and review processes, which are routinely refined to improve safety outcomes."
         ],
         "zh": [
-          "無明確的技術目標。採用技術時未與安全目標或可衡量成果連結。",
-          "陳述一般性目標（例如「改善安全」）。技術選擇考慮與安全需求的基本一致性。",
-          "制定與安全策略一致的具體文件化目標。每項技術採用都有明確的目標與成功標準（SMART目標）。",
-          "以量化關鍵績效指標追蹤目標。定期評估目標達成情況，並根據數據調整技術策略。",
-          "目標動態優化。使用預測分析與對標產業領導者的持續調整流程。"
+          "尚未設定與安全管理目標相連結的明確技術導入目的，亦無相關規劃流程。",
+          "已初步認知技術目標應與安全目標一致，但僅於少數專案透過非標準化方式進行對齊。",
+          "已在部分專案將技術導入目的連結安全目標，但規劃與檢討方式由各單位自訂，尚未形成全公司標準化框架。",
+          "已建立全公司標準化的規劃與檢討流程，於所有相關專案一致將技術導入目的連結安全管理目標。",
+          "已依標準化流程進行目標對齊，並定期依安全績效、稽核與回饋調整技術導入目的及規劃方式。"
         ]
       }
     },
@@ -218,11 +218,11 @@
           "Structured communication methods are consistently used and routinely reviewed to improve clarity, uptake, and safety outcomes."
         ],
         "zh": [
-          "無標準化溝通。資訊透過口頭交流或臨時電子郵件非正式分享。",
-          "存在基本文件。常見技術溝通使用標準範本，但應用不一致。",
-          "建立正式溝通協定。標準化流程將技術資訊以清晰術語傳達給所有利害關係人。",
-          "衡量溝通效果。評估利害關係人理解程度；根據回饋指標改進溝通方法。",
-          "優化多通道溝通。即時儀表板、自動警報與適應性訊息確保所有利害關係人及時收到相關資訊。"
+          "尚未建立支援智慧安全技術導入的技術資訊溝通方法或流程。",
+          "僅在少數情況進行基本技術資訊溝通，方式非正式且依個人或團隊推動，執行不一致。",
+          "技術資訊已在部分專案進行傳遞，但術語、文件及傳遞方式仍由各單位自行訂定。",
+          "已建立全公司標準化的技術資訊傳遞方法，相關利害關係人於所有專案一致使用標準術語、文件與傳遞程序。",
+          "已一致使用標準化技術資訊傳遞方法，並定期依溝通成效、稽核與回饋改善資訊清晰度、技術採用及安全成果。"
         ]
       }
     },
@@ -245,11 +245,11 @@
           "Roles and responsibilities are documented, communicated, consistently assigned, and routinely reviewed to improve accountability and implementation."
         ],
         "zh": [
-          "角色不明確。技術責任重疊或出現缺口；問責制模糊不清。",
-          "分配基本角色。識別技術實施的關鍵職位，但詳細責任可能未定義。",
-          "制定完整的RACI矩陣文件。所有技術相關角色均明確定義，包含具體責任與決策權。",
-          "監控角色績效。透過關鍵績效指標衡量各角色效能；系統化識別與處理缺口。",
-          "動態角色優化。根據績效數據持續改進角色；跨職能協作模式促進效率。"
+          "尚未界定智慧安全技術導入的職責與責任。",
+          "僅在少數專案指派基本職責與責任，主要依個人或臨時專案需求決定。",
+          "已在部分專案固定指派職責與責任，但指派方式及文件由各單位自訂。",
+          "已建立全公司標準化流程，明確記錄與傳達各職責與責任，並於所有相關專案一致指派。",
+          "已依標準化流程一致指派職責與責任，並定期依績效資料、稽核與回饋檢討，以提升問責與導入成效。"
         ]
       }
     },
@@ -257,11 +257,11 @@
       "domain": "operational",
       "name": {
         "en": "Technology Supplier Management",
-        "zh": "設備廠商管理"
+        "zh": "系統廠商與設備供應商管理"
       },
       "description": {
         "en": "Technology supplier management refers to how an organization selects, manages, and oversees its technology suppliers. It includes processes for supplier selection, contract management, performance evaluation, compliance monitoring, and strategies for long-term collaboration. These practices help ensure that digital safety technology providers meet quality, reliability, and safety standards.",
-        "zh": "設備廠商管理指的是選擇設備廠商方法、合約管理、績效評估、合規監控及長期合作。"
+        "zh": "系統廠商與設備供應商管理指的是選擇系統廠商與設備供應商的方法、合約管理、績效評估、合規監控及長期合作。"
       },
       "levels": {
         "en": [
@@ -272,11 +272,11 @@
           "Structured supplier management processes are consistently applied and routinely reviewed to strengthen reliability, quality, compliance, and long-term collaboration."
         ],
         "zh": [
-          "無供應商管理流程。供應商根據最低成本或可用性選擇，無正式評估。",
-          "建立基本供應商選擇標準。合約包含標準條款；進行非正式的績效監控。",
-          "結構化供應商管理計畫。正式選擇流程、合約範本、定期績效審查與合規監控。",
-          "量化供應商績效追蹤。供應商計分卡包含指標（品質、可靠性、支援）；數據驅動的供應商決策。",
-          "策略性供應商夥伴關係。與主要供應商建立長期合作協議、共同創新計畫與持續改進方案。"
+          "尚未建立支援智慧安全技術導入的系統廠商與設備供應商管理流程。",
+          "僅在少數情況進行基本廠商管理，流程非正式，主要依個別人員判斷。",
+          "已在部分專案固定進行廠商管理，但選商、合約、績效評估與合規監控仍由各單位自訂。",
+          "已建立全公司標準化的廠商管理框架，並於所有相關專案一致執行選商、合約、績效與合規管理。",
+          "已一致執行標準化廠商管理流程，並定期依績效、稽核與回饋改善可靠性、品質、合規及長期合作。"
         ]
       }
     },
@@ -299,11 +299,11 @@
           "Operational controls are documented, structured, consistently applied, and routinely improved using operational evidence."
         ],
         "zh": [
-          "無營運控制。技術使用未受監控；故障以被動方式處理，無系統化方法。",
-          "制定基本營運程序文件。為關鍵技術設置檢查清單與簡單維護時程。",
-          "建立完整的營運架構。標準作業程序、預防性維護、備份系統與事件回應協定。",
-          "基於績效的控制。追蹤營運指標（正常運行時間、準確性、回應時間）；使用數據分析進行主動問題解決。",
-          "自我優化營運。自動監控、預測性維護與AI驅動的異常偵測確保持續可靠營運。"
+          "尚未建立確保智慧安全技術有效、可靠且持續運作的執行控制流程。",
+          "僅在少數專案採取基本控制，主要依個人經驗臨時處理。",
+          "執行控制已在部分專案成為可復現的流程，但控制程序與文件由各單位自訂。",
+          "已建立全公司標準化的執行控制框架，並於所有相關專案一致執行明確的控制程序。",
+          "已一致執行標準化控制程序，並定期依運作資料、稽核與回饋檢討及改善技術運作成效。"
         ]
       }
     },
@@ -326,11 +326,11 @@
           "Performance evaluation is structured, with defined criteria, metrics, and review points; findings are routinely used to improve implementation and safety outcomes."
         ],
         "zh": [
-          "無績效評估。技術成果未評估；無證據即假設成功。",
-          "進行非正式評估。實施後收集基本回饋；偶爾與初始期望比較。",
-          "建立正式評估流程。定義指標、定期評估週期與結構化報告，對照原始目標。",
-          "量化績效分析。使用統計方法評估效能；隨時間追蹤績效趨勢並進行根本原因分析。",
-          "持續績效優化。即時儀表板、預測分析與自動化報告推動持續技術改進。"
+          "尚未建立績效評估流程，無法判定智慧安全技術導入是否達成預定目標。",
+          "僅在少數專案進行基本評估，流程非正式，主要依個別人員判斷。",
+          "已在部分專案固定評估技術績效，但評估準則、指標與文件由各單位自訂。",
+          "已建立全公司標準化的績效評估框架，訂有明確準則、指標及檢討時點，並於所有相關專案一致執行。",
+          "已一致執行標準化績效評估，並定期運用評估資料、稽核與回饋改善技術導入及安全成果。"
         ]
       }
     },
@@ -353,11 +353,11 @@
           "Data management processes are documented, structured, consistently applied, and routinely reviewed to improve data quality, security, and decision-making."
         ],
         "zh": [
-          "無數據管理策略。數據收集雜亂無章；儲存與存取不受控制且不安全。",
-          "基本數據處理實務。備份重要數據；實施最低限度的安全措施與存取控制。",
-          "完整的數據管理政策。標準化收集、儲存、安全、保留與品質保證程序文件。",
-          "數據驅動決策。驗證數據完整性；使用分析工具提取洞察；治理指標追蹤數據品質。",
-          "進階數據生態系統。整合數據平台、即時分析、AI/ML應用與持續數據品質改進計畫。"
+          "尚未建立智慧安全技術的數據管理流程，資料蒐集、儲存、分析、保護或應用有所缺漏。",
+          "僅在少數專案處理技術數據，方式非正式，主要依個人作法執行。",
+          "技術數據已在部分專案固定管理，但流程、文件及權責仍由各單位自訂。",
+          "已建立全公司標準化的數據管理框架，並於所有相關專案一致執行蒐集、儲存、分析、保護及應用程序。",
+          "已一致執行標準化數據管理流程，並定期依品質指標、稽核與回饋改善數據品質、安全及決策效能。"
         ]
       }
     },
@@ -380,11 +380,11 @@
           "Knowledge sharing processes are documented, structured, consistently applied, and routinely improved so that lessons inform future deployments, training, and decision-making."
         ],
         "zh": [
-          "無知識擷取。人員變動時喪失經驗教訓；經驗未記錄或分享。",
-          "臨時性知識分享。偶爾進行專案後審查；基本記錄重大問題與解決方案。",
-          "系統化知識管理。記錄經驗教訓的正式流程、最佳實務資料庫與定期知識分享會議。",
-          "衡量知識轉移效能。追蹤知識庫使用情況；量化評估對專案成果的影響。",
-          "學習型組織文化。AI驅動的知識平台、實務社群與持續知識策展推動創新。"
+          "尚未建立支援智慧安全技術導入的知識管理與分享流程，經驗及案例未被系統化保存。",
+          "僅在少數專案非正式分享經驗與教訓，主要依個人主動，無可重複做法。",
+          "經驗、教訓與良好實務已在部分專案固定分享，但記錄與分享方式仍由各單位自訂。",
+          "已建立全公司標準化的知識管理流程，並於各專案與團隊一致蒐集、記錄、保存及分享知識。",
+          "已一致執行標準化知識管理流程，並定期依使用成效、稽核與回饋改善，使經驗持續支援後續導入、培訓及決策。"
         ]
       }
     },
@@ -407,11 +407,11 @@
           "Strong employee willingness. Employees accept, support, and participate in technology use across all relevant projects and actively contribute to continuous improvement by sharing feedback, encouraging adoption, and identifying ways to improve technology use over time."
         ],
         "zh": [
-          "抗拒技術採用。員工不願改變；高度懷疑且極少自願參與。",
-          "被動接受。員工遵守強制性技術使用，但表現出有限的熱情或主動性。",
-          "展現積極意願。大多數員工擁抱技術；自願參與試點與培訓超過70%。",
-          "衡量參與度。員工滿意度調查顯示>80%正面情緒；追蹤參與率與採用速度。",
-          "倡導文化。員工主動尋求新技術；同儕倡導在3個月內推動>90%自願採用。"
+          "員工對智慧安全技術缺乏認知、接受度與使用意願，組織亦未建立促進參與的流程。",
+          "僅少數專案的員工認識並偶爾參與技術使用，主要依個人或團隊推動。",
+          "員工已在部分專案接受並支持技術使用，但各單位的參與程度與推動方式不一。",
+          "員工於所有相關專案一致接受、支持並參與技術使用。",
+          "員工持續參與技術使用，並透過回饋、倡議與改善建議，定期協助提升採用程度及使用成效。"
         ]
       }
     },
@@ -434,11 +434,11 @@
           "Employees have sufficient skills to use and troubleshoot digital safety technologies independently and actively contribute to continuous improvement by sharing lessons learned, refining practices, and updating their skills over time."
         ],
         "zh": [
-          "技術技能極少。<30%的員工能在無大量支援下操作基本數位安全工具。",
-          "建立基本能力。50-70%的相關人員能偶爾在協助下執行例行技術任務。",
-          "熟練的勞動力。>80%的員工透過技能評估展現能力；能操作與排除標準技術故障。",
-          "衡量進階能力。量化能力水準；>60%的員工獲得進階認證；系統化處理技能缺口。",
-          "專家勞動力。>90%達到或超過能力標準；員工定期貢獻技術優化與創新。"
+          "員工尚不具備使用智慧安全技術所需的知識、技能或實作經驗，無法獨立操作或處理技術問題。",
+          "員工僅具有少量使用經驗，尚無法獨立操作或排除技術問題，能力主要依個別專案累積。",
+          "員工已能獨立操作智慧安全技術，但排除技術問題的能力有限，且各單位能力標準不一。",
+          "已建立全公司能力標準與培訓要求，相關員工均能於所有專案獨立操作及排除智慧安全技術問題。",
+          "員工除能獨立操作與排除問題外，亦定期分享經驗、精進做法並更新技能，持續提升組織技術能力。"
         ]
       }
     },
@@ -461,11 +461,11 @@
           "Cross-role collaboration is structured, consistently applied, and routinely reviewed to improve coordination, adoption, and safety outcomes."
         ],
         "zh": [
-          "無持續學習。培訓僅限於初始入職；未提供技能提升機會。",
-          "偶爾提供培訓。提供年度或專案基礎培訓；員工參與是選擇性的且未追蹤。",
-          "結構化發展計畫。每季培訓課程；個人發展計畫；每年至少20小時的技術培訓要求。",
-          "衡量學習效能。計算培訓投資報酬率；追蹤技能提升；>85%的員工完成必修培訓並獲得能力提升。",
-          "持續學習生態系統。個人化學習路徑、微學習模組、技能追蹤系統；員工平均每年技能提升>40小時。"
+          "員工無法獲得提升智慧安全技術理解或應用能力的學習機會，亦未建立持續學習流程。",
+          "僅在少數情況提供基本學習機會，主要依個人興趣或臨時專案需求安排。",
+          "已在部分專案固定提供學習機會，但持續學習內容、文件與執行方式仍由各單位自訂。",
+          "已建立全公司標準化的學習與技能提升計畫，並對所有相關職務及專案一致提供學習機會。",
+          "已一致實施學習與技能提升計畫，並定期依回饋、技術變化及績效資料更新內容與執行方式。"
         ]
       }
     },
@@ -488,11 +488,11 @@
           "Cross-role collaboration is structured, consistently applied, and routinely reviewed to improve coordination, adoption, and safety outcomes."
         ],
         "zh": [
-          "孤島式營運。部門獨立作業；技術事務上的跨職能溝通極少。",
-          "存在基本協調。偶爾召開跨職能會議；必要時在技術問題上進行非正式協作。",
-          "結構化協作架構。定期跨職能團隊；定義協作協定；共享技術平台促進溝通。",
-          "衡量協作效能。追蹤團隊績效指標；>75%的技術實施涉及跨職能投入。",
-          "整合協作文化。即時協作工具；敏捷跨職能團隊；>90%的員工報告有效的跨角色協作。"
+          "尚未建立跨職務或跨團隊協作流程，智慧安全技術導入缺乏必要協調與相互支援。",
+          "僅在少數情況進行基本協作，主要依個人關係臨時溝通與支援。",
+          "跨職務協作已在部分專案成為可復現的流程，但溝通、協調與支援方式仍由各團隊自訂。",
+          "已建立全公司標準化的協作框架，透過明確溝通管道、協調流程與支援安排，於所有相關專案一致執行。",
+          "已一致執行標準化協作流程，並定期依協作成效、稽核與回饋改善協調、技術採用及安全成果。"
         ]
       }
     },
@@ -515,11 +515,11 @@
           "Budget planning for digital safety technologies is governed by an organisation-wide approach, consistently applied across relevant projects, and routinely reviewed to improve affordability, sustainability, and return on investment."
         ],
         "zh": [
-          "無專門預算。技術從一般預算中臨時提供資金；無生命週期成本規劃。",
-          "基本預算分配。建立涵蓋採購的年度技術預算；維護經常未獲資金或資金不足。",
-          "完整的生命週期預算編制。多年預算包括採購、實施、維護、培訓與折舊。",
-          "追蹤預算績效。監控實際與計畫支出；衡量每項安全成果的成本；預算調整以數據驅動。",
-          "優化預算分配。預測性預算模型；動態資源重新分配；技術投資顯示>20%的投資報酬率年增長。"
+          "尚未建立智慧安全技術預算規劃，取得、導入、運作、維護、升級或再利用均無專用預算。",
+          "僅在少數專案進行預算規劃，作法臨時且專案化，主要依個別人員判斷。",
+          "已在部分專案固定進行預算規劃，但編列標準與文件仍由各單位自訂。",
+          "已建立全公司標準化的預算規劃框架，並於所有相關專案一致編列與管理技術全生命週期預算。",
+          "已一致執行標準化預算規劃，並定期依成本效益、稽核與回饋改善可負擔性、永續性及投資報酬。"
         ]
       }
     },
@@ -542,11 +542,11 @@
           "Structured complexity assessments are routinely reviewed and used to simplify use, improve support, and reduce operational burden."
         ],
         "zh": [
-          "複雜且難以使用。技術需要專業知識；>40%的使用者需要頻繁支援；學習曲線陡峭。",
-          "中等複雜度。大多數使用者經初始培訓後能操作；每位使用者平均每月需要2-3次支援請求。",
-          "選擇使用者友善系統。直觀介面；每位使用者每月<1次支援請求；基本培訓後80%的使用者能自給自足。",
-          "量化可用性。使用者滿意度>85%；衡量與優化任務完成時間；錯誤率<5%。",
-          "簡化營運。AI輔助介面；語音/手勢控制；每位使用者每月<0.2次支援請求；>95%使用者滿意度。"
+          "尚未考量智慧安全技術的執行複雜度，亦未建立評估流程。",
+          "僅在少數情況辨識執行複雜度，評估方式非正式，主要依個人經驗。",
+          "已在部分專案固定評估執行複雜度，但評估準則與文件仍由各單位自訂。",
+          "已建立全公司標準化的複雜度評估準則，並於所有相關專案在導入前及導入期間一致執行。",
+          "已一致執行標準化評估，並定期依使用資料、稽核與回饋簡化操作、改善支援及降低作業負擔。"
         ]
       }
     },
@@ -569,11 +569,11 @@
           "Structured reliability assessments are consistently applied and routinely reviewed to improve accuracy, stability, timeliness, and decision usefulness."
         ],
         "zh": [
-          "不可靠的績效。頻繁故障或數據不準確；系統正常運行時間<90%；選擇時不考慮可靠性。",
-          "建立基本可靠性。系統大部分時間正常運作；正常運行時間90-95%；設置基本備份系統。",
-          "高可靠性標準。採購中的正式可靠性要求；正常運行時間>98%；驗證數據準確性；關鍵系統的冗餘。",
-          "量化與管理可靠性。追蹤平均故障間隔時間、平均修復時間；>99%正常運行時間；實施預測性故障分析；數據準確性>98%。",
-          "超高可靠性營運。>99.5%正常運行時間；自我修復系統；自動故障轉移；即時可靠性監控與優化。"
+          "尚未考量智慧安全技術的可靠性，亦未建立評估或監測流程。",
+          "僅在少數情況辨識技術可靠性，評估方式非正式，主要依個人經驗。",
+          "已在部分專案固定評估可靠性，但評估準則、文件與監測方式仍由各單位自訂。",
+          "已建立全公司標準化的可靠性評估準則，並於所有相關專案一致評估及持續監測技術表現。",
+          "已一致執行標準化可靠性評估，並定期依監測資料、稽核與回饋改善準確性、穩定性、即時性及決策效用。"
         ]
       }
     },
@@ -581,11 +581,11 @@
       "domain": "technology",
       "name": {
         "en": "Technology Resilience",
-        "zh": "技術耐用性"
+        "zh": "工地環境適應性"
       },
       "description": {
         "en": "Technical resilience refers to measuring how prepared the organization is to deploy technologies that can withstand the harsh and variable conditions of construction sites. It evaluates whether the organization considers durability, long-term use, and environmental resilience when adopting digital safety tools.",
-        "zh": "技術耐用性指的是組織考量技術的硬體與軟體在施工環境中維持穩定執行的能力，確保其能夠在嚴苛且多變的條件下長期使用。"
+        "zh": "工地環境適應性指的是組織考量技術的硬體與軟體在施工環境中維持穩定執行的能力，確保其能夠在嚴苛且多變的條件下長期使用。"
       },
       "levels": {
         "en": [
@@ -596,11 +596,11 @@
           "Structured resilience assessments are consistently applied and routinely reviewed to improve durability, maintainability, and suitability for site conditions."
         ],
         "zh": [
-          "不適合環境。技術在惡劣條件下故障；選擇時不考慮耐用性；需要頻繁更換。",
-          "基本環境保護。使用標準工業級設備；防護常見環境因素（灰塵、濕氣）。",
-          "選擇加固系統。技術符合施工環境等級；IP65+等級；溫度範圍-10°C至50°C；抗震。",
-          "驗證韌性。收集環境績效數據；惡劣條件下故障率<5%；平均故障間隔時間>3年。",
-          "極端韌性。軍規耐用性；惡劣條件下故障<2%；自我診斷能力；設計現場使用壽命>5年。"
+          "尚未考量智慧安全技術的工地環境適應性，亦未建立適用於施工環境的評估流程。",
+          "僅在少數情況辨識技術工地環境適應性，評估方式非正式，主要依個人經驗。",
+          "已在部分專案固定評估工地環境適應性，但評估準則、文件與維護方式仍由各單位自訂。",
+          "已建立全公司標準化的工地環境適應性評估準則，涵蓋硬軟體耐久度、環境條件、維護及長期使用，並一致執行。",
+          "已一致執行標準化工地環境適應性評估，並定期依運作資料、稽核與回饋改善耐久度、可維護性及工地適用性。"
         ]
       }
     },
@@ -623,11 +623,11 @@
           "Structured compatibility assessments are consistently applied and routinely reviewed to improve integration, interoperability, and workflow fit."
         ],
         "zh": [
-          "不相容系統。新技術創造數據孤島；需要手動數據轉移；工作流程中斷常見。",
-          "有限整合。可用基本數據匯入/匯出；需要一些手動解決方法來連接系統。",
-          "採用前驗證相容性。新技術透過API或標準協定與現有系統整合；工作流程中斷最小。",
-          "衡量無縫整合。<5%的工作時間花費在整合問題上；數據在系統間自動流動；整合成功率>90%。",
-          "完全互通生態系統。採用開放標準；即時數據同步；隨插即用整合；零整合相關延遲。"
+          "尚未考量智慧安全技術的相容性，亦未建立整合評估流程。",
+          "僅在少數情況辨識技術相容性，評估方式非正式，主要依個人經驗。",
+          "已在部分專案固定評估相容性，但評估準則、文件與整合方式仍由各單位自訂。",
+          "已建立全公司標準化的相容性評估準則，涵蓋互通性、工作流程契合度及整合需求，並於所有相關專案一致執行。",
+          "已一致執行標準化相容性評估，並定期依整合資料、稽核與回饋改善系統整合、互通性及流程契合度。"
         ]
       }
     },
@@ -650,29 +650,29 @@
           "Infrastructure preparation is structured, consistently applied, and routinely reviewed to improve reliability, scalability, and implementation readiness."
         ],
         "zh": [
-          "基礎設施不足。網路頻寬、運算能力或儲存空間不足；因基礎設施限制導致頻繁的績效問題。",
-          "基本基礎設施就位。滿足當前技術的最低要求；高峰使用期間偶爾出現容量限制。",
-          "評估與升級基礎設施。記錄網路、硬體與軟體基礎設施；容量規劃確保20%的成長空間。",
-          "監控基礎設施績效。網路正常運行時間>99%；回應時間<2秒；每季度追蹤可擴展性測試與使用率指標。",
-          "進階基礎設施。雲端混合架構；自動擴展；必要時邊緣運算；5G/光纖連接；>99.9%可用性。"
+          "尚未考量智慧安全技術導入所需的基礎設施完善程度，亦未建立準備流程。",
+          "僅在少數情況進行基本基礎設施準備，方式非正式，主要依個人經驗。",
+          "已在部分專案固定準備基礎設施，但需求標準、文件與執行方式仍由各單位自訂。",
+          "已建立全公司標準化的基礎設施準備框架，並於所有相關專案一致配置硬體、網路、數據平台及支援系統。",
+          "已一致執行標準化基礎設施準備流程，並定期依運作資料、稽核與回饋改善可靠性、擴充性及導入就緒程度。"
         ]
       }
     }
   },
   "levelNames": {
     "en": [
-      "Level 1: Initial",
-      "Level 2: Managed",
-      "Level 3: Defined",
-      "Level 4: Quantitatively Managed",
-      "Level 5: Optimizing"
+      "Level 1: No process",
+      "Level 2: Isolated or occasional practice",
+      "Level 3: Repeated but locally inconsistent practice",
+      "Level 4: Standardised organisational practice",
+      "Level 5: Continuously improving organisational practice"
     ],
     "zh": [
-      "等級 1：初始（臨時、不可預測）",
-      "等級 2：可管理（具基本流程與控制）",
-      "等級 3：已定義（標準化、文件化）",
-      "等級 4：量化管理（可衡量與受控）",
-      "等級 5：持續優化（持續改善）"
+      "等級 1：無流程",
+      "等級 2：局部實現",
+      "等級 3：可復現",
+      "等級 4：標準化",
+      "等級 5：持續改善"
     ]
   }
 }
