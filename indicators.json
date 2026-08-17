@@ -1,0 +1,678 @@
+{
+  "domains": [
+    {
+      "id": "strategy",
+      "name": {
+        "en": "Strategy and Commitment",
+        "zh": "策略"
+      },
+      "color": "#7030A0",
+      "indicators": [
+        "S1",
+        "S2",
+        "S3",
+        "S4",
+        "S5"
+      ]
+    },
+    {
+      "id": "operational",
+      "name": {
+        "en": "Operational Readiness",
+        "zh": "執行流程"
+      },
+      "color": "#C65D00",
+      "indicators": [
+        "O1",
+        "O2",
+        "O3",
+        "O4",
+        "O5",
+        "O6",
+        "O7"
+      ]
+    },
+    {
+      "id": "people",
+      "name": {
+        "en": "People",
+        "zh": "人力"
+      },
+      "color": "#D4A017",
+      "indicators": [
+        "P1",
+        "P2",
+        "P3",
+        "P4"
+      ]
+    },
+    {
+      "id": "technology",
+      "name": {
+        "en": "Technology Integration",
+        "zh": "技術"
+      },
+      "color": "#4472C4",
+      "indicators": [
+        "T1",
+        "T2",
+        "T3",
+        "T4",
+        "T5",
+        "T6"
+      ]
+    }
+  ],
+  "indicators": {
+    "S1": {
+      "domain": "strategy",
+      "name": {
+        "en": "Leadership Commitment",
+        "zh": "管理階層投入"
+      },
+      "description": {
+        "en": "Leadership commitment refers to the extent to which senior leaders endorse, resource, and actively promote digital technologies for construction safety monitoring and inspection.",
+        "zh": "管理階層投入指的是本組織決策者在施工過程中對安全監測與檢查智慧技術的採用所表現出的支持、推動及投資的程度。"
+      },
+      "levels": {
+        "en": [
+          "No visible leadership commitment to adopting digital technologies for safety monitoring and inspection.",
+          "Limited leadership commitment. Leaders support or fund isolated technology initiatives in a few projects.",
+          "Moderate leadership commitment. Leaders support technology adoption in some projects, but commitment is not yet embedded across the organisation.",
+          "Strong leadership commitment. Leaders consistently support, promote, and resource technology adoption across all projects.",
+          "Strong and sustained leadership commitment. Leaders consistently support, promote, and resource technology adoption across all projects and use review evidence to drive continuous improvement."
+        ],
+        "zh": [
+          "尚未建立管理階層支持智慧安全技術導入的機制；決策者未明確表達支持，亦未提供推動或投資資源。",
+          "管理階層僅在少數專案支持或資助個別技術方案，主要依個別主管或團隊臨時推動，尚未整理出可復現的流程。",
+          "管理階層已在部分專案支持技術導入並提供資源，形成可復現的流程，但各單位作法不一。",
+          "已建立全公司標準化框架，管理階層於所有相關專案一致支持、推動並配置技術導入所需資源。",
+          "管理階層持續依全公司標準化框架支持、推動並配置資源，且定期依成效資料、稽核與回饋檢討及改善技術導入。"
+        ]
+      }
+    },
+    "S2": {
+      "domain": "strategy",
+      "name": {
+        "en": "Client's Commitment",
+        "zh": "業主投入"
+      },
+      "description": {
+        "en": "Client’s commitment refers to the client's level of support, involvement and investment in the adoption and integration of digital technologies for safety monitoring and inspection.",
+        "zh": "業主投入指的是業主在採用與整合安全監控與檢查智慧技術方面的支持、參與及投資程度。"
+      },
+      "levels": {
+        "en": [
+          "No client commitment to supporting digital technology adoption for safety monitoring and inspection.",
+          "Limited client commitment. Clients support or fund technology adoption in a few projects.",
+          "Moderate client commitment. Clients support technology adoption in some projects, but expectations are not consistently embedded in project requirements.",
+          "Strong client commitment. Clients consistently support, promote, and resource technology adoption across all projects.",
+          "Strong and sustained client commitment. Clients consistently support technology adoption across all projects and review implementation to drive continuous improvement."
+        ],
+        "zh": [
+          "業主尚未承諾支持智慧安全技術導入，亦未建立參與或投資相關流程。",
+          "業主僅於少數專案支持或提供經費，作法依個別專案臨時決定，尚無可重複的要求。",
+          "業主已在部分專案支持技術導入，但相關期望與要求仍由各專案自行訂定，尚未一致納入專案需求。",
+          "業主已經支持全部專案導入智慧安全技術，並於所有相關專案提供推動所需資源。",
+          "業主持續於所有相關專案支持技術導入，並定期依執行資料、稽核與回饋檢討及改善導入要求與支持方式。"
+        ]
+      }
+    },
+    "S3": {
+      "domain": "strategy",
+      "name": {
+        "en": "Technology Investment Policy",
+        "zh": "技術投資規範與資源配置方針"
+      },
+      "description": {
+        "en": "Technology investment policy refers to assessing whether the organization has formal, strategic policies and decision-making procedures for approving, funding, and managing investments in digital safety technologies. This includes risk assessment, regulatory compliance, and long-term planning frameworks that guide responsible and consistent investment behavior.",
+        "zh": "技術投資規範與資源配置方針指的是投資技術之審批流程、資金分配標準、安全法規的遵循、技術風險評估以及長期技術使用承諾。該指標評估組織是否制定正式政策來管理安全監測與檢查技術的投資，以及這些政策的明確性與完整性。"
+      },
+      "levels": {
+        "en": [
+          "No policy supports investment in digital technologies for safety monitoring and inspection.",
+          "Limited policy support. Investment decisions are made case by case through unstructured decision-making processes.",
+          "A policy exists, but investment decision-making remains unstructured and inconsistently applied.",
+          "A policy exists and investment decision-making is structured, documented, and consistently applied.",
+          "A policy exists and investment decision-making is structured, documented, consistently applied, and routinely refined to improve investment quality."
+        ],
+        "zh": [
+          "尚未建立支持智慧安全技術投資的政策或審批流程，投資決策完全臨時應變。",
+          "僅在少數專案個案處理技術投資，決策缺乏結構，主要依個別人員判斷。",
+          "已在部分專案制定技術投資政策，但決策流程仍由各單位自行訂定，文件與執行方式不一致。",
+          "已建立全公司標準化的技術投資政策與決策流程，並於全部相關專案一致執行。",
+          "已依全公司標準化框架一致執行投資決策，並定期依投資成效、稽核與回饋修訂政策及流程，以提升投資品質。"
+        ]
+      }
+    },
+    "S4": {
+      "domain": "strategy",
+      "name": {
+        "en": "Education and Training Program",
+        "zh": "教育與培訓計畫"
+      },
+      "description": {
+        "en": "Education and training programs refers to structured programs that train employees on how to use digital safety technologies. These programs aim to build the necessary skills for implementing, operating, and improving safety monitoring and inspection systems on construction sites.",
+        "zh": "教育和培訓計劃涵蓋智慧安全技術使用的課程。這些項目為員工提供實施、操作和優化安全監控和檢查技術所需的技能。"
+      },
+      "levels": {
+        "en": [
+          "No education or training programme supports digital technology implementation for safety monitoring and inspection.",
+          "Basic education and training are provided in limited situations, but there is no structured programme.",
+          "Education and training are commonly provided, but programme design and delivery remain unstructured.",
+          "A structured education and training programme is provided consistently across relevant roles and projects.",
+          "A structured education and training programme is provided consistently and routinely refined using feedback and performance evidence."
+        ],
+        "zh": [
+          "尚未建立支持智慧安全技術導入的教育或培訓計畫，所需訓練完全臨時安排。",
+          "僅在少數情況提供基礎教育與培訓，主要依個人或專案臨時需求安排，尚無結構化計畫。",
+          "已在部分專案普遍提供教育與培訓，形成可重複做法，但課程設計、文件與執行方式尚未統一。",
+          "已建立全公司標準化的教育與培訓計畫，並針對所有相關職務與專案一致實施。",
+          "已一致實施教育與培訓計畫，並定期依學習成效、績效資料與參與者回饋更新課程及執行方式。"
+        ]
+      }
+    },
+    "S5": {
+      "domain": "strategy",
+      "name": {
+        "en": "Digital Safety Technology Goals Alignment",
+        "zh": "技術採用目的"
+      },
+      "description": {
+        "en": "Digital safety technology goals alignment refer to how well an organization's goals for adopting digital safety technologies align with its overall safety management objectives. It ensures that the use of technology directly supports and enhances safety outcomes, rather than operating separately or without clear direction.",
+        "zh": "技術採用目的指的是組織在施工安全檢查和監控過程中使用技術而設定的目的。組織在採用智慧技術時必須有明確的目標和預期結果。該指標評估技術採用目標與安全管理目標之間的合理性 、可用性及適配程度。"
+      },
+      "levels": {
+        "en": [
+          "No explicit technology adoption goals are linked to safety management objectives.",
+          "Basic recognition that technology goals should align with safety objectives, but alignment processes are informal and limited.",
+          "Technology goals are linked to safety objectives through unstructured planning and review processes.",
+          "Technology goals are linked to safety objectives through structured planning and review processes.",
+          "Technology goals are linked to safety objectives through structured planning and review processes, which are routinely refined to improve safety outcomes."
+        ],
+        "zh": [
+          "尚未設定與安全管理目標相連結的明確技術導入目的，亦無相關規劃流程。",
+          "已初步認知技術目標應與安全目標一致，但僅於少數專案透過非標準化方式進行對齊。",
+          "已在部分專案將技術導入目的連結安全目標，但規劃與檢討方式由各單位自訂，尚未形成全公司標準化框架。",
+          "已建立全公司標準化的規劃與檢討流程，於所有相關專案一致將技術導入目的連結安全管理目標。",
+          "已依標準化流程進行目標對齊，並定期依安全績效、稽核與回饋調整技術導入目的及規劃方式。"
+        ]
+      }
+    },
+    "O1": {
+      "domain": "operational",
+      "name": {
+        "en": "Communication Method",
+        "zh": "溝通方法"
+      },
+      "description": {
+        "en": "Communication methods refer to how information related to digital safety technologies, such as technical details, terminology, and requirements, is clearly and effectively communicated to workers, stakeholders, and other relevant parties involved in construction safety monitoring and inspection.",
+        "zh": "溝通方式指的是用以傳遞資訊給現場人員、利害關係人及其他相關單位的標準化文件與流程，內容包括術語、技術規格及技術需求等。"
+      },
+      "levels": {
+        "en": [
+          "No defined communication methods support digital technology implementation for safety monitoring and inspection.",
+          "Basic communication occurs in limited situations, but methods are informal and inconsistently applied.",
+          "Communication about digital safety technologies is common, but methods are not structured or standardised.",
+          "Communication methods are structured, standardised, and consistently used by relevant stakeholders. ",
+          "Structured communication methods are consistently used and routinely reviewed to improve clarity, uptake, and safety outcomes."
+        ],
+        "zh": [
+          "尚未建立支援智慧安全技術導入的技術資訊溝通方法或流程。",
+          "僅在少數情況進行基本技術資訊溝通，方式非正式且依個人或團隊推動，執行不一致。",
+          "技術資訊已在部分專案進行傳遞，但術語、文件及傳遞方式仍由各單位自行訂定。",
+          "已建立全公司標準化的技術資訊傳遞方法，相關利害關係人於所有專案一致使用標準術語、文件與傳遞程序。",
+          "已一致使用標準化技術資訊傳遞方法，並定期依溝通成效、稽核與回饋改善資訊清晰度、技術採用及安全成果。"
+        ]
+      }
+    },
+    "O2": {
+      "domain": "operational",
+      "name": {
+        "en": "Roles and Responsibilities",
+        "zh": "職責與責任"
+      },
+      "description": {
+        "en": "Roles and responsibilities refer to clearly defined duties assigned to individuals or teams to support digital safety monitoring and inspection. These responsibilities may include tasks such as technology implementation, system maintenance, data analysis, and decision-making to ensure effective safety management on-site.",
+        "zh": "職責與責任指的是在負責採用、執行及管理安全監測與檢查技術的人員的角色。"
+      },
+      "levels": {
+        "en": [
+          "No roles or responsibilities are defined for digital technology implementation in safety monitoring and inspection.",
+          "Basic roles and responsibilities are assigned in limited projects, but assignment processes are informal and depend on individuals or temporary project needs.",
+          "Roles and responsibilities are commonly assigned, but assignment processes remain unstructured.",
+          "Roles and responsibilities are documented, communicated, and consistently assigned through structured processes.",
+          "Roles and responsibilities are documented, communicated, consistently assigned, and routinely reviewed to improve accountability and implementation."
+        ],
+        "zh": [
+          "尚未界定智慧安全技術導入的職責與責任。",
+          "僅在少數專案指派基本職責與責任，主要依個人或臨時專案需求決定。",
+          "已在部分專案固定指派職責與責任，但指派方式及文件由各單位自訂。",
+          "已建立全公司標準化流程，明確記錄與傳達各職責與責任，並於所有相關專案一致指派。",
+          "已依標準化流程一致指派職責與責任，並定期依績效資料、稽核與回饋檢討，以提升問責與導入成效。"
+        ]
+      }
+    },
+    "O3": {
+      "domain": "operational",
+      "name": {
+        "en": "Technology Supplier Management",
+        "zh": "系統廠商與設備供應商管理"
+      },
+      "description": {
+        "en": "Technology supplier management refers to how an organization selects, manages, and oversees its technology suppliers. It includes processes for supplier selection, contract management, performance evaluation, compliance monitoring, and strategies for long-term collaboration. These practices help ensure that digital safety technology providers meet quality, reliability, and safety standards.",
+        "zh": "系統廠商與設備供應商管理指的是選擇系統廠商與設備供應商的方法、合約管理、績效評估、合規監控及長期合作。"
+      },
+      "levels": {
+        "en": [
+          "No technology supplier management process supports digital technology implementation for safety monitoring and inspection.",
+          "Basic supplier management is conducted in limited cases, but processes are informal and depend mainly on individual decisions.",
+          "Supplier management is commonly conducted, but supplier selection, contracting, performance review, and compliance monitoring remain unstructured.",
+          "Supplier selection, contract management, performance review, and compliance monitoring are structured and consistently applied.",
+          "Structured supplier management processes are consistently applied and routinely reviewed to strengthen reliability, quality, compliance, and long-term collaboration."
+        ],
+        "zh": [
+          "尚未建立支援智慧安全技術導入的系統廠商與設備供應商管理流程。",
+          "僅在少數情況進行基本廠商管理，流程非正式，主要依個別人員判斷。",
+          "已在部分專案固定進行廠商管理，但選商、合約、績效評估與合規監控仍由各單位自訂。",
+          "已建立全公司標準化的廠商管理框架，並於所有相關專案一致執行選商、合約、績效與合規管理。",
+          "已一致執行標準化廠商管理流程，並定期依績效、稽核與回饋改善可靠性、品質、合規及長期合作。"
+        ]
+      }
+    },
+    "O4": {
+      "domain": "operational",
+      "name": {
+        "en": "Operation Control",
+        "zh": "執行控制"
+      },
+      "description": {
+        "en": "Operational controls refer to the systems, processes, and guidelines in place to ensure that safety monitoring and inspection teams can use digital technologies effectively, reliably, and without interruption throughout their implementation on-site.",
+        "zh": "執行控制指的是確保安全監測與檢查技術在執行期間能夠有效、可靠且持續運作的框架、流程與規範。"
+      },
+      "levels": {
+        "en": [
+          "No operational controls support digital technology implementation for safety monitoring and inspection.",
+          "Basic operational controls are applied in limited projects, but processes are informal and rely mainly on individual experience.",
+          "Operational controls are commonly applied, but control processes remain unstructured.",
+          "Operational controls are documented, structured, and consistently applied across relevant projects.",
+          "Operational controls are documented, structured, consistently applied, and routinely improved using operational evidence."
+        ],
+        "zh": [
+          "尚未建立確保智慧安全技術有效、可靠且持續運作的執行控制流程。",
+          "僅在少數專案採取基本控制，主要依個人經驗臨時處理。",
+          "執行控制已在部分專案成為可復現的流程，但控制程序與文件由各單位自訂。",
+          "已建立全公司標準化的執行控制框架，並於所有相關專案一致執行明確的控制程序。",
+          "已一致執行標準化控制程序，並定期依運作資料、稽核與回饋檢討及改善技術運作成效。"
+        ]
+      }
+    },
+    "O5": {
+      "domain": "operational",
+      "name": {
+        "en": "Performance Evaluation",
+        "zh": "績效評估"
+      },
+      "description": {
+        "en": "Performance evaluation refers to the process of assessing whether the adoption of digital safety technologies has met the intended goals related to safety monitoring and inspection.",
+        "zh": "績效評估指的是衡量技術採用是否在安全監測與檢查方面達成原先設定之目標。"
+      },
+      "levels": {
+        "en": [
+          "No performance evaluation assesses whether digital safety technology adoption has met its intended objectives.",
+          "Basic performance evaluation occurs in limited cases, but evaluation processes are informal and depend mainly on individual judgement.",
+          "Performance is commonly assessed, but evaluation processes remain unstructured.",
+          "Performance evaluation is structured, with defined criteria, metrics, and review points.",
+          "Performance evaluation is structured, with defined criteria, metrics, and review points; findings are routinely used to improve implementation and safety outcomes."
+        ],
+        "zh": [
+          "尚未建立績效評估流程，無法判定智慧安全技術導入是否達成預定目標。",
+          "僅在少數專案進行基本評估，流程非正式，主要依個別人員判斷。",
+          "已在部分專案固定評估技術績效，但評估準則、指標與文件由各單位自訂。",
+          "已建立全公司標準化的績效評估框架，訂有明確準則、指標及檢討時點，並於所有相關專案一致執行。",
+          "已一致執行標準化績效評估，並定期運用評估資料、稽核與回饋改善技術導入及安全成果。"
+        ]
+      }
+    },
+    "O6": {
+      "domain": "operational",
+      "name": {
+        "en": "Data Management",
+        "zh": "數據管理"
+      },
+      "description": {
+        "en": "Data management refers to the policies and procedures for handling data collected by digital safety technologies. It includes how data is collected, stored, analyzed, protected, and used to support safety decision-making and ensure regulatory compliance.",
+        "zh": "數據管理指的是智慧技術蒐集數據相關的管理作為，包括數據的蒐集、儲存、分析、保護及應用，以提升決策品質與合規性。"
+      },
+      "levels": {
+        "en": [
+          "No data management process supports the use of digital safety technologies in safety monitoring and inspection.",
+          "Data from digital safety technologies are handled in limited cases, but processes are informal and depend mainly on individual practices.",
+          "Data from digital safety technologies are commonly handled, but data management processes remain unstructured.",
+          "Data management processes are documented, structured, and consistently applied.",
+          "Data management processes are documented, structured, consistently applied, and routinely reviewed to improve data quality, security, and decision-making."
+        ],
+        "zh": [
+          "尚未建立智慧安全技術的數據管理流程，資料蒐集、儲存、分析、保護或應用有所缺漏。",
+          "僅在少數專案處理技術數據，方式非正式，主要依個人作法執行。",
+          "技術數據已在部分專案固定管理，但流程、文件及權責仍由各單位自訂。",
+          "已建立全公司標準化的數據管理框架，並於所有相關專案一致執行蒐集、儲存、分析、保護及應用程序。",
+          "已一致執行標準化數據管理流程，並定期依品質指標、稽核與回饋改善數據品質、安全及決策效能。"
+        ]
+      }
+    },
+    "O7": {
+      "domain": "operational",
+      "name": {
+        "en": "Knowledge Sharing",
+        "zh": "知識管理"
+      },
+      "description": {
+        "en": "Knowledge sharing refers to assessing whether experiences, challenges, lessons learned, and best practices from the use of digital safety technologies are systematically documented and shared across teams. This promotes continuous learning, avoids repeated mistakes, and supports better adoption across projects.",
+        "zh": "知識管理指的是系統化地蒐集、擷取、記錄、保存、與分享有關技術輔助安全監測與檢查系統的知識、見解、應用案例等。"
+      },
+      "levels": {
+        "en": [
+          "No knowledge sharing process supports digital technology implementation for safety monitoring and inspection.",
+          "Experience and lessons learned are shared informally in limited cases, but knowledge sharing depends mainly on individual effort.",
+          "Experience, lessons learned, and good practice are commonly shared, but knowledge sharing processes remain unstructured.",
+          "Knowledge sharing processes are documented, structured, and consistently applied across projects and teams.",
+          "Knowledge sharing processes are documented, structured, consistently applied, and routinely improved so that lessons inform future deployments, training, and decision-making."
+        ],
+        "zh": [
+          "尚未建立支援智慧安全技術導入的知識管理與分享流程，經驗及案例未被系統化保存。",
+          "僅在少數專案非正式分享經驗與教訓，主要依個人主動，無可重複做法。",
+          "經驗、教訓與良好實務已在部分專案固定分享，但記錄與分享方式仍由各單位自訂。",
+          "已建立全公司標準化的知識管理流程，並於各專案與團隊一致蒐集、記錄、保存及分享知識。",
+          "已一致執行標準化知識管理流程，並定期依使用成效、稽核與回饋改善，使經驗持續支援後續導入、培訓及決策。"
+        ]
+      }
+    },
+    "P1": {
+      "domain": "people",
+      "name": {
+        "en": "Employee Willingness",
+        "zh": "參與者意願"
+      },
+      "description": {
+        "en": "Employee willingness refers to how open and willing employees are to participate in and adopt digital technologies used for safety monitoring and inspection on construction sites.",
+        "zh": "參與者意願指的是工作者在採用安全監測與檢查技術方面的參與度和意願。"
+      },
+      "levels": {
+        "en": [
+          "Employees show no awareness of, acceptance of, or willingness to use digital safety technologies.",
+          "Limited employee willingness. Employees are aware of, and may participate in, technology use in a few projects.",
+          "Moderate employee willingness. Employees accept and support technology use in several projects, but participation is not consistent across the organisation.",
+          "Strong employee willingness. Employees accept, support, and participate in technology use across all relevant projects.",
+          "Strong employee willingness. Employees accept, support, and participate in technology use across all relevant projects and actively contribute to continuous improvement by sharing feedback, encouraging adoption, and identifying ways to improve technology use over time."
+        ],
+        "zh": [
+          "員工對智慧安全技術缺乏認知、接受度與使用意願，組織亦未建立促進參與的流程。",
+          "僅少數專案的員工認識並偶爾參與技術使用，主要依個人或團隊推動。",
+          "員工已在部分專案接受並支持技術使用，但各單位的參與程度與推動方式不一。",
+          "員工於所有相關專案一致接受、支持並參與技術使用。",
+          "員工持續參與技術使用，並透過回饋、倡議與改善建議，定期協助提升採用程度及使用成效。"
+        ]
+      }
+    },
+    "P2": {
+      "domain": "people",
+      "name": {
+        "en": "Current Technical Competency",
+        "zh": "安全監測與檢查技術能力"
+      },
+      "description": {
+        "en": "Current technical competency refers to measuring the current level of technical skill and hands-on experience that employees (e.g., safety officers, field staff) have in using digital safety technologies. It reflects whether the existing workforce is equipped to operate and manage these tools effectively today.",
+        "zh": "安全監測與檢查技術能力指的是相關人員（如安全衛生管理人員，現場作業主管、工地主任）在有效使用與管理安全監測與檢查技術方面的技能、知識與經驗。"
+      },
+      "levels": {
+        "en": [
+          "Employees have no technical knowledge, skills, or hands-on experience in using digital safety technologies.",
+          "Employees have limited experience with digital safety technologies and cannot use or troubleshoot the technologies independently.",
+          "Employees have sufficient skills to use digital safety technologies independently, but have limited ability to troubleshoot technical issues.",
+          "Employees have sufficient skills to use and troubleshoot digital safety technologies independently.",
+          "Employees have sufficient skills to use and troubleshoot digital safety technologies independently and actively contribute to continuous improvement by sharing lessons learned, refining practices, and updating their skills over time."
+        ],
+        "zh": [
+          "員工尚不具備使用智慧安全技術所需的知識、技能或實作經驗，無法獨立操作或處理技術問題。",
+          "員工僅具有少量使用經驗，尚無法獨立操作或排除技術問題，能力主要依個別專案累積。",
+          "員工已能獨立操作智慧安全技術，但排除技術問題的能力有限，且各單位能力標準不一。",
+          "已建立全公司能力標準與培訓要求，相關員工均能於所有專案獨立操作及排除智慧安全技術問題。",
+          "員工除能獨立操作與排除問題外，亦定期分享經驗、精進做法並更新技能，持續提升組織技術能力。"
+        ]
+      }
+    },
+    "P3": {
+      "domain": "people",
+      "name": {
+        "en": "Ongoing Learning and Skills Development",
+        "zh": "持續學習與技能發展"
+      },
+      "description": {
+        "en": "Ongoing learning and skills develop refers to evaluating whether employees actively engage in learning opportunities to improve their understanding and use of digital safety technologies. It considers their participation in training, willingness to upskill, and ability to keep pace with evolving tech.",
+        "zh": "持續學習與技能發展是指評估工作者是否積極參與各類學習機會，以提升他們對智慧安全技術的理解與應用能力。這項指標考量員工參與訓練的情況、提升技能的意願，以及跟上技術演進步伐的能力。"
+      },
+      "levels": {
+        "en": [
+          "Employees do not have access to learning opportunities that improve their understanding or use of digital safety technologies.",
+          "Basic collaboration occurs in limited situations, but it is informal and depends mainly on individual relationships.",
+          "Collaboration commonly occurs, but collaboration processes remain unstructured.",
+          "Cross-role collaboration is structured through defined communication channels, coordination processes, and support arrangements.",
+          "Cross-role collaboration is structured, consistently applied, and routinely reviewed to improve coordination, adoption, and safety outcomes."
+        ],
+        "zh": [
+          "員工無法獲得提升智慧安全技術理解或應用能力的學習機會，亦未建立持續學習流程。",
+          "僅在少數情況提供基本學習機會，主要依個人興趣或臨時專案需求安排。",
+          "已在部分專案固定提供學習機會，但持續學習內容、文件與執行方式仍由各單位自訂。",
+          "已建立全公司標準化的學習與技能提升計畫，並對所有相關職務及專案一致提供學習機會。",
+          "已一致實施學習與技能提升計畫，並定期依回饋、技術變化及績效資料更新內容與執行方式。"
+        ]
+      }
+    },
+    "P4": {
+      "domain": "people",
+      "name": {
+        "en": "Collaboration Across Roles and Teams",
+        "zh": "團隊協助性"
+      },
+      "description": {
+        "en": "Collaboration across roles and teams refers to how well individuals from different roles—such as safety officers, field workers, supervisors, and IT staff—collaborate when using or implementing digital safety technologies. It considers their ability to communicate, coordinate tasks, and support each other across functions.",
+        "zh": "團隊協助性指的是不同角色的工作者（例如安全員、現場工作人員、主管和 IT 人員）在使用或實施智慧安全技術時的協作程度，評估工作者溝通、協調任務和相互支援的能力。"
+      },
+      "levels": {
+        "en": [
+          "No cross-role or cross-team collaboration supports digital technology implementation in safety monitoring and inspection.",
+          "Basic collaboration occurs in limited situations, but it is informal and depends mainly on individual relationships.",
+          "Collaboration commonly occurs, but collaboration processes remain unstructured.",
+          "Cross-role collaboration is structured through defined communication channels, coordination processes, and support arrangements.",
+          "Cross-role collaboration is structured, consistently applied, and routinely reviewed to improve coordination, adoption, and safety outcomes."
+        ],
+        "zh": [
+          "尚未建立跨職務或跨團隊協作流程，智慧安全技術導入缺乏必要協調與相互支援。",
+          "僅在少數情況進行基本協作，主要依個人關係臨時溝通與支援。",
+          "跨職務協作已在部分專案成為可復現的流程，但溝通、協調與支援方式仍由各團隊自訂。",
+          "已建立全公司標準化的協作框架，透過明確溝通管道、協調流程與支援安排，於所有相關專案一致執行。",
+          "已一致執行標準化協作流程，並定期依協作成效、稽核與回饋改善協調、技術採用及安全成果。"
+        ]
+      }
+    },
+    "T1": {
+      "domain": "technology",
+      "name": {
+        "en": "Technology Budget",
+        "zh": "技術預算"
+      },
+      "description": {
+        "en": "Technology Budget refers to evaluating the organization's ability to plan, allocate, and manage financial resources for the entire lifecycle of digital safety technologies. This includes upfront costs, ongoing maintenance, operations, depreciation, and potential reuse, ensuring that the technology is financially sustainable in practice.",
+        "zh": "技術預算是組織在技術全生命周期內投資的資金,包括投資、維護、執行及折舊，並考量技術的轉移與再利用。"
+      },
+      "levels": {
+        "en": [
+          "Budget planning for digital safety technologies is not conducted. No dedicated budget is allocated for acquisition, implementation, operation, maintenance, upgrades, or reuse.",
+          "Budget planning for digital safety technologies is conducted in a few projects, but remains ad hoc, project-specific, and dependent on individual judgement.",
+          "Budget planning for digital safety technologies is conducted across several projects, but remains locally defined and inconsistently applied.",
+          "Budget planning for digital safety technologies is governed by an organisation-wide approach and consistently applied across relevant projects.",
+          "Budget planning for digital safety technologies is governed by an organisation-wide approach, consistently applied across relevant projects, and routinely reviewed to improve affordability, sustainability, and return on investment."
+        ],
+        "zh": [
+          "尚未建立智慧安全技術預算規劃，取得、導入、運作、維護、升級或再利用均無專用預算。",
+          "僅在少數專案進行預算規劃，作法臨時且專案化，主要依個別人員判斷。",
+          "已在部分專案固定進行預算規劃，但編列標準與文件仍由各單位自訂。",
+          "已建立全公司標準化的預算規劃框架，並於所有相關專案一致編列與管理技術全生命週期預算。",
+          "已一致執行標準化預算規劃，並定期依成本效益、稽核與回饋改善可負擔性、永續性及投資報酬。"
+        ]
+      }
+    },
+    "T2": {
+      "domain": "technology",
+      "name": {
+        "en": "Technical Operation Complexity",
+        "zh": "技術執行複雜度"
+      },
+      "description": {
+        "en": "The operational complexity refers to evaluating the organization's readiness to manage and operate digital safety technologies on-site. It considers whether personnel have the skills, training, and support systems needed to use hardware and software effectively, especially when the technology has complex interfaces or processes.",
+        "zh": "技術執行複雜度指的是組織在學習與使用技術之硬體或軟體介面的便利性。"
+      },
+      "levels": {
+        "en": [
+          "No consideration is given to the operational complexity of digital safety technologies.",
+          "Operational complexity is recognised in limited cases, but assessment processes are informal and depend mainly on individual experience.",
+          "Operational complexity is commonly assessed, but assessment processes remain unstructured.",
+          "Operational complexity is assessed through structured criteria before and during implementation.",
+          "Structured complexity assessments are routinely reviewed and used to simplify use, improve support, and reduce operational burden."
+        ],
+        "zh": [
+          "尚未考量智慧安全技術的執行複雜度，亦未建立評估流程。",
+          "僅在少數情況辨識執行複雜度，評估方式非正式，主要依個人經驗。",
+          "已在部分專案固定評估執行複雜度，但評估準則與文件仍由各單位自訂。",
+          "已建立全公司標準化的複雜度評估準則，並於所有相關專案在導入前及導入期間一致執行。",
+          "已一致執行標準化評估，並定期依使用資料、稽核與回饋簡化操作、改善支援及降低作業負擔。"
+        ]
+      }
+    },
+    "T3": {
+      "domain": "technology",
+      "name": {
+        "en": "Technology Reliability",
+        "zh": "技術可靠性"
+      },
+      "description": {
+        "en": "Technical reliability refers to assessing the organization's ability to select, implement, and maintain technologies that consistently provide accurate, stable, and timely data for safety monitoring and decision-making. It reflects how well the organization can manage reliability risks during real-world use.",
+        "zh": "評估組織在選擇、導入及維護技術的能力，這些技術需能持續穩定地提供準確、即時的資料，以協助安全衛生管理人員進行決策。"
+      },
+      "levels": {
+        "en": [
+          "No consideration is given to technology reliability when adopting digital safety technologies.",
+          "Technology reliability is recognised in limited cases, but assessment processes are informal and depend mainly on individual experience.",
+          "Technology reliability is commonly assessed, but assessment processes remain unstructured.",
+          "Technology reliability is assessed through structured criteria and consistently monitored during implementation.",
+          "Structured reliability assessments are consistently applied and routinely reviewed to improve accuracy, stability, timeliness, and decision usefulness."
+        ],
+        "zh": [
+          "尚未考量智慧安全技術的可靠性，亦未建立評估或監測流程。",
+          "僅在少數情況辨識技術可靠性，評估方式非正式，主要依個人經驗。",
+          "已在部分專案固定評估可靠性，但評估準則、文件與監測方式仍由各單位自訂。",
+          "已建立全公司標準化的可靠性評估準則，並於所有相關專案一致評估及持續監測技術表現。",
+          "已一致執行標準化可靠性評估，並定期依監測資料、稽核與回饋改善準確性、穩定性、即時性及決策效用。"
+        ]
+      }
+    },
+    "T4": {
+      "domain": "technology",
+      "name": {
+        "en": "Technology Resilience",
+        "zh": "工地環境適應性"
+      },
+      "description": {
+        "en": "Technical resilience refers to measuring how prepared the organization is to deploy technologies that can withstand the harsh and variable conditions of construction sites. It evaluates whether the organization considers durability, long-term use, and environmental resilience when adopting digital safety tools.",
+        "zh": "工地環境適應性指的是組織考量技術的硬體與軟體在施工環境中維持穩定執行的能力，確保其能夠在嚴苛且多變的條件下長期使用。"
+      },
+      "levels": {
+        "en": [
+          "No consideration is given to technology resilience when adopting digital safety technologies.",
+          "Technology resilience is recognised in limited cases, but assessment processes are informal and depend mainly on individual experience.",
+          "Technology resilience is commonly assessed, but assessment processes remain unstructured.",
+          "Technology resilience is assessed through structured criteria covering durability, environmental conditions, maintenance, and long-term use.",
+          "Structured resilience assessments are consistently applied and routinely reviewed to improve durability, maintainability, and suitability for site conditions."
+        ],
+        "zh": [
+          "尚未考量智慧安全技術的工地環境適應性，亦未建立適用於施工環境的評估流程。",
+          "僅在少數情況辨識技術工地環境適應性，評估方式非正式，主要依個人經驗。",
+          "已在部分專案固定評估工地環境適應性，但評估準則、文件與維護方式仍由各單位自訂。",
+          "已建立全公司標準化的工地環境適應性評估準則，涵蓋硬軟體耐久度、環境條件、維護及長期使用，並一致執行。",
+          "已一致執行標準化工地環境適應性評估，並定期依運作資料、稽核與回饋改善耐久度、可維護性及工地適用性。"
+        ]
+      }
+    },
+    "T5": {
+      "domain": "technology",
+      "name": {
+        "en": "Technology Compatibility",
+        "zh": "技術相容性"
+      },
+      "description": {
+        "en": "Technology compatibility refers to assessing the organization's ability to integrate new digital safety technologies with its existing systems, platforms, and workflows. It reflects how well-prepared the organization is to adopt new tools without disrupting current operations or creating inefficiencies.",
+        "zh": "技術相容性是指評估組織將新技術整合至現有的平台、系統或基礎設施的能力，確保新技術在導入時不影響既有流程，並能高效協同運作。"
+      },
+      "levels": {
+        "en": [
+          "No consideration is given to technology compatibility when adopting digital safety technologies.",
+          "Technology compatibility is recognised in limited cases, but assessment processes are informal and depend mainly on individual experience.",
+          "Technology compatibility is commonly assessed, but assessment processes remain unstructured.",
+          "Technology compatibility is assessed through structured criteria covering interoperability, workflow fit, and integration requirements.",
+          "Structured compatibility assessments are consistently applied and routinely reviewed to improve integration, interoperability, and workflow fit."
+        ],
+        "zh": [
+          "尚未考量智慧安全技術的相容性，亦未建立整合評估流程。",
+          "僅在少數情況辨識技術相容性，評估方式非正式，主要依個人經驗。",
+          "已在部分專案固定評估相容性，但評估準則、文件與整合方式仍由各單位自訂。",
+          "已建立全公司標準化的相容性評估準則，涵蓋互通性、工作流程契合度及整合需求，並於所有相關專案一致執行。",
+          "已一致執行標準化相容性評估，並定期依整合資料、稽核與回饋改善系統整合、互通性及流程契合度。"
+        ]
+      }
+    },
+    "T6": {
+      "domain": "technology",
+      "name": {
+        "en": "Infrastructure",
+        "zh": "基礎設施"
+      },
+      "description": {
+        "en": "Infrastructure refers to assesses whether the organization's existing infrastructure, such as hardware, network connectivity, data platforms, and IT support systems, is capable of supporting the adoption, integration, and ongoing operation of digital safety technologies. It helps determine if upgrades or adjustments are needed to ensure new technologies can function effectively within the current technical environment.",
+        "zh": "基礎設施指的是組織現有的硬體設備、網絡環境、數據平台及支援系統，能否支援新技術的導入與執行。"
+      },
+      "levels": {
+        "en": [
+          "No consideration is given to infrastructure readiness for digital safety technology implementation.",
+          "Basic efforts are made to prepare infrastructure in limited cases, but preparation processes are informal and depend mainly on individual experience.",
+          "Infrastructure is commonly prepared, but preparation processes remain unstructured.",
+          "Infrastructure preparation is structured and consistently applied across relevant projects.",
+          "Infrastructure preparation is structured, consistently applied, and routinely reviewed to improve reliability, scalability, and implementation readiness."
+        ],
+        "zh": [
+          "尚未考量智慧安全技術導入所需的基礎設施完善程度，亦未建立準備流程。",
+          "僅在少數情況進行基本基礎設施準備，方式非正式，主要依個人經驗。",
+          "已在部分專案固定準備基礎設施，但需求標準、文件與執行方式仍由各單位自訂。",
+          "已建立全公司標準化的基礎設施準備框架，並於所有相關專案一致配置硬體、網路、數據平台及支援系統。",
+          "已一致執行標準化基礎設施準備流程，並定期依運作資料、稽核與回饋改善可靠性、擴充性及導入就緒程度。"
+        ]
+      }
+    }
+  },
+  "levelNames": {
+    "en": [
+      "Level 1: No process",
+      "Level 2: Isolated or occasional practice",
+      "Level 3: Repeated but locally inconsistent practice",
+      "Level 4: Standardised organisational practice",
+      "Level 5: Continuously improving organisational practice"
+    ],
+    "zh": [
+      "等級 1：無流程",
+      "等級 2：局部實現",
+      "等級 3：可復現",
+      "等級 4：標準化",
+      "等級 5：持續改善"
+    ]
+  }
+}
