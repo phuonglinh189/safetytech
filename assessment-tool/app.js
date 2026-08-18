@@ -416,7 +416,11 @@ function renderSummaryChart(domainScores) {
         { label: t("target_label"), data: DATA.domains.map((d) => domainScores[d.id].target), borderColor: "#7030A0", backgroundColor: "rgba(112,48,160,0.15)" }
       ]
     },
-    options: { scales: { r: { min: 0, max: 5, ticks: { stepSize: 1 } } }, plugins: { legend: { position: "bottom" } } }
+    options: {
+      layout: { padding: { top: 10, right: 50, bottom: 10, left: 50 } },
+      scales: { r: { min: 0, max: 5, ticks: { stepSize: 1 } } },
+      plugins: { legend: { position: "bottom" } }
+    }
   });
 }
 
@@ -464,16 +468,10 @@ async function exportPdf() {
     const doc = new jsPDF({ unit: "pt", format: "a4" });
     if (LANG === "zh") await applyPdfFont(doc);
 
-    const margin = 40;
-    const pageHeight = doc.internal.pageSize.getHeight();
-    const contentWidth = doc.internal.pageSize.getWidth() - margin * 2;
+    const margin = 36;
+    const pageWidth = doc.internal.pageSize.getWidth();
+    const contentWidth = pageWidth - margin * 2;
     let y = margin;
-    const ensureRoom = (height) => {
-      if (y + height > pageHeight - margin) {
-        doc.addPage();
-        y = margin;
-      }
-    };
 
     doc.setFontSize(16);
     doc.text(t("pdf_report_title"), margin, y); y += 22;
@@ -483,35 +481,34 @@ async function exportPdf() {
     doc.text(t("pdf_date") + ": " + new Date().toLocaleString(dateLocale), margin, y); y += 24;
 
     const summaryImg = summaryChart.toBase64Image();
-    doc.addImage(summaryImg, "PNG", margin, y, 260, 260);
-    y += 280;
-
-    DATA.domains.forEach((domain) => {
-      doc.setFontSize(11);
-      const domainLines = doc.splitTextToSize(domain.name[LANG] || domain.name.en, contentWidth);
-      ensureRoom(domainLines.length * 14 + 8);
-      doc.text(domainLines, margin, y);
-      y += domainLines.length * 14;
-
-      doc.setFontSize(9);
-      domain.indicators.forEach((code) => {
-        const ind = DATA.indicators[code];
-        const line = code + " " + (ind.name[LANG] || ind.name.en) + " - " + t("pdf_current") + ": " + (currentLevels[code] || "-") + "  " + t("pdf_target") + ": " + (targetLevels[code] || "-");
-        const lines = doc.splitTextToSize(line, contentWidth);
-        const lineHeight = 12;
-        ensureRoom(lines.length * lineHeight);
-        doc.text(lines, margin, y);
-        y += lines.length * lineHeight;
-      });
-      y += 8;
-    });
+    const summarySize = Math.min(390, contentWidth);
+    const summaryX = (pageWidth - summarySize) / 2;
+    doc.addImage(summaryImg, "PNG", summaryX, y + 10, summarySize, summarySize);
 
     doc.addPage();
-    y = margin;
-    Object.values(domainCharts).forEach((chart) => {
-      ensureRoom(240);
-      doc.addImage(chart.toBase64Image(), "PNG", margin, y, 240, 240);
-      y += 260;
+    const columnGap = 18;
+    const rowGap = 24;
+    const titleHeight = 18;
+    const cellWidth = (contentWidth - columnGap) / 2;
+    const chartSize = Math.min(240, cellWidth - 8);
+    const rowHeight = titleHeight + chartSize + rowGap;
+
+    Object.entries(domainCharts).forEach(([domainId, chart], index) => {
+      const column = index % 2;
+      const row = Math.floor(index / 2);
+      const cellX = margin + column * (cellWidth + columnGap);
+      const cellY = margin + row * rowHeight;
+      const chartX = cellX + (cellWidth - chartSize) / 2;
+      const domain = DATA.domains.find((item) => item.id === domainId);
+
+      if (domain) {
+        doc.setFontSize(11);
+        doc.text(domain.name[LANG] || domain.name.en, cellX + cellWidth / 2, cellY + 11, {
+          align: "center",
+          maxWidth: cellWidth - 8
+        });
+      }
+      doc.addImage(chart.toBase64Image(), "PNG", chartX, cellY + titleHeight, chartSize, chartSize);
     });
 
     doc.save("maturity_assessment_" + EXPERT_ID + ".pdf");
