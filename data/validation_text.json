@@ -13,8 +13,8 @@
     "zh": "請完成專家背景資料並評估成熟度模型工具。所有背景問題及評分題皆為必填，其他建議為選填。"
   },
   "expert_background_heading": {
-    "en": "Expert Background Record",
-    "zh": "專家背景紀錄"
+    "en": "Expert Background",
+    "zh": "專家背景"
   },
   "validation_heading": {
     "en": "Maturity Assessment Tool Validation",
@@ -89,7 +89,7 @@
       "type": "years",
       "label": {
         "en": "Q5. How many years of experience do you have with smart technology in construction safety monitoring and inspection?",
-        "zh": "請問您在營建領域之智慧技術應用方面有多少年的經驗？"
+        "zh": "請問您在營建業之智慧安全技術應用方面有多少年的經驗？"
       }
     }
   ],
@@ -123,7 +123,7 @@
         },
         {
           "id": "V04",
-          "aspect": {"en": "Sub-indicators’ boundary", "zh": "子指標的範圍"},
+          "aspect": {"en": "Sub-indicators’ boundary", "zh": "子指標區別"},
           "criteria": {"en": "Sub-indicators are clearly distinct", "zh": "子指標之間有明確的區別"}
         }
       ]
@@ -153,7 +153,7 @@
     {
       "id": "understanding",
       "color": "#ED7D31",
-      "heading": {"en": "Ease of Understanding", "zh": "易解性"},
+      "heading": {"en": "Ease of Understanding", "zh": "易讀性"},
       "questions": [
         {
           "id": "V08",
@@ -191,7 +191,7 @@
       "questions": [
         {
           "id": "V12",
-          "aspect": {"en": "Usefulness of the tool", "zh": "工具的實用性"},
+          "aspect": {"en": "Usefulness of the tool", "zh": "工具的有用性"},
           "criteria": {"en": "The tool is useful for assessing safety monitoring and inspection technology adoption readiness of your organization", "zh": "工具有助於評估組織在安全監測與檢查技術方面的採用就緒度"}
         },
         {
@@ -221,6 +221,6 @@
     "thank_you_message": {"en": "Your responses have been saved successfully. The Validation form is now read-only.", "zh": "您的回答已成功儲存，驗證表單目前為唯讀狀態。"},
     "back_to_results": {"en": "Back to My Assessment Results", "zh": "返回我的評估結果"},
     "expert_id": {"en": "Your Expert ID", "zh": "您的專家編號"},
-    "resume_note": {"en": "Your Validation progress is saved to this Expert ID on Supabase.", "zh": "您的驗證進度會以此專家編號儲存至 Supabase。"}
+    "resume_note": {"en": "Your Validation progress is saved to your Expert ID.", "zh": "您的驗證進度會以在您的專家編號儲存。"}
   }
 }
