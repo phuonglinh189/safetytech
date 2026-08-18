@@ -110,5 +110,7 @@
   "pdf_domain": {"en": "Domain", "zh": "領域"},
   "pdf_indicator": {"en": "Indicator", "zh": "指標"},
   "pdf_current": {"en": "Current", "zh": "現況"},
-  "pdf_target": {"en": "Target", "zh": "目標"}
+  "pdf_target": {"en": "Target", "zh": "目標"},
+  "pdf_preparing": {"en": "Preparing PDF…", "zh": "正在準備 PDF…"},
+  "pdf_export_error": {"en": "The PDF could not be created. Please try again.", "zh": "無法建立 PDF，請再試一次。"}
 }

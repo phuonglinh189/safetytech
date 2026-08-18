@@ -8,6 +8,9 @@ let hasSubmitted = false;
 let validationSubmitted = false;
 let saveErrorShown = false;
 let domainCharts = {}, summaryChart = null;
+let pdfFontBase64Promise = null;
+
+const PDF_FONT_FILE = "NotoSansTC-PDF.ttf";
 
 const t = (key, vars) => WorkshopI18n.tFormat(UI, key, LANG, vars || {});
 
@@ -417,44 +420,108 @@ function renderSummaryChart(domainScores) {
   });
 }
 
-function exportPdf() {
-  const { jsPDF } = window.jspdf;
-  const doc = new jsPDF({ unit: "pt", format: "a4" });
-  const margin = 40;
-  let y = margin;
-  doc.setFontSize(16);
-  doc.text(t("pdf_report_title"), margin, y); y += 22;
-  doc.setFontSize(11);
-  doc.text(t("pdf_expert_id") + ": " + EXPERT_ID, margin, y); y += 16;
-  doc.text(t("pdf_date") + ": " + new Date().toLocaleString(), margin, y); y += 24;
+function arrayBufferToBase64(buffer) {
+  const bytes = new Uint8Array(buffer);
+  const chunkSize = 0x8000;
+  let binary = "";
+  for (let offset = 0; offset < bytes.length; offset += chunkSize) {
+    binary += String.fromCharCode(...bytes.subarray(offset, offset + chunkSize));
+  }
+  return btoa(binary);
+}
 
-  const summaryImg = summaryChart.toBase64Image();
-  doc.addImage(summaryImg, "PNG", margin, y, 260, 260);
-  y += 280;
+async function loadPdfFontBase64() {
+  if (!pdfFontBase64Promise) {
+    pdfFontBase64Promise = fetch("../shared/assets/" + PDF_FONT_FILE)
+      .then((response) => {
+        if (!response.ok) throw new Error("PDF font request failed: " + response.status);
+        return response.arrayBuffer();
+      })
+      .then(arrayBufferToBase64)
+      .catch((error) => {
+        pdfFontBase64Promise = null;
+        throw error;
+      });
+  }
+  return pdfFontBase64Promise;
+}
 
-  doc.setFontSize(9);
-  DATA.domains.forEach((domain) => {
-    if (y > 720) { doc.addPage(); y = margin; }
+async function applyPdfFont(doc) {
+  const fontBase64 = await loadPdfFontBase64();
+  doc.addFileToVFS(PDF_FONT_FILE, fontBase64);
+  doc.addFont(PDF_FONT_FILE, "NotoSansTC", "normal");
+  doc.setFont("NotoSansTC", "normal");
+}
+
+async function exportPdf() {
+  const button = document.getElementById("downloadPdfBtn");
+  const originalLabel = button.textContent;
+  button.disabled = true;
+  button.textContent = t("pdf_preparing");
+
+  try {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF({ unit: "pt", format: "a4" });
+    if (LANG === "zh") await applyPdfFont(doc);
+
+    const margin = 40;
+    const pageHeight = doc.internal.pageSize.getHeight();
+    const contentWidth = doc.internal.pageSize.getWidth() - margin * 2;
+    let y = margin;
+    const ensureRoom = (height) => {
+      if (y + height > pageHeight - margin) {
+        doc.addPage();
+        y = margin;
+      }
+    };
+
+    doc.setFontSize(16);
+    doc.text(t("pdf_report_title"), margin, y); y += 22;
     doc.setFontSize(11);
-    doc.text(domain.name[LANG] || domain.name.en, margin, y); y += 14;
-    doc.setFontSize(9);
-    domain.indicators.forEach((code) => {
-      const ind = DATA.indicators[code];
-      const line = code + " " + (ind.name[LANG] || ind.name.en) + " — " + t("pdf_current") + ": " + (currentLevels[code] || "-") + "  " + t("pdf_target") + ": " + (targetLevels[code] || "-");
-      doc.text(line, margin, y, { maxWidth: 500 }); y += 13;
+    doc.text(t("pdf_expert_id") + ": " + EXPERT_ID, margin, y); y += 16;
+    const dateLocale = LANG === "zh" ? "zh-TW" : "en-GB";
+    doc.text(t("pdf_date") + ": " + new Date().toLocaleString(dateLocale), margin, y); y += 24;
+
+    const summaryImg = summaryChart.toBase64Image();
+    doc.addImage(summaryImg, "PNG", margin, y, 260, 260);
+    y += 280;
+
+    DATA.domains.forEach((domain) => {
+      doc.setFontSize(11);
+      const domainLines = doc.splitTextToSize(domain.name[LANG] || domain.name.en, contentWidth);
+      ensureRoom(domainLines.length * 14 + 8);
+      doc.text(domainLines, margin, y);
+      y += domainLines.length * 14;
+
+      doc.setFontSize(9);
+      domain.indicators.forEach((code) => {
+        const ind = DATA.indicators[code];
+        const line = code + " " + (ind.name[LANG] || ind.name.en) + " - " + t("pdf_current") + ": " + (currentLevels[code] || "-") + "  " + t("pdf_target") + ": " + (targetLevels[code] || "-");
+        const lines = doc.splitTextToSize(line, contentWidth);
+        const lineHeight = 12;
+        ensureRoom(lines.length * lineHeight);
+        doc.text(lines, margin, y);
+        y += lines.length * lineHeight;
+      });
+      y += 8;
     });
-    y += 8;
-  });
 
-  doc.addPage();
-  y = margin;
-  Object.entries(domainCharts).forEach(([id, chart]) => {
-    if (y > 560) { doc.addPage(); y = margin; }
-    doc.addImage(chart.toBase64Image(), "PNG", margin, y, 240, 240);
-    y += 260;
-  });
+    doc.addPage();
+    y = margin;
+    Object.values(domainCharts).forEach((chart) => {
+      ensureRoom(240);
+      doc.addImage(chart.toBase64Image(), "PNG", margin, y, 240, 240);
+      y += 260;
+    });
 
-  doc.save("maturity_assessment_" + EXPERT_ID + ".pdf");
+    doc.save("maturity_assessment_" + EXPERT_ID + ".pdf");
+  } catch (error) {
+    console.error("PDF export failed", error);
+    showToast(t("pdf_export_error"));
+  } finally {
+    button.disabled = false;
+    button.textContent = originalLabel;
+  }
 }
 
 init();
