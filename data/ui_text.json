@@ -49,7 +49,7 @@
   "results_heading": {"en": "Your Results", "zh": "您的評估結果"},
   "overall_current_label": {"en": "Overall Current Maturity", "zh": "整體現況成熟度"},
   "overall_target_label": {"en": "Overall Target Maturity", "zh": "整體目標成熟度"},
-  "domain_scores_heading": {"en": "Domain Scores", "zh": "各領域分數"},
+  "domain_scores_heading": {"en": "Domain Scores", "zh": "各構面分數"},
   "summary_radar_heading": {"en": "Summary — All Domains", "zh": "總覽 — 四大領域"},
   "download_pdf_button": {"en": "Download My Results (PDF)", "zh": "下載我的評估結果（PDF）"},
   "validation_next_note": {"en": "After reviewing your results, continue to the Maturity Model Validation form.", "zh": "查看評估結果後，請繼續完成成熟度模型驗證表單。"},
