@@ -6,5 +6,6 @@ window.WORKSHOP_DB_CONFIG = {
   expertsTable: "experts",
   configTable: "workshop_config",
   configKey: "main",
+  reportsBucket: "assessment-reports",
   pollIntervalMs: 3000
 };

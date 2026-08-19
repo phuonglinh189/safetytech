@@ -1,0 +1,59 @@
+{
+  "heading": {
+    "en": "Organization Information",
+    "zh": "組織資訊"
+  },
+  "intro": {
+    "en": "Please provide your organization's role and size before completing the assessment.",
+    "zh": "請先提供貴組織的角色與規模，再完成本評估。"
+  },
+  "role_label": {
+    "en": "Organization role",
+    "zh": "公司角色"
+  },
+  "role_options": [
+    {"value": "owner", "label": {"en": "Owner", "zh": "業主"}},
+    {"value": "educational_institution", "label": {"en": "Educational institution", "zh": "教育機關"}},
+    {"value": "construction_contractor", "label": {"en": "Construction contractor", "zh": "營造廠"}},
+    {"value": "government_agency", "label": {"en": "Government agency", "zh": "政府單位"}},
+    {"value": "consultant", "label": {"en": "Consultant", "zh": "顧問公司"}},
+    {"value": "technology_supplier", "label": {"en": "Technology supplier", "zh": "設備廠商"}},
+    {"value": "other", "label": {"en": "Other", "zh": "其他"}}
+  ],
+  "role_other_label": {
+    "en": "Please specify the organization role",
+    "zh": "請說明公司角色"
+  },
+  "role_other_placeholder": {
+    "en": "Enter the organization role",
+    "zh": "請輸入公司角色"
+  },
+  "company_name_label": {
+    "en": "Company or organization name",
+    "zh": "公司或組織名稱"
+  },
+  "company_name_placeholder": {
+    "en": "Enter the company or organization name",
+    "zh": "請輸入公司或組織名稱"
+  },
+  "size_label": {
+    "en": "Organization size",
+    "zh": "公司規模"
+  },
+  "contractor_size_label": {
+    "en": "Contractor class",
+    "zh": "營造廠等級"
+  },
+  "contractor_size_options": [
+    {"value": "class_a", "label": {"en": "Class A", "zh": "甲等"}},
+    {"value": "class_b", "label": {"en": "Class B", "zh": "乙等"}},
+    {"value": "class_c", "label": {"en": "Class C", "zh": "丙等"}},
+    {"value": "other", "label": {"en": "Other", "zh": "其他"}}
+  ],
+  "organization_size_options": [
+    {"value": "micro", "label": {"en": "Micro", "zh": "微型"}},
+    {"value": "small_medium", "label": {"en": "Small and Medium", "zh": "中小型"}},
+    {"value": "large", "label": {"en": "Large", "zh": "大型"}},
+    {"value": "other", "label": {"en": "Other", "zh": "其他"}}
+  ]
+}

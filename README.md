@@ -4,8 +4,8 @@ Static, no-build site (same pattern as the Target_game reference repo): plain HT
 
 ## Pages
 - `/consent/` — bilingual participant information and consent gate; an expert ID is created only after consent is recorded.
-- `/assessment-tool/` — consented expert ranks current & target level (1–5) for 22 indicators across 4 domains, submits, downloads a PDF report.
-- `/validation/` — submitted expert completes the bilingual maturity-model Validation form with background questions, 13 sliders and optional comments.
+- `/assessment-tool/` — consented expert provides organization role, company/organization name and size, ranks current & target level (1–5) for 22 indicators across 4 domains, submits, and downloads a one-page PDF report.
+- `/validation/` — submitted expert completes the bilingual maturity-model Validation form with the organization role prefilled and locked, four remaining background questions, 13 sliders and optional comments.
 - `/control/` — host-only page: set number of experts (no password, unlisted link), lock the survey, reveal/hide results, watch live submission status and domain averages.
 - `/presentation/` — public display: live "N of M submitted" counter, then full radar charts + averages once the host clicks "Show Results".
 
@@ -21,6 +21,7 @@ create table if not exists public.experts (
   status text not null default 'unassigned',
   current_levels jsonb not null default '{}'::jsonb,
   target_levels jsonb not null default '{}'::jsonb,
+  organization_profile jsonb not null default '{}'::jsonb,
   claimed_at timestamptz,
   submitted_at timestamptz,
   consent_given boolean not null default false,
@@ -97,9 +98,9 @@ with check (true);
 commit;
 ```
 
-For an existing Supabase project, run `supabase-consent-migration.sql` and `supabase-validation-migration.sql` once in the SQL Editor. Both migrations use `add column if not exists`, so they are safe to run again.
+For every Supabase project, run `supabase-organization-report-migration.sql` after the base SQL above; it adds the profile column and creates the private `assessment-reports` bucket with an insert-only PDF policy. For an existing project that predates Consent or Validation, also run `supabase-consent-migration.sql` and `supabase-validation-migration.sql`. The migrations use `add column if not exists` or idempotent Storage setup, so they are safe to run again.
 
-3. Project Settings → API → copy the Project URL and the publishable/anon key into `shared/database-config.js` (`supabaseUrl`, `supabaseKey`).
+3. Project Settings → API → copy the Project URL and the publishable/anon key into `shared/database-config.js` (`supabaseUrl`, `supabaseKey`). Keep `reportsBucket` set to `assessment-reports` unless the SQL migration and config are changed together.
 4. Push to GitHub, enable Pages → GitHub Actions (the included workflow deploys automatically on push to `main`).
 
 Before a new workshop: in `/control/`, set the expert count (15–17) and make sure "lock survey" is off. When all experts are in, click **Show Results** to reveal them on `/presentation/`. A fresh participant follows `/consent/` → `/assessment-tool/` → `/validation/`. Assessment submission remains the workshop submission count; Validation completion is tracked separately in Control. The same browser can resume unfinished Assessment and Validation progress for its assigned Expert ID.
@@ -111,6 +112,10 @@ Before a new workshop: in `/control/`, set the expert count (15–17) and make s
 - `data/ui_text.json` — every page label, button, instruction, and level-meaning string, in English and Mandarin (`{"key": {"en": "...", "zh": "..."}}`).
 - `data/consent_text.json` — the bilingual consent content and consent version used by the consent gate.
 - `data/validation_text.json` — the bilingual expert-background questions, 13 Validation criteria, scale labels and Validation form version.
+- `data/organization_profile.json` — bilingual organization role/size labels and the contractor class mapping (A/B/C ↔ 甲/乙/丙).
+- `data/maturity_level_transition_recommendations.json` — bilingual recommendation text for each maturity-level transition shown in the PDF.
+
+The `organization_profile` JSON stores `role`, `role_other`, `company_name`, and `size`. Each PDF download is generated once in the selected language. The same Blob is downloaded locally and archived to the private Supabase Storage path `{expertId}/{timestamp}-{language}.pdf`. If the Storage upload fails, the local download still proceeds and the participant sees a warning.
 
 **Note:** the Mandarin level-by-level descriptions in `indicators.json` were carried over from an earlier version of this tool and may not exactly match the current English wording — worth a review pass before your first workshop.
 

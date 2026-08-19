@@ -1,16 +1,15 @@
 let LANG = "en", DATA = null, UI = null, WEIGHTS = null, DOMAIN_WEIGHTS = null;
+let PROFILE_DATA = null, RECOMMENDATIONS = null;
 let EXPERT_ID = null, CONFIG = null;
 let CONSENT_VERSION = null, ACCEPTANCE = null;
 let currentLevels = {}, targetLevels = {};
+let organizationProfile = { role: "", role_other: "", company_name: "", size: "" };
 let saveTimer = null;
 let saveQueue = Promise.resolve();
 let hasSubmitted = false;
 let validationSubmitted = false;
 let saveErrorShown = false;
 let domainCharts = {}, summaryChart = null;
-let pdfFontBase64Promise = null;
-
-const PDF_FONT_FILE = "NotoSansTC-PDF.ttf";
 
 const t = (key, vars) => WorkshopI18n.tFormat(UI, key, LANG, vars || {});
 
@@ -24,10 +23,15 @@ async function init() {
     return;
   }
   document.getElementById("langLink").href = WorkshopI18n.langUrl(LANG === "en" ? "zh" : "en");
-  const { indicators, uiText } = await WorkshopI18n.loadWorkshopData();
-  DATA = indicators; UI = uiText;
-  WEIGHTS = await WorkshopI18n.parseCsv("../data/indicator_weights.csv");
-  DOMAIN_WEIGHTS = await WorkshopI18n.parseCsv("../data/domain_weights.csv");
+  const [{ indicators, uiText }, profileData, recommendations, weights, domainWeights] = await Promise.all([
+    WorkshopI18n.loadWorkshopData(),
+    WorkshopI18n.loadJson("../data/organization_profile.json"),
+    WorkshopI18n.loadJson("../data/maturity_level_transition_recommendations.json"),
+    WorkshopI18n.parseCsv("../data/indicator_weights.csv"),
+    WorkshopI18n.parseCsv("../data/domain_weights.csv")
+  ]);
+  DATA = indicators; UI = uiText; PROFILE_DATA = profileData; RECOMMENDATIONS = recommendations;
+  WEIGHTS = weights; DOMAIN_WEIGHTS = domainWeights;
   document.documentElement.lang = LANG === "zh" ? "zh-Hant" : "en";
   document.title = t("site_title");
   document.getElementById("langLink").textContent = t("lang_switch_label");
@@ -64,6 +68,7 @@ async function init() {
   document.getElementById("downloadPdfBtn").textContent = t("download_pdf_button");
   document.getElementById("validationNextNote").textContent = t("validation_next_note");
   document.getElementById("lockedNote").textContent = t("survey_locked_message");
+  renderOrganizationProfile();
 
   if (!WorkshopDB.isEnabled()) {
     document.getElementById("idStatusText").textContent = "Supabase is not configured yet (edit shared/database-config.js).";
@@ -77,6 +82,7 @@ async function init() {
   document.getElementById("submitBtn").addEventListener("click", onSubmit);
   document.getElementById("downloadPdfBtn").addEventListener("click", exportPdf);
   document.getElementById("continueValidationBtn").addEventListener("click", continueToValidation);
+  document.getElementById("langLink").addEventListener("click", persistBeforeLanguageChange);
   await loadExistingProgress(expert);
   applyLockState();
   updateProgress();
@@ -112,6 +118,8 @@ async function loadExistingProgress(existingExpert) {
   if (!expert) return;
   currentLevels = expert.current_levels || {};
   targetLevels = expert.target_levels || {};
+  organizationProfile = normalizeOrganizationProfile(expert.organization_profile);
+  populateOrganizationProfile();
   Object.keys(currentLevels).forEach((code) => selectLevelUI(code, "current", currentLevels[code]));
   Object.keys(targetLevels).forEach((code) => selectLevelUI(code, "target", targetLevels[code]));
   if (expert.status === "submitted") {
@@ -126,10 +134,147 @@ async function loadExistingProgress(existingExpert) {
   }
 }
 
+function localizeProfile(entry) {
+  return (entry && (entry[LANG] || entry.en)) || "";
+}
+
+function normalizeOrganizationProfile(value) {
+  const profile = value && typeof value === "object" ? value : {};
+  return {
+    role: typeof profile.role === "string" ? profile.role : "",
+    role_other: typeof profile.role_other === "string" ? profile.role_other : "",
+    company_name: typeof profile.company_name === "string" ? profile.company_name : "",
+    size: typeof profile.size === "string" ? profile.size : ""
+  };
+}
+
+function organizationSizeOptions(role) {
+  return role === "construction_contractor"
+    ? PROFILE_DATA.contractor_size_options
+    : PROFILE_DATA.organization_size_options;
+}
+
+function organizationProfileComplete() {
+  const validRole = PROFILE_DATA.role_options.some((option) => option.value === organizationProfile.role);
+  if (!validRole) return false;
+  if (organizationProfile.role === "other" && !organizationProfile.role_other.trim()) return false;
+  if (!organizationProfile.company_name.trim()) return false;
+  return organizationSizeOptions(organizationProfile.role).some((option) => option.value === organizationProfile.size);
+}
+
+function renderOrganizationProfile() {
+  document.getElementById("organizationHeading").textContent = localizeProfile(PROFILE_DATA.heading);
+  document.getElementById("organizationIntro").textContent = localizeProfile(PROFILE_DATA.intro);
+  document.getElementById("organizationRoleLabel").textContent = localizeProfile(PROFILE_DATA.role_label);
+  document.getElementById("organizationRoleOtherLabel").textContent = localizeProfile(PROFILE_DATA.role_other_label);
+  document.getElementById("organizationRoleOther").placeholder = localizeProfile(PROFILE_DATA.role_other_placeholder);
+  document.getElementById("organizationCompanyNameLabel").textContent = localizeProfile(PROFILE_DATA.company_name_label);
+  document.getElementById("organizationCompanyName").placeholder = localizeProfile(PROFILE_DATA.company_name_placeholder);
+
+  const roleOptions = document.getElementById("organizationRoleOptions");
+  roleOptions.innerHTML = "";
+  PROFILE_DATA.role_options.forEach((option) => {
+    const label = document.createElement("label");
+    label.className = "assessment-profile-choice";
+    const input = document.createElement("input");
+    input.type = "radio";
+    input.name = "organization-role";
+    input.value = option.value;
+    input.addEventListener("change", () => onOrganizationRoleChange(option.value));
+    const text = document.createElement("span");
+    text.textContent = localizeProfile(option.label);
+    label.appendChild(input);
+    label.appendChild(text);
+    roleOptions.appendChild(label);
+  });
+
+  document.getElementById("organizationRoleOther").addEventListener("input", (event) => {
+    organizationProfile.role_other = event.target.value;
+    organizationChanged();
+  });
+  document.getElementById("organizationCompanyName").addEventListener("input", (event) => {
+    organizationProfile.company_name = event.target.value;
+    organizationChanged();
+  });
+  renderOrganizationSizeOptions();
+}
+
+function renderOrganizationSizeOptions() {
+  const role = organizationProfile.role;
+  const fieldset = document.getElementById("organizationSizeFieldset");
+  fieldset.disabled = !role || (CONFIG && CONFIG.survey_locked);
+  document.getElementById("organizationSizeLabel").textContent = localizeProfile(
+    role === "construction_contractor" ? PROFILE_DATA.contractor_size_label : PROFILE_DATA.size_label
+  );
+  const container = document.getElementById("organizationSizeOptions");
+  container.innerHTML = "";
+  organizationSizeOptions(role).forEach((option) => {
+    const label = document.createElement("label");
+    label.className = "assessment-profile-choice";
+    const input = document.createElement("input");
+    input.type = "radio";
+    input.name = "organization-size";
+    input.value = option.value;
+    input.checked = option.value === organizationProfile.size;
+    input.disabled = !role || Boolean(CONFIG && CONFIG.survey_locked);
+    input.addEventListener("change", () => {
+      organizationProfile.size = option.value;
+      updateOrganizationChoiceStyles();
+      organizationChanged();
+    });
+    const text = document.createElement("span");
+    text.textContent = localizeProfile(option.label);
+    label.appendChild(input);
+    label.appendChild(text);
+    container.appendChild(label);
+  });
+  updateOrganizationChoiceStyles();
+}
+
+function onOrganizationRoleChange(role) {
+  if (CONFIG && CONFIG.survey_locked) return;
+  const previousOptions = organizationSizeOptions(organizationProfile.role).map((option) => option.value);
+  organizationProfile.role = role;
+  if (role !== "other") organizationProfile.role_other = "";
+  const nextOptions = organizationSizeOptions(role).map((option) => option.value);
+  if (!nextOptions.includes(organizationProfile.size) || !previousOptions.includes(organizationProfile.size)) {
+    organizationProfile.size = "";
+  }
+  document.getElementById("organizationRoleOther").value = organizationProfile.role_other;
+  document.getElementById("organizationCompanyName").value = organizationProfile.company_name;
+  document.getElementById("organizationRoleOtherWrap").hidden = role !== "other";
+  renderOrganizationSizeOptions();
+  updateOrganizationChoiceStyles();
+  organizationChanged();
+}
+
+function populateOrganizationProfile() {
+  document.querySelectorAll('[name="organization-role"]').forEach((input) => {
+    input.checked = input.value === organizationProfile.role;
+  });
+  document.getElementById("organizationRoleOtherWrap").hidden = organizationProfile.role !== "other";
+  document.getElementById("organizationRoleOther").value = organizationProfile.role_other;
+  renderOrganizationSizeOptions();
+  updateOrganizationChoiceStyles();
+}
+
+function updateOrganizationChoiceStyles() {
+  document.querySelectorAll('.assessment-profile-choice input').forEach((input) => {
+    input.closest("label").classList.toggle("selected", input.checked);
+  });
+}
+
+function organizationChanged() {
+  updateProgress();
+  scheduleSave();
+}
+
 function applyLockState() {
   if (CONFIG && CONFIG.survey_locked) {
     document.getElementById("lockedNote").style.display = "block";
     document.querySelectorAll(".level-btn").forEach((b) => (b.disabled = true));
+    document.querySelectorAll("#organizationProfilePanel input").forEach((input) => (input.disabled = true));
+    document.getElementById("organizationSizeFieldset").disabled = true;
     document.getElementById("submitBtn").disabled = true;
   }
 }
@@ -234,12 +379,7 @@ function scheduleSave() {
   clearTimeout(saveTimer);
   saveTimer = setTimeout(() => {
     saveTimer = null;
-    const snapshot = {
-      status: hasSubmitted ? "submitted" : "in_progress",
-      current_levels: Object.assign({}, currentLevels),
-      target_levels: Object.assign({}, targetLevels)
-    };
-    saveQueue = saveQueue.catch(() => {}).then(() => WorkshopDB.saveExpertProgress(EXPERT_ID, snapshot));
+    enqueueProgressSave();
     saveQueue.then(() => {
       if (saveErrorShown) {
         saveErrorShown = false;
@@ -249,6 +389,34 @@ function scheduleSave() {
       }
     }).catch((error) => showSaveError("autosave_failed", error));
   }, 500);
+}
+
+function progressSnapshot() {
+  return {
+    status: hasSubmitted ? "submitted" : "in_progress",
+    current_levels: Object.assign({}, currentLevels),
+    target_levels: Object.assign({}, targetLevels),
+    organization_profile: Object.assign({}, organizationProfile)
+  };
+}
+
+function enqueueProgressSave() {
+  const snapshot = progressSnapshot();
+  saveQueue = saveQueue.catch(() => {}).then(() => WorkshopDB.saveExpertProgress(EXPERT_ID, snapshot));
+  return saveQueue;
+}
+
+async function persistBeforeLanguageChange(event) {
+  event.preventDefault();
+  const destination = event.currentTarget.href;
+  clearTimeout(saveTimer);
+  saveTimer = null;
+  try {
+    await enqueueProgressSave();
+    window.location.assign(destination);
+  } catch (error) {
+    showSaveError("autosave_failed", error);
+  }
 }
 
 function showSaveError(key, error) {
@@ -273,13 +441,24 @@ function updateProgress() {
   progressBar.setAttribute("aria-valuemax", total);
   progressBar.setAttribute("aria-valuenow", completed);
   progressBar.setAttribute("aria-valuetext", t("progress_text", { completed, total }));
-  const complete = completed === total;
-  document.getElementById("submitBtn").disabled = complete ? (CONFIG && CONFIG.survey_locked) : true;
-  document.getElementById("incompleteNote").style.display = complete ? "none" : "block";
-  document.getElementById("incompleteNote").textContent = t("please_complete_all");
+  const questionsComplete = completed === total;
+  const profileComplete = organizationProfileComplete();
+  const complete = questionsComplete && profileComplete;
+  document.getElementById("submitBtn").disabled = !complete || Boolean(CONFIG && CONFIG.survey_locked);
+  const note = document.getElementById("incompleteNote");
+  note.style.display = complete ? "none" : "block";
+  note.textContent = !questionsComplete && !profileComplete
+    ? t("please_complete_profile_and_all")
+    : (!profileComplete ? t("please_complete_profile") : t("please_complete_all"));
+  const downloadButton = document.getElementById("downloadPdfBtn");
+  const validationButton = document.getElementById("continueValidationBtn");
+  if (downloadButton) downloadButton.disabled = !profileComplete;
+  if (validationButton) validationButton.disabled = !profileComplete;
+  return complete;
 }
 
 async function onSubmit() {
+  if (!updateProgress()) return;
   clearTimeout(saveTimer);
   saveTimer = null;
   const submitBtn = document.getElementById("submitBtn");
@@ -290,7 +469,8 @@ async function onSubmit() {
     await WorkshopDB.submitExpert(
       EXPERT_ID,
       Object.assign({}, currentLevels),
-      Object.assign({}, targetLevels)
+      Object.assign({}, targetLevels),
+      Object.assign({}, organizationProfile)
     );
     hasSubmitted = true;
     saveErrorShown = false;
@@ -344,7 +524,7 @@ function computeScores() {
 
 function levelNameForScore(score) {
   const idx = score < 2 ? 0 : score < 3 ? 1 : score < 4 ? 2 : score < 4.5 ? 3 : 4;
-  return { name: DATA.levelNames[LANG][idx] || DATA.levelNames.en[idx], meaning: t("level_meaning_" + (idx + 1)) };
+  return { index: idx, name: DATA.levelNames[LANG][idx] || DATA.levelNames.en[idx], meaning: t("level_meaning_" + (idx + 1)) };
 }
 
 function showResults() {
@@ -368,8 +548,23 @@ function showResults() {
   renderSummaryChart(domainScores);
 }
 
-function continueToValidation() {
-  window.location.assign(WorkshopConsent.withLanguage("../validation/", LANG));
+async function continueToValidation() {
+  if (!organizationProfileComplete()) {
+    showToast(t("please_complete_profile"));
+    document.getElementById("organizationProfilePanel").scrollIntoView({ behavior: "smooth", block: "start" });
+    return;
+  }
+  clearTimeout(saveTimer);
+  saveTimer = null;
+  const button = document.getElementById("continueValidationBtn");
+  button.disabled = true;
+  try {
+    await enqueueProgressSave();
+    window.location.assign(WorkshopConsent.withLanguage("../validation/", LANG));
+  } catch (error) {
+    showSaveError("autosave_failed", error);
+    button.disabled = false;
+  }
 }
 
 function renderDomainCharts() {
@@ -422,99 +617,91 @@ function renderSummaryChart(domainScores) {
   });
 }
 
-function arrayBufferToBase64(buffer) {
-  const bytes = new Uint8Array(buffer);
-  const chunkSize = 0x8000;
-  let binary = "";
-  for (let offset = 0; offset < bytes.length; offset += chunkSize) {
-    binary += String.fromCharCode(...bytes.subarray(offset, offset + chunkSize));
-  }
-  return btoa(binary);
+function localizedOrganizationValue(options, value) {
+  const match = options.find((option) => option.value === value);
+  return match ? localizeProfile(match.label) : "-";
 }
 
-async function loadPdfFontBase64() {
-  if (!pdfFontBase64Promise) {
-    pdfFontBase64Promise = fetch("../shared/assets/" + PDF_FONT_FILE)
-      .then((response) => {
-        if (!response.ok) throw new Error("PDF font request failed: " + response.status);
-        return response.arrayBuffer();
-      })
-      .then(arrayBufferToBase64)
-      .catch((error) => {
-        pdfFontBase64Promise = null;
-        throw error;
-      });
-  }
-  return pdfFontBase64Promise;
+function organizationRoleText() {
+  if (organizationProfile.role === "other") return organizationProfile.role_other.trim() || localizedOrganizationValue(PROFILE_DATA.role_options, "other");
+  return localizedOrganizationValue(PROFILE_DATA.role_options, organizationProfile.role);
 }
 
-async function applyPdfFont(doc) {
-  const fontBase64 = await loadPdfFontBase64();
-  doc.addFileToVFS(PDF_FONT_FILE, fontBase64);
-  doc.addFont(PDF_FONT_FILE, "NotoSansTC", "normal");
-  doc.setFont("NotoSansTC", "normal");
+function organizationSizeText() {
+  return localizedOrganizationValue(organizationSizeOptions(organizationProfile.role), organizationProfile.size);
+}
+
+function timestampForFile(date) {
+  return date.toISOString().replace(/[-:]/g, "").replace(/\.\d{3}Z$/, "Z");
+}
+
+function downloadBlob(blob, fileName) {
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = fileName;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 
 async function exportPdf() {
+  if (!organizationProfileComplete()) {
+    showToast(t("please_complete_profile"));
+    return;
+  }
   const button = document.getElementById("downloadPdfBtn");
   const originalLabel = button.textContent;
   button.disabled = true;
   button.textContent = t("pdf_preparing");
 
   try {
-    const { jsPDF } = window.jspdf;
-    const doc = new jsPDF({ unit: "pt", format: "a4" });
-    if (LANG === "zh") await applyPdfFont(doc);
-
-    const margin = 36;
-    const pageWidth = doc.internal.pageSize.getWidth();
-    const contentWidth = pageWidth - margin * 2;
-    let y = margin;
-
-    doc.setFontSize(16);
-    doc.text(t("pdf_report_title"), margin, y); y += 22;
-    doc.setFontSize(11);
-    doc.text(t("pdf_expert_id") + ": " + EXPERT_ID, margin, y); y += 16;
-    const dateLocale = LANG === "zh" ? "zh-TW" : "en-GB";
-    doc.text(t("pdf_date") + ": " + new Date().toLocaleString(dateLocale), margin, y); y += 24;
-
-    const summaryImg = summaryChart.toBase64Image();
-    const summarySize = Math.min(390, contentWidth);
-    const summaryX = (pageWidth - summarySize) / 2;
-    doc.addImage(summaryImg, "PNG", summaryX, y + 10, summarySize, summarySize);
-
-    doc.addPage();
-    const columnGap = 18;
-    const rowGap = 24;
-    const titleHeight = 18;
-    const cellWidth = (contentWidth - columnGap) / 2;
-    const chartSize = Math.min(240, cellWidth - 8);
-    const rowHeight = titleHeight + chartSize + rowGap;
-
-    Object.entries(domainCharts).forEach(([domainId, chart], index) => {
-      const column = index % 2;
-      const row = Math.floor(index / 2);
-      const cellX = margin + column * (cellWidth + columnGap);
-      const cellY = margin + row * rowHeight;
-      const chartX = cellX + (cellWidth - chartSize) / 2;
-      const domain = DATA.domains.find((item) => item.id === domainId);
-
-      if (domain) {
-        doc.setFontSize(11);
-        doc.text(domain.name[LANG] || domain.name.en, cellX + cellWidth / 2, cellY + 11, {
-          align: "center",
-          maxWidth: cellWidth - 8
-        });
-      }
-      doc.addImage(chart.toBase64Image(), "PNG", chartX, cellY + titleHeight, chartSize, chartSize);
+    const generatedAt = new Date();
+    const { domainScores, overallCurrent, overallTarget } = computeScores();
+    const currentLevel = levelNameForScore(overallCurrent);
+    const targetLevel = levelNameForScore(overallTarget);
+    const blob = await WorkshopReport.createAssessmentPdf({
+      jspdf: window.jspdf,
+      lang: LANG,
+      t,
+      expertId: EXPERT_ID,
+      dateText: generatedAt.toLocaleString(LANG === "zh" ? "zh-TW" : "en-GB"),
+      roleText: organizationRoleText(),
+      companyName: organizationProfile.company_name.trim(),
+      sizeText: organizationSizeText(),
+      domains: DATA.domains.map((domain) => ({ id: domain.id, name: domain.name[LANG] || domain.name.en })),
+      domainScores,
+      overallCurrent,
+      overallTarget,
+      currentLevel,
+      targetLevel,
+      scaleLevels: DATA.levelNames[LANG].map((name, index) => ({
+        name,
+        meaning: t("level_meaning_" + (index + 1))
+      })),
+      domainCharts,
+      summaryChart,
+      recommendations: RECOMMENDATIONS,
+      fontAssetBase: "../shared/assets/"
     });
-
-    doc.save("maturity_assessment_" + EXPERT_ID + ".pdf");
+    const timestamp = timestampForFile(generatedAt);
+    const localName = "maturity_assessment_" + EXPERT_ID + "_" + timestamp + "_" + LANG + ".pdf";
+    const archiveName = timestamp + "-" + LANG + ".pdf";
+    let archiveFailed = false;
+    try {
+      await WorkshopDB.uploadAssessmentReport(EXPERT_ID, archiveName, blob);
+    } catch (archiveError) {
+      archiveFailed = true;
+      console.error("PDF archive upload failed", archiveError);
+    }
+    downloadBlob(blob, localName);
+    if (archiveFailed) showToast(t("pdf_archive_warning"));
   } catch (error) {
     console.error("PDF export failed", error);
     showToast(t("pdf_export_error"));
   } finally {
-    button.disabled = false;
+    button.disabled = !organizationProfileComplete();
     button.textContent = originalLabel;
   }
 }

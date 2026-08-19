@@ -1,9 +1,11 @@
 let LANG = "en";
 let DATA = null;
+let ORGANIZATION_DATA = null;
 let CONSENT_VERSION = null;
 let ACCEPTANCE = null;
 let EXPERT_ID = null;
 let answers = { profile: {}, ratings: {}, comments: "" };
+let organizationProfile = { role: "", role_other: "", company_name: "", size: "" };
 let saveTimer = null;
 let saveQueue = Promise.resolve();
 let saveErrorShown = false;
@@ -20,12 +22,14 @@ const ui = (key, vars) => {
 
 async function init() {
   LANG = WorkshopI18n.getLang();
-  const [consentText, validationText] = await Promise.all([
+  const [consentText, validationText, organizationText] = await Promise.all([
     WorkshopI18n.loadJson("../data/consent_text.json"),
-    WorkshopI18n.loadJson("../data/validation_text.json")
+    WorkshopI18n.loadJson("../data/validation_text.json"),
+    WorkshopI18n.loadJson("../data/organization_profile.json")
   ]);
   CONSENT_VERSION = consentText.version;
   DATA = validationText;
+  ORGANIZATION_DATA = organizationText;
   ACCEPTANCE = WorkshopConsent.getAccepted(CONSENT_VERSION);
   if (!ACCEPTANCE) {
     redirectToConsent();
@@ -54,14 +58,23 @@ async function init() {
   document.getElementById("idStatusText").textContent = ui("expert_id") + ": " + EXPERT_ID;
   document.getElementById("idNote").textContent = ui("resume_note");
 
-  if (expert.validation_status === "submitted" && expert.validation_version === DATA.version) {
+  if (expert.validation_status === "submitted") {
     showThankYou();
+    return;
+  }
+
+  organizationProfile = normalizeOrganizationProfile(expert.organization_profile);
+  if (!organizationProfileComplete(organizationProfile)) {
+    redirectToAssessment();
     return;
   }
 
   if (expert.validation_version === DATA.version && expert.validation_answers) {
     answers = normalizeAnswers(expert.validation_answers);
   }
+  answers.profile.role = organizationProfile.role;
+  if (organizationProfile.role === "other") answers.profile.role_other = organizationProfile.role_other;
+  else delete answers.profile.role_other;
   renderForm();
   populateForm();
   bindFormEvents();
@@ -119,6 +132,8 @@ function renderProfileQuestions() {
     const card = document.createElement("div");
     card.className = "validation-profile-card";
     card.dataset.profileQuestion = question.id;
+    const lockedFromAssessment = question.id === "role";
+    if (lockedFromAssessment) card.classList.add("readonly-profile");
 
     const heading = document.createElement("h3");
     heading.id = "profile-" + question.id + "-heading";
@@ -138,6 +153,7 @@ function renderProfileQuestions() {
         input.name = "profile-" + question.id;
         input.value = option.value;
         input.dataset.profileKey = question.id;
+        input.disabled = lockedFromAssessment;
         const text = document.createElement("span");
         text.textContent = localize(option.label);
         label.appendChild(input);
@@ -158,6 +174,7 @@ function renderProfileQuestions() {
       otherInput.id = question.id + "Other";
       otherInput.dataset.otherKey = question.id + "_other";
       otherInput.placeholder = localize(DATA.other_detail_placeholder);
+      otherInput.readOnly = lockedFromAssessment;
       otherWrap.appendChild(otherLabel);
       otherWrap.appendChild(otherInput);
       card.appendChild(otherWrap);
@@ -288,6 +305,27 @@ function bindFormEvents() {
     scheduleSave();
   });
   document.getElementById("validationForm").addEventListener("submit", submitValidation);
+}
+
+function normalizeOrganizationProfile(value) {
+  const profile = value && typeof value === "object" ? value : {};
+  return {
+    role: typeof profile.role === "string" ? profile.role : "",
+    role_other: typeof profile.role_other === "string" ? profile.role_other : "",
+    company_name: typeof profile.company_name === "string" ? profile.company_name : "",
+    size: typeof profile.size === "string" ? profile.size : ""
+  };
+}
+
+function organizationProfileComplete(profile) {
+  const roles = ORGANIZATION_DATA.role_options.map((option) => option.value);
+  const contractorSizes = ORGANIZATION_DATA.contractor_size_options.map((option) => option.value);
+  const organizationSizes = ORGANIZATION_DATA.organization_size_options.map((option) => option.value);
+  if (!roles.includes(profile.role)) return false;
+  if (profile.role === "other" && !profile.role_other.trim()) return false;
+  if (!profile.company_name.trim()) return false;
+  const validSizes = profile.role === "construction_contractor" ? contractorSizes : organizationSizes;
+  return validSizes.includes(profile.size);
 }
 
 function populateForm() {

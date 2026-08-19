@@ -4,11 +4,11 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Digital Technology Adoption Maturity Assessment</title>
-<link rel="stylesheet" href="../shared/styles.css?v=20260816-2" />
+<link rel="stylesheet" href="../shared/styles.css?v=20260819-2" />
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="../shared/database-config.js"></script>
-<script src="../shared/database.js?v=20260816-2"></script>
+<script src="../shared/database.js?v=20260819-1"></script>
 <script src="../shared/i18n.js?v=20260809-3"></script>
 <script src="../shared/consent.js?v=20260816-1"></script>
 </head>
@@ -79,6 +79,29 @@
       <p class="note" id="submittedNote" style="display:none;"></p>
     </section>
 
+    <section class="panel assessment-organization" id="organizationProfilePanel" aria-labelledby="organizationHeading">
+      <div class="assessment-organization-heading">
+        <h2 id="organizationHeading"></h2>
+        <p id="organizationIntro"></p>
+      </div>
+      <fieldset class="assessment-profile-fieldset">
+        <legend id="organizationRoleLabel"></legend>
+        <div class="assessment-profile-options" id="organizationRoleOptions"></div>
+        <div class="assessment-profile-other" id="organizationRoleOtherWrap" hidden>
+          <label for="organizationRoleOther" id="organizationRoleOtherLabel"></label>
+          <input id="organizationRoleOther" type="text" autocomplete="organization-title" />
+        </div>
+      </fieldset>
+      <div class="assessment-profile-text">
+        <label for="organizationCompanyName" id="organizationCompanyNameLabel"></label>
+        <input id="organizationCompanyName" type="text" autocomplete="organization" />
+      </div>
+      <fieldset class="assessment-profile-fieldset" id="organizationSizeFieldset" disabled>
+        <legend id="organizationSizeLabel"></legend>
+        <div class="assessment-profile-options assessment-profile-size-options" id="organizationSizeOptions"></div>
+      </fieldset>
+    </section>
+
     <div class="assessment-progress-panel">
       <div
         class="progress-bar-track"
@@ -135,6 +158,7 @@
 
 <div id="toast" style="display:none; position:fixed; bottom:24px; left:50%; transform:translateX(-50%); background:var(--operational); color:white; padding:12px 20px; border-radius:8px; font-size:14px; max-width:420px; text-align:center; box-shadow:0 6px 20px rgba(0,0,0,0.2); z-index:100;"></div>
 
-<script src="app.js?v=20260818-2"></script>
+<script src="report.js?v=20260819-4"></script>
+<script src="app.js?v=20260819-4"></script>
 </body>
 </html>

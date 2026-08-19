@@ -70,6 +70,7 @@
             status: "in_progress",
             current_levels: {},
             target_levels: {},
+            organization_profile: {},
             claimed_at: new Date().toISOString(),
             updated_at: new Date().toISOString()
           }, consentFields))
@@ -107,13 +108,34 @@
     return rows[0];
   }
 
-  async function submitExpert(id, currentLevels, targetLevels) {
+  async function submitExpert(id, currentLevels, targetLevels, organizationProfile) {
     return saveExpertProgress(id, {
       status: "submitted",
       current_levels: currentLevels,
       target_levels: targetLevels,
+      organization_profile: organizationProfile || {},
       submitted_at: new Date().toISOString()
     });
+  }
+
+  async function uploadAssessmentReport(expertId, objectName, blob) {
+    if (!isEnabled()) return null;
+    const bucket = cfg.reportsBucket || "assessment-reports";
+    const objectPath = [String(expertId), String(objectName)]
+      .map((part) => encodeURIComponent(part))
+      .join("/");
+    const url = cfg.supabaseUrl.replace(/\/$/, "") + "/storage/v1/object/" + encodeURIComponent(bucket) + "/" + objectPath;
+    const res = await req(url, {
+      method: "POST",
+      headers: {
+        apikey: cfg.supabaseKey,
+        Authorization: "Bearer " + cfg.supabaseKey,
+        "Content-Type": "application/pdf",
+        "x-upsert": "false"
+      },
+      body: blob
+    });
+    return res.json().catch(() => ({ path: expertId + "/" + objectName }));
   }
 
   async function saveValidationProgress(id, validationAnswers, validationVersion) {
@@ -195,6 +217,7 @@
     claimExpertId,
     saveExpertProgress,
     submitExpert,
+    uploadAssessmentReport,
     saveValidationProgress,
     submitValidation,
     deleteExpert,

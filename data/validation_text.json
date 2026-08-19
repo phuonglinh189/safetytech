@@ -47,7 +47,7 @@
       "options": [
         {"value": "owner", "label": {"en": "Owner", "zh": "業主"}},
         {"value": "educational_institution", "label": {"en": "Educational institution", "zh": "教育機關"}},
-        {"value": "construction_contractor", "label": {"en": "Construction contractor", "zh": "營造厰"}},
+        {"value": "construction_contractor", "label": {"en": "Construction contractor", "zh": "營造廠"}},
         {"value": "government_agency", "label": {"en": "Government agency", "zh": "政府單位"}},
         {"value": "consultant", "label": {"en": "Consultant", "zh": "顧問公司"}},
         {"value": "technology_supplier", "label": {"en": "Technology supplier", "zh": "設備廠商"}},

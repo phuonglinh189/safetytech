@@ -261,6 +261,44 @@ input.validation-years-input { width: min(220px, 100%); min-height: 46px; }
   background: rgba(255, 255, 255, 0.72); color: var(--muted); font-size: 14px; font-weight: 600;
 }
 .instruction-time::before { content: "⏱️ "; }
+.assessment-organization {
+  padding: 24px; border: 2px solid color-mix(in oklch, var(--strategy) 52%, var(--border));
+  background: color-mix(in oklch, var(--strategy) 6%, white);
+}
+.assessment-organization-heading { margin-bottom: 18px; }
+.assessment-organization-heading h2 { margin: 0 0 5px; color: var(--strategy); font-size: 22px; }
+.assessment-organization-heading p { margin: 0; color: var(--muted); font-size: 14px; }
+.assessment-profile-fieldset { min-width: 0; margin: 0 0 18px; padding: 0; border: 0; }
+.assessment-profile-fieldset:last-child { margin-bottom: 0; }
+.assessment-profile-fieldset legend { width: 100%; margin: 0 0 8px; padding: 0; font-size: 14px; font-weight: 700; }
+.assessment-profile-options { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 9px; }
+.assessment-profile-size-options { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.assessment-profile-choice {
+  display: flex; align-items: center; gap: 10px; min-width: 0; min-height: 46px; padding: 10px 12px;
+  border: 1.5px solid var(--border); border-radius: 8px; background: white; cursor: pointer;
+}
+.assessment-profile-choice:hover { border-color: var(--strategy); }
+.assessment-profile-choice.selected { border-color: var(--current-selected); background: color-mix(in oklch, var(--current-selected) 12%, white); }
+.assessment-profile-choice input { width: 18px; height: 18px; margin: 0; flex: 0 0 auto; accent-color: var(--current-selected); }
+.assessment-profile-choice span { min-width: 0; overflow-wrap: anywhere; }
+.assessment-profile-other { margin-top: 12px; }
+.assessment-profile-text { margin: 0 0 18px; }
+.assessment-profile-other label,
+.assessment-profile-text label { display: block; margin-bottom: 6px; font-size: 13px; font-weight: 700; }
+.assessment-profile-other input,
+.assessment-profile-text input {
+  width: min(540px, 100%); min-height: 46px; padding: 10px 12px; border: 1.5px solid var(--border);
+  border-radius: 8px; background: white; color: var(--text); font: inherit;
+}
+.assessment-profile-other input:focus,
+.assessment-profile-text input:focus { outline: 3px solid color-mix(in oklch, var(--accent) 22%, transparent); border-color: var(--accent); }
+.assessment-profile-fieldset:disabled { opacity: 0.58; }
+.assessment-profile-fieldset:disabled .assessment-profile-choice { cursor: not-allowed; }
+.assessment-profile-choice input:disabled { cursor: not-allowed; }
+.validation-profile-card.readonly-profile { background: color-mix(in oklch, var(--strategy) 6%, white); }
+.validation-profile-card.readonly-profile .validation-choice { cursor: default; }
+.validation-profile-card.readonly-profile .validation-choice:hover { border-color: var(--border); }
+.validation-profile-card.readonly-profile .validation-choice.selected:hover { border-color: var(--current-selected); }
 .assessment-progress-panel {
   position: sticky; top: 0; z-index: 20;
   background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius);
@@ -358,6 +396,7 @@ label.toggle { display: flex; align-items: center; gap: 8px; font-size: 14px; fo
   .validation-page .assessment-header { grid-template-columns: 1fr auto; }
   .assessment-header-title { grid-column: 1 / -1; grid-row: 2; }
   .assessment-page .level-options { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .assessment-profile-options { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .validation-scale-guide > div { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
@@ -381,6 +420,9 @@ label.toggle { display: flex; align-items: center; gap: 8px; font-size: 14px; fo
   .validation-page .wrap { padding: 20px 12px 64px; }
   .assessment-page .panel { padding: 18px 14px; }
   .assessment-page .assessment-instructions { padding: 16px 12px; }
+  .assessment-page .assessment-organization { padding: 18px 12px; }
+  .assessment-profile-options,
+  .assessment-profile-size-options { grid-template-columns: 1fr; }
   .assessment-instructions-title { gap: 8px; margin-bottom: 16px; }
   .assessment-instructions-title span { font-size: 24px; }
   .assessment-instructions-title h2 { font-size: 22px; }
