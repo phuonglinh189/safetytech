@@ -93,7 +93,7 @@ function render(experts, config) {
 
 function renderAverages(submitted) {
   const wByCode = {};
-  WEIGHTS.forEach((r) => (wByCode[r.indicator_code] = parseFloat(r.domain_weight)));
+  WEIGHTS.forEach((r) => (wByCode[r.indicator_code] = parseFloat(r.global_weight)));
   const table = document.getElementById("averagesTable");
   if (!submitted.length) {
     table.innerHTML = "<tr><td>—</td></tr>";

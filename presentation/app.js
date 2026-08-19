@@ -67,9 +67,7 @@ function meanFor(codes, kind, submitted) {
 
 function renderResults(submitted) {
   const wByCode = {};
-  WEIGHTS.forEach((r) => (wByCode[r.indicator_code] = parseFloat(r.domain_weight)));
-  const dW = {};
-  DOMAIN_WEIGHTS.forEach((r) => (dW[r.domain] = parseFloat(r.weight)));
+  WEIGHTS.forEach((r) => (wByCode[r.indicator_code] = parseFloat(r.global_weight)));
 
   const allCodes = Object.keys(DATA.indicators);
   const curMeans = meanFor(allCodes, "current_levels", submitted);
@@ -88,10 +86,10 @@ function renderResults(submitted) {
   });
 
   let overallCurrent = 0, overallTarget = 0;
-  DATA.domains.forEach((domain) => {
-    const w = dW[domain.id] || 0;
-    overallCurrent += domainScores[domain.id].current * w;
-    overallTarget += domainScores[domain.id].target * w;
+  allCodes.forEach((code) => {
+    const w = wByCode[code] || 0;
+    overallCurrent += curMeans[code] * w;
+    overallTarget += tgtMeans[code] * w;
   });
 
   document.getElementById("overallCurrentValue").textContent = overallCurrent.toFixed(2);

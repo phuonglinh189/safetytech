@@ -318,9 +318,7 @@ async function onSubmit() {
 
 function computeScores() {
   const wByCode = {};
-  WEIGHTS.forEach((r) => (wByCode[r.indicator_code] = parseFloat(r.domain_weight)));
-  const dW = {};
-  DOMAIN_WEIGHTS.forEach((r) => (dW[r.domain] = parseFloat(r.weight)));
+  WEIGHTS.forEach((r) => (wByCode[r.indicator_code] = parseFloat(r.global_weight)));
   const domainScores = {};
   DATA.domains.forEach((domain) => {
     let curSum = 0, tgtSum = 0, wSum = 0;
@@ -336,10 +334,10 @@ function computeScores() {
     };
   });
   let overallCurrent = 0, overallTarget = 0;
-  DATA.domains.forEach((domain) => {
-    const w = dW[domain.id] || 0;
-    overallCurrent += domainScores[domain.id].current * w;
-    overallTarget += domainScores[domain.id].target * w;
+  Object.keys(DATA.indicators).forEach((code) => {
+    const w = wByCode[code] || 0;
+    overallCurrent += (currentLevels[code] || 0) * w;
+    overallTarget += (targetLevels[code] || 0) * w;
   });
   return { domainScores, overallCurrent, overallTarget };
 }
