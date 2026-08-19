@@ -1,0 +1,34 @@
+{
+  "transition_l1_l2_title": {
+    "en": "Initiate Implementation",
+    "zh": "啟動導入"
+  },
+  "transition_l1_l2_description": {
+    "en": "Select suitable projects or work items for adoption, and define the technology adoption objectives, implementation scope, responsible personnel, and required resources.",
+    "zh": "選定適合專案或安全監測與檢查工項進行導入，明確技術使用目的、執行內容、負責人與必要資源。"
+  },
+  "transition_l2_l3_title": {
+    "en": "Establish Repeatable Processes",
+    "zh": "建立可重複流程"
+  },
+  "transition_l2_l3_description": {
+    "en": "Consolidate experience into basic procedures, documentation, and role assignments that can be repeatedly applied across different projects.",
+    "zh": "整理經驗，建立基本流程、文件紀錄與角色分工，於不同專案重複執行。"
+  },
+  "transition_l3_l4_title": {
+    "en": "Promote Standardisation",
+    "zh": "推動標準化"
+  },
+  "transition_l3_l4_description": {
+    "en": "Standardise procedures, documentation, responsibilities, and review criteria, and integrate them into project management systems to ensure consistent implementation.",
+    "zh": "統一流程、文件、權責與檢核標準，並納入工程專案管理制度，以確保一致落實。"
+  },
+  "transition_l4_l5_title": {
+    "en": "Enable Continuous Review and Improvement",
+    "zh": "持續檢討改善"
+  },
+  "transition_l4_l5_description": {
+    "en": "Regularly revise procedures, standards, and resource allocation based on performance data, audit results, and on-site feedback.",
+    "zh": "依據績效資料、查核結果與現場回饋，定期修訂流程、標準與資源配置。"
+  }
+}
