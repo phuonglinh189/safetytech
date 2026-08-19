@@ -4,7 +4,7 @@
       "id": "strategy",
       "name": {
         "en": "Strategy and Commitment",
-        "zh": "策略"
+        "zh": "策略與承諾"
       },
       "color": "#7030A0",
       "indicators": [
@@ -50,7 +50,7 @@
       "id": "technology",
       "name": {
         "en": "Technology Integration",
-        "zh": "技術"
+        "zh": "技術整合"
       },
       "color": "#4472C4",
       "indicators": [
@@ -500,11 +500,11 @@
       "domain": "technology",
       "name": {
         "en": "Technology Budget",
-        "zh": "技術預算"
+        "zh": "技術預算與全生命週期成本"
       },
       "description": {
         "en": "Technology Budget refers to evaluating the organization's ability to plan, allocate, and manage financial resources for the entire lifecycle of digital safety technologies. This includes upfront costs, ongoing maintenance, operations, depreciation, and potential reuse, ensuring that the technology is financially sustainable in practice.",
-        "zh": "技術預算是組織在技術全生命周期內投資的資金,包括投資、維護、執行及折舊，並考量技術的轉移與再利用。"
+        "zh": "技術預算與全生命週期成本是組織在技術全生命周期內投資的資金,包括投資、維護、執行及折舊，並考量技術的轉移與再利用。"
       },
       "levels": {
         "en": [
@@ -669,9 +669,9 @@
     ],
     "zh": [
       "等級 1：無流程",
-      "等級 2：局部實現",
-      "等級 3：可復現",
-      "等級 4：標準化",
+      "等級 2：局部且臨時性",
+      "等級 3：部分且可重現",
+      "等級 4：全面且標準化",
       "等級 5：持續改善"
     ]
   }

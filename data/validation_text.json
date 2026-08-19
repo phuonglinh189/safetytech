@@ -109,43 +109,43 @@
         {
           "id": "V01",
           "aspect": {"en": "Relevant of indicators and sub-indicators", "zh": "指標相關性"},
-          "criteria": {"en": "Indicators and sub-indicators are relevant to safety monitoring and inspection technology adoption readiness assessment tool", "zh": "指標在智慧安全工地技術採用成熟度評估有相關"}
+          "criteria": {"en": "Indicators and sub-indicators are relevant to safety monitoring and inspection technology adoption readiness assessment tool", "zh": "本研究提出之指標皆與智慧安全工地技術導入成熟度評估相關"}
         },
         {
           "id": "V02",
           "aspect": {"en": "Adequacy of indicators and sub-indicators", "zh": "指標適當性"},
-          "criteria": {"en": "Indicators and sub-indicators cover all aspects of safety monitoring and inspection technology adoption readiness assessment tool", "zh": "指標涵蓋智慧安全工地評估的所有方面"}
+          "criteria": {"en": "Indicators and sub-indicators cover all aspects of safety monitoring and inspection technology adoption readiness assessment tool", "zh": "本研究提出之指標涵蓋所有智慧安全工地技術導入相關需求"}
         },
         {
           "id": "V03",
           "aspect": {"en": "Categorization of indicators and sub-indicators", "zh": "子指標分類"},
-          "criteria": {"en": "Indicators and sub-indicators are correctly assigned to their respective categories", "zh": "各子指標已正確地分配至各自的大指標"}
+          "criteria": {"en": "Indicators and sub-indicators are correctly assigned to their respective categories", "zh": "各子指標均能適當地歸屬於其所對應之父指標"}
         },
         {
           "id": "V04",
           "aspect": {"en": "Sub-indicators’ boundary", "zh": "子指標區別"},
-          "criteria": {"en": "Sub-indicators are clearly distinct", "zh": "子指標之間有明確的區別"}
+          "criteria": {"en": "Sub-indicators are clearly distinct", "zh": "各子指標之間有明確的區別"}
         }
       ]
     },
     {
       "id": "maturity",
       "color": "#4472C4",
-      "heading": {"en": "Maturity Level", "zh": "成熟等級"},
+      "heading": {"en": "Maturity Level", "zh": "成熟度等級"},
       "questions": [
         {
           "id": "V05",
-          "aspect": {"en": "Progression of maturity levels", "zh": "成熟等級進展"},
-          "criteria": {"en": "The maturity levels sufficiently represent progression in the sub-indicators", "zh": "成熟度等級反映各子指標的進展情況"}
+          "aspect": {"en": "Progression of maturity levels", "zh": "成熟度等級進展"},
+          "criteria": {"en": "The maturity levels sufficiently represent progression in the sub-indicators", "zh": "成熟度等級足以反映子指標之進展情形"}
         },
         {
           "id": "V06",
-          "aspect": {"en": "Maturity levels’ boundary", "zh": "成熟等級的範圍"},
+          "aspect": {"en": "Maturity levels’ boundary", "zh": "成熟度等級的範圍"},
           "criteria": {"en": "There is no overlap detected between descriptions of maturity levels", "zh": "成熟度等級之間有明確的區別"}
         },
         {
           "id": "V07",
-          "aspect": {"en": "Maturity levels’ ease of understanding", "zh": "成熟等級易解性"},
+          "aspect": {"en": "Maturity levels’ ease of understanding", "zh": "成熟度等級易讀性"},
           "criteria": {"en": "The maturity levels are understandable", "zh": "成熟度等級淺顯易懂"}
         }
       ]
@@ -175,12 +175,12 @@
         {
           "id": "V10",
           "aspect": {"en": "Scoring scheme", "zh": "評分制度"},
-          "criteria": {"en": "Scoring scheme (maturity level from 1 to 5) is easy to use", "zh": "成熟度等級從 1 到 5操作簡便"}
+          "criteria": {"en": "Scoring scheme (maturity level from 1 to 5) is easy to use", "zh": "使用1到5評估成熟度等級合理"}
         },
         {
           "id": "V11",
           "aspect": {"en": "Ease of use of the tool", "zh": "評估工具"},
-          "criteria": {"en": "The assessment tool is easy to use", "zh": "評估工具操作簡便"}
+          "criteria": {"en": "The assessment tool is easy to use", "zh": "評估工具及網頁界面操作簡便"}
         }
       ]
     },
@@ -191,13 +191,13 @@
       "questions": [
         {
           "id": "V12",
-          "aspect": {"en": "Usefulness of the tool", "zh": "工具的有用性"},
-          "criteria": {"en": "The tool is useful for assessing safety monitoring and inspection technology adoption readiness of your organization", "zh": "工具有助於評估組織在安全監測與檢查技術方面的採用就緒度"}
+          "aspect": {"en": "Usefulness of the tool", "zh": "工具的可用性"},
+          "criteria": {"en": "The tool is useful for assessing safety monitoring and inspection technology adoption readiness of your organization", "zh": "評估工具及網頁有助於評估組織在智慧安全工地技術方面的導入成熟度"}
         },
         {
           "id": "V13",
           "aspect": {"en": "Practicality of the tool", "zh": "工具的實用性"},
-          "criteria": {"en": "The tool is practical for use in construction industry", "zh": "工具在營造業中具有實用價值"}
+          "criteria": {"en": "The tool is practical for use in construction industry", "zh": "評估工具及網頁在營造業中具有實用價值"}
         }
       ]
     }
