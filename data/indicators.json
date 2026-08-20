@@ -122,11 +122,11 @@
       "domain": "strategy",
       "name": {
         "en": "Technology Investment Policy",
-        "zh": "技術投資規範與資源配置方針"
+        "zh": "技術投資規範與發展方針"
       },
       "description": {
         "en": "Technology investment policy refers to assessing whether the organization has formal, strategic policies and decision-making procedures for approving, funding, and managing investments in digital safety technologies. This includes risk assessment, regulatory compliance, and long-term planning frameworks that guide responsible and consistent investment behavior.",
-        "zh": "技術投資規範與資源配置方針指的是投資技術之審批流程、資金分配標準、安全法規的遵循、技術風險評估以及長期技術使用承諾。該指標評估組織是否制定正式政策來管理安全監測與檢查技術的投資，以及這些政策的明確性與完整性。"
+        "zh": "技術投資規範與發展方針指的是投資技術之審批流程、資金分配標準、安全法規的遵循、技術風險評估以及長期技術使用承諾。該指標評估組織是否制定正式政策來管理安全監測與檢查技術的投資，以及這些政策的明確性與完整性。"
       },
       "levels": {
         "en": [
@@ -257,11 +257,11 @@
       "domain": "operational",
       "name": {
         "en": "Technology Supplier Management",
-        "zh": "系統廠商與設備供應商管理"
+        "zh": "設備供應商管理"
       },
       "description": {
         "en": "Technology supplier management refers to how an organization selects, manages, and oversees its technology suppliers. It includes processes for supplier selection, contract management, performance evaluation, compliance monitoring, and strategies for long-term collaboration. These practices help ensure that digital safety technology providers meet quality, reliability, and safety standards.",
-        "zh": "系統廠商與設備供應商管理指的是選擇系統廠商與設備供應商的方法、合約管理、績效評估、合規監控及長期合作。"
+        "zh": "設備供應商管理指的是選擇設備供應商的方法、合約管理、績效評估、合規監控及長期合作。"
       },
       "levels": {
         "en": [
